@@ -3,71 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="scss/main.css">
     <title>Carlos Barraza's Portfolio</title>
 </head>
 <body>
     <header>
-        <div class="menu-btn">
-            <span class="menu-btn__burger"></span>
-        </div>
-
-        <nav class="nav">
-            <ul class="menu-nav">
-                <li class="menu-nav__item active">
-                    <a href="index.html" class="menu-nav__link">
-                        Home
-                    </a>
-                </li>
-                <li class="menu-nav__item">
-                    <a href="about.html" class="menu-nav__link">
-                        About Me
-                    </a>  
-                </li>
-                <li class="menu-nav__item">
-                    <a href="projects.html" class="menu-nav__link">
-                        My Projects
-                    </a>
-                </li>
-                <li class="menu-nav__item">
-                    <a href="contact.html" class="menu-nav__link">
-                        Contact
-                    </a>
-                </li>
-            </ul>
-        </nav>
     </header>
     <main>
-        <section class="home">
-            <h2> Hi! My name is</h2>
-            <h1 class="home__name">
-                Carlos <span class="home__name--last">Barraza</span>
-            </h1>
-            <h2>
-                Web Developer, Designer & Programmer
-            </h2>
-
-            <div class="social-icons">
-                <a href="#!">
-                    <i class="fab fa-twitter fa-2x"></i>
-                </a>
-                <a href="#!">
-                    <i class="fab fa-facebook fa-2x"></i>
-                </a>
-                <a href="#!">
-                    <i class="fab fa-instagram fa-2x"></i>
-                </a>
-                <a href="#!">
-                    <i class="fab fa-github fa-2x"></i>
-                </a>
+        <div class="b-main">
+            <div class="b-main_title">
+                Welcome!
             </div>
-
-            <footer>&copy; Copyright 2023</footer>
-
-            <script src="https://kit.fontawesome.com/dd9fdcbd33.js" crossorigin="anonymous"></script>
-            <script src="js/main.js"></script>
-        </section>
+            <div class="b-main_subtitle">
+                Please choose a pet.
+            </div>
+            <div class="b-main_pet_grid">
+                <div class="pet">
+                    <div class="pet_name">
+                        Franky
+                    </div>
+                    <div class="pet_image">
+                        <img src="img/Franky.jpg" alt="Franky">
+                    </div>
+                    <div class="pet_info h-hidden">
+                        <div>
+                            <span class="title">Nombre:</span>
+                            Franky Polo Barraza Estrada
+                        </div>
+                        <div>
+                            <span class="title">Nacimiento:</span>
+                            17 de noviembre de 2018
+                        </div>
+                        <div>
+                            <span class="title">Edad:</span>
+                            6 años
+                        </div>
+                    </div>
+                </div>
+                <div class="pet">
+                    <div class="pet_name">
+                        Petunia
+                    </div>
+                    <div class="pet_image">
+                        <img src="img/Petunia.jpg" alt="Petunia">
+                    </div>
+                    <div class="pet_info h-hidden">
+                        <div>
+                            <span class="title">Nombre:</span>
+                            Petunia Ofelia Barraza Estrada
+                        </div>
+                        <div>
+                            <span class="itle">Nacimiento:</span>
+                            21 de marzo de 2019
+                        </div>
+                        <div>
+                            <span class="title">Edad:</span>
+                            4 años
+                        </div>
+                    </div>
+                </div>
+                <div class="pet">
+                    <div class="pet_name">
+                        Rayo
+                    </div>
+                    <div class="pet_image">
+                        <img src="img/Rayo.jpg" alt="Rayo">
+                    </div>
+                    <div class="pet_info h-hidden">
+                        <div>
+                            <span class="title">Nombre:</span>
+                            Rayo Macchiato Barraza Estrada
+                        </div>
+                        <div>
+                            <span class="title">Nacimiento:</span>
+                            24 de agosto de 2020
+                        </div>
+                        <div>
+                            <span class="title">Edad:</span>
+                            3 años
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
-    
 </body>
+<script src="js/main.js"></script>
+
 </html>
