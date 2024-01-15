@@ -29,7 +29,7 @@
   transition: all 0.2s ease-in-out;
 }
 .b-main_pet_grid .pet.m-expanded {
-  max-height: 250px;
+  max-height: 280px;
 }
 .b-main_pet_grid .pet_image {
   display: flex;
