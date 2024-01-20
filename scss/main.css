@@ -1,9 +1,16 @@
 .b-main {
   align-items: center;
+  background-color: white;
+  border: thick solid darkgray;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: auto;
   justify-content: center;
+  margin-top: 30vh;
+  margin: 30vh auto auto;
+  padding: 24px 20px;
+  width: fit-content;
 }
 .b-main_title {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -25,11 +32,13 @@
   border-radius: 5px;
   border-style: solid;
   max-height: 100px;
+  max-width: 150px;
   padding: 12px;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.4s ease-in-out allow-discrete;
 }
 .b-main_pet_grid .pet.m-expanded {
-  max-height: 280px;
+  max-height: 320px;
+  max-width: 250px;
 }
 .b-main_pet_grid .pet_image {
   display: flex;
@@ -40,21 +49,31 @@
   border-radius: 10px;
   height: 60px;
   width: 60px;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 .b-main_pet_grid .pet_image.m-expanded img {
   height: 120px;
   width: 120px;
 }
 .b-main_pet_grid .pet_name {
+  display: flex;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 18px;
+  justify-content: center;
   text-transform: uppercase;
   padding-bottom: 8px;
+}
+.b-main_pet_grid .pet_name.m-expanded {
+  border-bottom: 1px solid white;
+  font-size: 24px;
+  font-weight: bold;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
 }
 .b-main_pet_grid .pet_info {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 14px;
+  transition: all 0.4s ease-in-out allow-discrete;
 }
 .b-main_pet_grid .pet_info.h-hidden {
   display: none;
@@ -62,8 +81,18 @@
 .b-main_pet_grid .pet_info .title {
   font-weight: bold;
 }
+.b-main_pet_grid .pet_info div {
+  padding: 8px 0;
+}
+.b-main_pet_grid .pet.h-hidden {
+  display: none;
+}
 .b-main_pet_grid .pet:hover {
   background-color: #00fad4;
   color: white;
   transform: translateY(-20px);
+}
+
+body {
+  background-image: url("../img/dog_background.jpeg");
 }/*# sourceMappingURL=main.css.map */
