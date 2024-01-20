@@ -132,3 +132,11 @@
 body {
     background-image: url('../img/dog_background.jpeg');
 }
+
+.footer {
+    bottom: 0;
+    padding: 12px;
+    position: fixed;
+    right: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
