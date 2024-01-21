@@ -39,6 +39,7 @@
   background-color: white;
   border: none;
   border-radius: 5px;
+  cursor: pointer;
   max-height: 100px;
   max-width: 150px;
   padding: 12px;
@@ -107,6 +108,7 @@
   border: none;
   border-radius: 5px;
   color: black;
+  cursor: pointer;
   padding: 12px 8px;
   text-transform: uppercase;
   transition: all 0.4s ease-in-out;
@@ -129,10 +131,32 @@
 }
 @media screen and (max-width: 768px) {
   .b-main .pet_gallery {
+    border-radius: 20px;
     margin-bottom: 0;
-    max-height: 70vh;
+    max-height: 80vh;
     overflow: hidden;
     width: 100vw;
+  }
+}
+.b-main .pet_gallery .drag_icon {
+  display: none;
+  width: 100%;
+}
+@media screen and (max-width: 768px) {
+  .b-main .pet_gallery .drag_icon {
+    display: inline;
+  }
+}
+.b-main .pet_gallery .close_icon {
+  cursor: pointer;
+  padding: 24px 20px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+@media screen and (max-width: 768px) {
+  .b-main .pet_gallery .close_icon {
+    padding: 48px 20px;
   }
 }
 .b-main .pet_gallery .gallery_title {
@@ -152,7 +176,7 @@
     flex-direction: column;
     flex-wrap: nowrap;
     margin: auto;
-    max-height: 50vh;
+    max-height: 60vh;
     overflow-y: auto;
   }
 }
@@ -170,10 +194,11 @@
   }
 }
 .b-main .pet_gallery .gallery_close {
+  background-color: white;
   border: 1px solid black;
   border-radius: 5px;
   color: black;
-  background-color: white;
+  cursor: pointer;
   margin-top: 20px;
   padding: 12px 8px;
   text-transform: uppercase;

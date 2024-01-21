@@ -38,6 +38,9 @@ function showPetGallery(event) {
     const petGallery = document.querySelector('.pet_gallery');
     const closeBtn = petGallery.querySelector('.gallery_close');
     const galleryImages = petGallery.querySelectorAll('.gallery_images');
+    const closeIcon = petGallery.querySelector('.close_icon');
+    const dragIcon = petGallery.querySelector('.drag_icon');
+    let touchStart;
 
     petGallery.showModal();
     openModal(event, petGallery);
@@ -50,7 +53,24 @@ function showPetGallery(event) {
         }
     })
 
+    dragIcon.addEventListener('touchstart', function(event) {
+        touchStart = event.touches[0].clientY;
+        petGallery.style.transition = "none";
+    });
+
+    dragIcon.addEventListener('touchmove', function(event) {
+        modalMove(event, petGallery);
+    });
+
+    dragIcon.addEventListener('touchend', function(event) {
+        snapModal(touchStart, petGallery);
+    });
+
     closeBtn.addEventListener('click', () => {
+        petGallery.close();
+    })
+
+    closeIcon.addEventListener('click', () => {
         petGallery.close();
     })
 }
@@ -58,4 +78,15 @@ function showPetGallery(event) {
 function openModal(event, petGallery) {
     const galleryTitle = petGallery.querySelector('.gallery_title');
     galleryTitle.innerText = event.currentTarget.dataset.jsPet;
+}
+
+function modalMove(event, petGallery) {
+    event.preventDefault();
+    const currentY = event.touches[0].clientY;
+    petGallery.style.maxHeight = (((window.innerHeight - currentY) / window.innerHeight) * 100) + 'vh';
+}
+
+function snapModal(touchStart, petGallery) {
+    petGallery.style.transition = "all 0.4s ease-in-out";
+    petGallery.style.maxHeight = (((window.innerHeight - touchStart) / window.innerHeight) * 100) + 'vh';
 }
