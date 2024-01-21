@@ -1,15 +1,14 @@
 .b-main {
   align-items: center;
   background-color: white;
-  border: thick solid darkgray;
+  border: none;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   height: auto;
   justify-content: center;
-  margin-top: 30vh;
-  margin: 30vh auto auto;
-  padding: 24px 20px;
+  margin: 30vh auto 30vh;
+  padding: 48px 40px;
   width: fit-content;
 }
 @media screen and (max-width: 768px) {
@@ -17,6 +16,9 @@
     margin: 30vh auto 10vh;
     width: auto;
   }
+}
+.b-main .icon {
+  padding-bottom: 20px;
 }
 .b-main_title {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -35,16 +37,16 @@
 }
 .b-main_pet_grid .pet {
   background-color: white;
-  border-color: black;
+  border: none;
   border-radius: 5px;
-  border-style: solid;
   max-height: 100px;
   max-width: 150px;
   padding: 12px;
   transition: all 0.4s ease-in-out allow-discrete;
 }
 .b-main_pet_grid .pet.m-expanded {
-  max-height: 320px;
+  border: 1px solid black;
+  max-height: 350px;
   max-width: 250px;
 }
 @media screen and (max-width: 768px) {
@@ -94,22 +96,93 @@
   font-size: 14px;
   transition: all 0.4s ease-in-out allow-discrete;
 }
-.b-main_pet_grid .pet_info.h-hidden {
-  display: none;
-}
 .b-main_pet_grid .pet_info .title {
   font-weight: bold;
 }
 .b-main_pet_grid .pet_info div {
   padding: 8px 0;
 }
-.b-main_pet_grid .pet.h-hidden {
-  display: none;
+.b-main_pet_grid .pet_info .gallery_button {
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  color: black;
+  padding: 12px 8px;
+  text-transform: uppercase;
+  transition: all 0.4s ease-in-out;
+  width: 100%;
+}
+.b-main_pet_grid .pet_info .gallery_button:hover {
+  background-color: beige;
+  color: darkgoldenrod;
 }
 .b-main_pet_grid .pet:hover {
   background-color: #00fad4;
   color: white;
   transform: translateY(-20px);
+}
+.b-main .pet_gallery {
+  border: none;
+  border-radius: 10px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 24px 20px;
+}
+@media screen and (max-width: 768px) {
+  .b-main .pet_gallery {
+    margin-bottom: 0;
+    max-height: 70vh;
+    overflow: hidden;
+    width: 100vw;
+  }
+}
+.b-main .pet_gallery .gallery_title {
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding-bottom: 20px;
+}
+.b-main .pet_gallery .gallery_images {
+  align-content: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+@media screen and (max-width: 768px) {
+  .b-main .pet_gallery .gallery_images {
+    align-content: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    margin: auto;
+    max-height: 50vh;
+    overflow-y: auto;
+  }
+}
+.b-main .pet_gallery .gallery_images.h-hidden {
+  display: none;
+}
+.b-main .pet_gallery .gallery_image {
+  height: 256px;
+  width: 196px;
+}
+@media screen and (max-width: 768px) {
+  .b-main .pet_gallery .gallery_image {
+    height: auto;
+    width: auto;
+  }
+}
+.b-main .pet_gallery .gallery_close {
+  border: 1px solid black;
+  border-radius: 5px;
+  color: black;
+  background-color: white;
+  margin-top: 20px;
+  padding: 12px 8px;
+  text-transform: uppercase;
+  transition: all 0.4s ease-in-out;
+  width: 100%;
+}
+.b-main .pet_gallery .gallery_close:hover {
+  color: white;
+  background-color: #00fad4;
 }
 
 body {
@@ -122,4 +195,8 @@ body {
   position: fixed;
   right: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.h-hidden {
+  display: none;
 }/*# sourceMappingURL=main.css.map */
