@@ -1,8 +1,14 @@
 const petCards = document.querySelectorAll('.pet');
 const galleryBtns = document.querySelectorAll('.gallery_button');
+const refreshElements = document.querySelectorAll('[data-js-refresh]');
+const contactBtn = document.querySelector('[data-js-contact-button]');
+const contactSidebar = document.querySelector('.contact_sidebar');
+const overlay = document.querySelector('.overlay');
 
 petCards.forEach(item => item.addEventListener('click', showPetInfo));
 galleryBtns.forEach(item => item.addEventListener('click', showPetGallery));
+refreshElements.forEach(item => item.addEventListener('click', refreshHomepage));
+contactBtn.addEventListener('click', toggleContactInfo);
 
 function showPetInfo() {
     const petInfo = this.querySelector('.pet_info');
@@ -89,4 +95,17 @@ function modalMove(event, petGallery) {
 function snapModal(touchStart, petGallery) {
     petGallery.style.transition = "all 0.4s ease-in-out";
     petGallery.style.maxHeight = (((window.innerHeight - touchStart) / window.innerHeight) * 100) + 'vh';
+}
+
+function refreshHomepage() {
+    window.location.reload();
+}
+
+function toggleContactInfo() {
+    contactSidebar.classList.toggle('m-expanded');
+    overlay.classList.add('m-active');
+    overlay.addEventListener('click', () => {
+        overlay.classList.remove('m-active');
+        contactSidebar.classList.remove('m-expanded');
+    })
 }
