@@ -8,8 +8,8 @@
 </head>
 <body>
     <header>
-        <img class="nav_logo" src="img/nav_logo.svg" alt="logo">
-        <div class="page_title">Fampek Pets</div>
+        <img class="nav_logo" src="img/nav_logo.svg" alt="logo" data-js-refresh>
+        <div class="page_title" data-js-refresh>Fampek Pets</div>
         <nav>
             <ul class="nav_links">
                 <li><a href="#">Services</a></li>
@@ -17,7 +17,7 @@
                 <li><a href="#">About</a></li>
             </ul>
         </nav>
-        <a class="cta" href="#"><button>Contact</button></a>
+        <a class="cta" href="#"><button data-js-contact-button>Contact</button></a>
     </header>
     <main>
         <div class="b-main">
@@ -66,6 +66,45 @@
                 </div>
 
                 <button class="gallery_close">Close</button>
+            </dialog>
+            <div class="overlay">
+            </div>
+            <dialog class="contact_sidebar" open>
+                <div class="title">
+                    Contact Information
+                </div>
+                <ul>
+                    <li>
+                        <div class="contact_grid">
+                            <img class="contact_image" src="img/person_icon.svg" alt="person icon">
+                            <div class="contact_data">Carlos Barraza</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="contact_grid">
+                            <img class="contact_image"  src="img/mail_icon.svg" alt="email icon">
+                            <div class="contact_data">cbarrazaestrada@gmail.com</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="contact_grid">
+                            <img class="contact_image"  src="img/location_icon.svg" alt="location icon">
+                            <div class="contact_data">Mexico</div>
+                        </div>
+                    </li>
+
+                    <div class="social_grid">
+                        <a href="https://www.instagram.com/carlosbarrazaes" target=”_blank”>
+                            <img class="social_icon" src="img/insta_icon.svg" alt="insta_icon">
+                        </a>
+                        <a href="https://www.linkedin.com/in/carlos-barraza-estrada-8246bb132" target=”_blank”>
+                            <img class="social_icon" src="img/linkedin_icon.svg" alt="linkedin_icon">
+                        </a>
+                        <a href="https://www.threads.net/@carlosbarrazaes" target=”_blank”>
+                            <img class="social_icon" src="img/threads_icon.svg" alt="threads_icon">
+                        </a>
+                    </div>
+                </ul>
             </dialog>
             <div class="b-main_pet_grid">
                 <div class="pet">

@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Lilita+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap");
 .b-main {
   align-items: center;
   background-color: white;
@@ -6,7 +7,7 @@
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: "Quicksand", sans-serif;
   height: auto;
   justify-content: center;
   padding: 48px 40px;
@@ -104,6 +105,7 @@
   border-radius: 5px;
   color: black;
   cursor: pointer;
+  font-family: "Quicksand", sans-serif;
   padding: 12px 8px;
   text-transform: uppercase;
   transition: all 0.4s ease-in-out;
@@ -207,6 +209,7 @@
   border-radius: 5px;
   color: black;
   cursor: pointer;
+  font-family: "Quicksand", sans-serif;
   margin-top: 20px;
   padding: 12px 8px;
   text-transform: uppercase;
@@ -215,12 +218,84 @@
 .b-main .pet_gallery .gallery_close:hover {
   background-color: #80ffec;
 }
+.b-main .contact_sidebar {
+  background-color: antiquewhite;
+  border: none;
+  font-family: "Quicksand", sans-serif;
+  font-size: 14px;
+  margin-right: -300px;
+  padding: 0;
+  position: fixed;
+  top: 70px;
+  transition: all 0.4s ease-in-out;
+  width: 300px;
+}
+.b-main .contact_sidebar.m-expanded {
+  margin-right: 0;
+}
+.b-main .contact_sidebar .title {
+  background-color: bisque;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 12px;
+  text-align: center;
+  text-transform: uppercase;
+}
+.b-main .contact_sidebar ul {
+  padding: 0 12px;
+}
+.b-main .contact_sidebar li {
+  list-style: none;
+  padding: 12px 8px;
+}
+.b-main .contact_sidebar .contact_grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 16px auto;
+}
+.b-main .contact_sidebar .contact_grid .contact_image {
+  height: 16px;
+  width: 16px;
+}
+.b-main .contact_sidebar .social_grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 16px 48px 24px;
+}
+.b-main .contact_sidebar .social_grid a {
+  margin: auto;
+}
+.b-main .contact_sidebar .social_grid .social_icon {
+  height: 24px;
+  transition: all 0.2s ease-in-out;
+  width: 24px;
+}
+.b-main .contact_sidebar .social_grid .social_icon:hover {
+  cursor: pointer;
+  height: 32px;
+  opacity: 0.6;
+  width: 32px;
+}
+.b-main .overlay {
+  background-color: gray;
+  display: none;
+  height: 100vh;
+  left: 0;
+  opacity: 0.5;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+}
+.b-main .overlay.m-active {
+  display: block;
+}
 
 header {
   align-items: center;
   background-color: beige;
   display: flex;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: "Quicksand", sans-serif;
   font-size: 14px;
   justify-content: space-between;
   padding: 12px 8px;
@@ -307,7 +382,7 @@ main {
 .footer {
   bottom: 0;
   color: darksalmon;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: "Quicksand", sans-serif;
   font-size: 8px;
   padding: 12px;
   position: fixed;
