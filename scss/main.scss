@@ -32,6 +32,15 @@
     }
 }
 
+@keyframes increaseGrid {
+    from {
+        scale: 0;
+    }
+    to {
+        scale: 1.5;
+    }
+}
+
 .b-main {
     align-items: center;
     border: none;
@@ -79,6 +88,8 @@
 
     &_pet {
         &_grid {
+            animation-name: increaseGrid;
+            animation-timeline: view();
             display: flex;
             gap: 24px;
             padding-top: 48px;
@@ -89,9 +100,14 @@
                 cursor: pointer;
                 display: flex;
                 flex-direction: column;
+                height: fit-content;
                 justify-content: center;
                 padding: 12px;
                 transition: all 0.4s ease-in-out;
+
+                &.m-expanded {
+                    cursor: auto;
+                }
 
                 &_image {
                     display: flex;
@@ -207,10 +223,12 @@
         animation-name: scrollDown;
         animation-direction: alternate;
         animation-duration: 1s;
+        cursor: pointer;
         position: relative;
     }
 
     .up_indicators {
+        cursor: pointer;
         display: none;
 
         &.m-active {

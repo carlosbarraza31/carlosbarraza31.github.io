@@ -8,11 +8,15 @@ const sidebarClose = document.querySelector('.close_icon_svg');
 const mainBody = document.querySelector('.b-main');
 const petGrid = document.querySelector('.b-main_pet_grid');
 const upIndicators = document.querySelector('.up_indicators');
+const downIndicators = document.querySelector('.scroll_down');
+const sections = document.querySelectorAll('.section');
 
 petCards.forEach(item => item.addEventListener('click', showPetInfo));
 galleryBtns.forEach(item => item.addEventListener('click', showPetGallery));
 refreshElements.forEach(item => item.addEventListener('click', refreshHomepage));
 contactBtn.addEventListener('click', toggleContactInfo);
+upIndicators.addEventListener('click', this.focusSection.bind(this, parseInt(upIndicators.dataset.jsScrollTo)));
+downIndicators.addEventListener('click', this.focusSection.bind(this, parseInt(downIndicators.dataset.jsScrollTo)));
 
 function showPetInfo() {
     const petInfo = this.querySelector('.pet_info');
@@ -126,7 +130,12 @@ function isElementVisible(el) {
         rect.left >= 0 &&
         rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
         rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );}
+    );
+}
+
+function focusSection(sectionIndex) {
+    sections[sectionIndex].scrollIntoView({ behavior: "smooth"});
+}
 
 window.onload = function () {
     mainBody.onscroll = function () {

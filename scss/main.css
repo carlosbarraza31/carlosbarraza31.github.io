@@ -28,6 +28,14 @@
     font-size: 0.4em;
   }
 }
+@keyframes increaseGrid {
+  from {
+    scale: 0;
+  }
+  to {
+    scale: 1.5;
+  }
+}
 .b-main {
   align-items: center;
   border: none;
@@ -73,6 +81,8 @@
   }
 }
 .b-main_pet_grid {
+  animation-name: increaseGrid;
+  animation-timeline: view();
   display: flex;
   gap: 24px;
   padding-top: 48px;
@@ -83,9 +93,13 @@
   cursor: pointer;
   display: flex;
   flex-direction: column;
+  height: fit-content;
   justify-content: center;
   padding: 12px;
   transition: all 0.4s ease-in-out;
+}
+.b-main_pet_grid .pet.m-expanded {
+  cursor: auto;
 }
 .b-main_pet_grid .pet_image {
   display: flex;
@@ -185,9 +199,11 @@
   animation-name: scrollDown;
   animation-direction: alternate;
   animation-duration: 1s;
+  cursor: pointer;
   position: relative;
 }
 .b-main .up_indicators {
+  cursor: pointer;
   display: none;
 }
 .b-main .up_indicators.m-active {
