@@ -1,20 +1,31 @@
 @import url("https://fonts.googleapis.com/css2?family=Lilita+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap");
+@keyframes scrollDown {
+  from {
+    opacity: 1;
+    top: 0px;
+  }
+  to {
+    opacity: 0.2;
+    top: 30px;
+  }
+}
 .b-main {
   align-items: center;
   border: none;
   border-radius: 10px;
   color: floralwhite;
-  display: flex;
-  flex-direction: column;
   font-family: "Quicksand", sans-serif;
-  height: auto;
+  height: 100vh;
   justify-content: center;
-  width: fit-content;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  margin-top: -75px;
+  width: 100%;
 }
 @media screen and (max-width: 768px) {
   .b-main {
-    width: auto;
+    margin-top: -60px;
   }
 }
 .b-main .icon {
@@ -47,20 +58,11 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  max-height: 100px;
-  max-width: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 12px;
-  transition: all 0.4s ease-in-out allow-discrete;
-}
-.b-main_pet_grid .pet.m-expanded {
-  max-height: 350px;
-  max-width: 250px;
-}
-@media screen and (max-width: 768px) {
-  .b-main_pet_grid .pet.m-expanded {
-    max-height: 450px;
-    max-width: 100px;
-  }
+  transition: all 0.4s ease-in-out;
 }
 .b-main_pet_grid .pet_image {
   display: flex;
@@ -69,13 +71,19 @@
 }
 .b-main_pet_grid .pet_image img {
   border-radius: 10px;
-  height: 60px;
-  width: 60px;
-  transition: all 0.4s ease-in-out;
-}
-.b-main_pet_grid .pet_image.m-expanded img {
   height: 120px;
   width: 120px;
+  transition: all 0.4s ease-in-out;
+}
+@media screen and (max-width: 768px) {
+  .b-main_pet_grid .pet_image img {
+    height: 60px;
+    width: 60px;
+  }
+}
+.b-main_pet_grid .pet_image.m-expanded img {
+  height: 200px;
+  width: 200px;
 }
 @media screen and (max-width: 768px) {
   .b-main_pet_grid .pet_image.m-expanded img {
@@ -88,6 +96,7 @@
   font-size: 18px;
   justify-content: center;
   padding-bottom: 8px;
+  transition: all 0.4s ease-in-out;
 }
 .b-main_pet_grid .pet_name.m-expanded {
   border-bottom: 1px solid white;
@@ -98,10 +107,11 @@
 }
 .b-main_pet_grid .pet_info {
   font-size: 14px;
-  transition: all 0.4s ease-in-out allow-discrete;
+  transition: all 0.4s ease-in-out;
 }
 .b-main_pet_grid .pet_info .title {
   font-weight: bold;
+  transition: all 0.4s ease-in-out;
 }
 .b-main_pet_grid .pet_info div {
   padding: 8px 0;
@@ -131,6 +141,22 @@
 }
 .b-main_pet_grid .pet:hover .gallery_button:hover {
   background-color: gainsboro;
+}
+.b-main .section {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  margin: 0 12px;
+  scroll-snap-align: start;
+}
+.b-main .scroll_down {
+  animation-iteration-count: infinite;
+  animation-name: scrollDown;
+  animation-direction: alternate;
+  animation-duration: 1s;
+  position: relative;
 }
 .b-main .pet_gallery {
   border: none;
@@ -406,14 +432,8 @@ body {
 main {
   align-items: center;
   display: flex;
-  height: calc(100vh - 75px);
   justify-content: center;
   overflow-y: auto;
-}
-@media screen and (max-width: 768px) {
-  main {
-    height: calc(100vh - 60px);
-  }
 }
 
 .footer {
