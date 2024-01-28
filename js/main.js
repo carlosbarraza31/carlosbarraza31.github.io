@@ -4,6 +4,7 @@ const refreshElements = document.querySelectorAll('[data-js-refresh]');
 const contactBtn = document.querySelector('[data-js-contact-button]');
 const contactSidebar = document.querySelector('.contact_sidebar');
 const overlay = document.querySelector('.overlay');
+const sidebarClose = document.querySelector('.close_icon_svg');
 
 petCards.forEach(item => item.addEventListener('click', showPetInfo));
 galleryBtns.forEach(item => item.addEventListener('click', showPetGallery));
@@ -104,8 +105,11 @@ function refreshHomepage() {
 function toggleContactInfo() {
     contactSidebar.classList.toggle('m-expanded');
     overlay.classList.add('m-active');
-    overlay.addEventListener('click', () => {
-        overlay.classList.remove('m-active');
-        contactSidebar.classList.remove('m-expanded');
-    })
+    overlay.addEventListener('click', hideSidebar);
+    sidebarClose.addEventListener('click', hideSidebar);
+}
+
+function hideSidebar() {
+    overlay.classList.remove('m-active');
+    contactSidebar.classList.remove('m-expanded');
 }

@@ -11,7 +11,6 @@
     font-family: 'Quicksand', sans-serif;
     height: auto;
     justify-content: center;
-    padding: 48px 40px;
     width: fit-content;
 
     @media screen and (max-width: 768px) {
@@ -25,11 +24,19 @@
     &_title {
         font-size: 96px;
         font-weight: 700;
+
+        @media screen and (max-width: 768px) {
+            font-size: 76px;
+        }
     }
 
     &_subtitle {
         font-size: 48px;
         font-weight: 350;
+
+        @media screen and (max-width: 768px) {
+            font-size: 32px;
+        }
     }
 
     &_pet {
@@ -258,15 +265,35 @@
         transition: all 0.4s ease-in-out;
         width: 300px;
 
+        @media screen and (max-width: 768px) {
+            background-color: rgba(255, 250, 240, 1);
+            color: black;
+        }
+
         &.m-expanded {
             margin-right: 0;
         }
 
+        .close_icon {
+            background-color: lightblue;
+
+            img {
+                height: 16px;
+                padding: 8px 0 0 8px;
+                width: 16px;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+
         .title {
-            background-color: bisque;
+            background-color: lightblue;
+            color: floralwhite;
             font-size: 16px;
             font-weight: 700;
-            padding: 12px;
+            padding-bottom: 12px;
             text-align: center;
             text-transform: uppercase;
         }
@@ -393,7 +420,7 @@ header {
                 background-color: floralwhite;
                 border: none;
                 border-radius: 10px;
-                color: darksalmon;
+                color: lightblue;
                 cursor: pointer;
                 margin-left: 24px;
                 padding: 12px 16px;
@@ -404,8 +431,8 @@ header {
                 }
 
                 &:hover {
-                    background-color: floralwhite;
-                    color: white;
+                    background-color: lightblue;
+                    color: floralwhite;
                 }
             }
         }
@@ -418,6 +445,10 @@ body {
     background-size: 100vw;
     margin: 0;
     overflow: hidden;
+
+    @media screen and (max-width: 768px) {
+        background-size: cover;
+    }
 }
 
 main {
@@ -426,6 +457,10 @@ main {
     height: calc(100vh - 75px);
     justify-content: center;
     overflow-y: auto;
+
+    @media screen and (max-width: 768px) {
+        height: calc(100vh - 60px);
+    }
 }
 
 .footer {

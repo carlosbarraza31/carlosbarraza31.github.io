@@ -10,7 +10,6 @@
   font-family: "Quicksand", sans-serif;
   height: auto;
   justify-content: center;
-  padding: 48px 40px;
   width: fit-content;
 }
 @media screen and (max-width: 768px) {
@@ -25,9 +24,19 @@
   font-size: 96px;
   font-weight: 700;
 }
+@media screen and (max-width: 768px) {
+  .b-main_title {
+    font-size: 76px;
+  }
+}
 .b-main_subtitle {
   font-size: 48px;
   font-weight: 350;
+}
+@media screen and (max-width: 768px) {
+  .b-main_subtitle {
+    font-size: 32px;
+  }
 }
 .b-main_pet_grid {
   display: flex;
@@ -229,14 +238,32 @@
   transition: all 0.4s ease-in-out;
   width: 300px;
 }
+@media screen and (max-width: 768px) {
+  .b-main .contact_sidebar {
+    background-color: rgb(255, 250, 240);
+    color: black;
+  }
+}
 .b-main .contact_sidebar.m-expanded {
   margin-right: 0;
 }
+.b-main .contact_sidebar .close_icon {
+  background-color: lightblue;
+}
+.b-main .contact_sidebar .close_icon img {
+  height: 16px;
+  padding: 8px 0 0 8px;
+  width: 16px;
+}
+.b-main .contact_sidebar .close_icon img:hover {
+  cursor: pointer;
+}
 .b-main .contact_sidebar .title {
-  background-color: bisque;
+  background-color: lightblue;
+  color: floralwhite;
   font-size: 16px;
   font-weight: 700;
-  padding: 12px;
+  padding-bottom: 12px;
   text-align: center;
   text-transform: uppercase;
 }
@@ -348,7 +375,7 @@ header a.cta button {
   background-color: floralwhite;
   border: none;
   border-radius: 10px;
-  color: darksalmon;
+  color: lightblue;
   cursor: pointer;
   margin-left: 24px;
   padding: 12px 16px;
@@ -360,8 +387,8 @@ header a.cta button {
   }
 }
 header a.cta button:hover {
-  background-color: floralwhite;
-  color: white;
+  background-color: lightblue;
+  color: floralwhite;
 }
 
 body {
@@ -370,6 +397,11 @@ body {
   margin: 0;
   overflow: hidden;
 }
+@media screen and (max-width: 768px) {
+  body {
+    background-size: cover;
+  }
+}
 
 main {
   align-items: center;
@@ -377,6 +409,11 @@ main {
   height: calc(100vh - 75px);
   justify-content: center;
   overflow-y: auto;
+}
+@media screen and (max-width: 768px) {
+  main {
+    height: calc(100vh - 60px);
+  }
 }
 
 .footer {
