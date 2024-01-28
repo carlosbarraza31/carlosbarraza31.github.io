@@ -5,6 +5,9 @@ const contactBtn = document.querySelector('[data-js-contact-button]');
 const contactSidebar = document.querySelector('.contact_sidebar');
 const overlay = document.querySelector('.overlay');
 const sidebarClose = document.querySelector('.close_icon_svg');
+const mainBody = document.querySelector('.b-main');
+const petGrid = document.querySelector('.b-main_pet_grid');
+const upIndicators = document.querySelector('.up_indicators');
 
 petCards.forEach(item => item.addEventListener('click', showPetInfo));
 galleryBtns.forEach(item => item.addEventListener('click', showPetGallery));
@@ -20,6 +23,7 @@ function showPetInfo() {
     petImage.classList.toggle('m-expanded');
     petName.classList.toggle('m-expanded');
     this.classList.toggle('m-expanded');
+    upIndicators.classList.toggle('m-active');
 
     hideOtherPets(this);
 }
@@ -113,3 +117,23 @@ function hideSidebar() {
     overlay.classList.remove('m-active');
     contactSidebar.classList.remove('m-expanded');
 }
+
+function isElementVisible(el) {
+    const rect = el.getBoundingClientRect();
+
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );}
+
+window.onload = function () {
+    mainBody.onscroll = function () {
+        if (isElementVisible(petGrid)) {
+            upIndicators.classList.add('m-active');
+        } else {
+            upIndicators.classList.remove('m-active');
+        }
+    };
+};

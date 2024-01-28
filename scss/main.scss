@@ -12,6 +12,26 @@
     }
 }
 
+@keyframes scrollUp {
+    from {
+        opacity: 0.2;
+        top: 30px;
+    }
+    to {
+        opacity: 1;
+        top: 0px;
+    }
+}
+
+@keyframes increaseTitle {
+    from {
+        font-size: 1em;
+    }
+    to {
+        font-size: 0.4em;
+    }
+}
+
 .b-main {
     align-items: center;
     border: none;
@@ -31,6 +51,11 @@
 
     .icon {
         padding-bottom: 20px;
+    }
+
+    &_title {
+        animation-name: increaseTitle;
+        animation-timeline: scroll();
     }
 
     &_title {
@@ -165,10 +190,15 @@
         align-items: center;
         display: flex;
         flex-direction: column;
+        font-size: 96px;
         height: 100vh;
         justify-content: center;
         margin: 0 12px;
         scroll-snap-align: start;
+
+        @media screen and (max-width: 768px) {
+            font-size: 76px;
+        }
     }
 
     .scroll_down {
@@ -177,6 +207,38 @@
         animation-direction: alternate;
         animation-duration: 1s;
         position: relative;
+    }
+
+    .up_indicators {
+        display: none;
+
+        &.m-active {
+            display: contents;
+
+            .scroll_up,
+            .back_text {
+                animation-iteration-count: infinite;
+                animation-name: scrollUp;
+                animation-direction: alternate;
+                animation-duration: 1s;
+                position: absolute;
+            }
+
+            .scroll_up {
+                margin-top: 80px;
+                transform: scaleY(-1);
+            }
+
+            .back_text {
+                font-size: 16px;
+                margin-top: 150px;
+                margin-bottom: 24px;
+
+                @media screen and (max-width: 768px) {
+                    font-size: 14px;
+                }
+            }
+        }
     }
 
     .pet_gallery {
