@@ -54,7 +54,8 @@
     }
 
     &_title {
-        animation-name: increaseTitle;
+        animation: increaseTitle;
+        -webkit-animation: increaseTitle;
         animation-timeline: scroll();
     }
 

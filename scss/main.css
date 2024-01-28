@@ -50,7 +50,8 @@
   padding-bottom: 20px;
 }
 .b-main_title {
-  animation-name: increaseTitle;
+  animation: increaseTitle;
+  -webkit-animation: increaseTitle;
   animation-timeline: scroll();
 }
 .b-main_title {
