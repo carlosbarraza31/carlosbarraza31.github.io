@@ -10,6 +10,8 @@ const petGrid = document.querySelector('.b-main_pet_grid');
 const upIndicators = document.querySelector('.up_indicators');
 const downIndicators = document.querySelector('.scroll_down');
 const sections = document.querySelectorAll('.section');
+const pageButtons = document.querySelectorAll('.m-link');
+const pages = document.querySelectorAll('.b-page');
 
 petCards.forEach(item => item.addEventListener('click', showPetInfo));
 galleryBtns.forEach(item => item.addEventListener('click', showPetGallery));
@@ -17,6 +19,7 @@ refreshElements.forEach(item => item.addEventListener('click', refreshHomepage))
 contactBtn.addEventListener('click', toggleContactInfo);
 upIndicators.addEventListener('click', this.focusSection.bind(this, parseInt(upIndicators.dataset.jsScrollTo)));
 downIndicators.addEventListener('click', this.focusSection.bind(this, parseInt(downIndicators.dataset.jsScrollTo)));
+pageButtons.forEach(item => item.addEventListener('click', changePage));
 
 function showPetInfo() {
     const petInfo = this.querySelector('.pet_info');
@@ -135,6 +138,16 @@ function isElementVisible(el) {
 
 function focusSection(sectionIndex) {
     sections[sectionIndex].scrollIntoView({ behavior: "smooth"});
+}
+
+function changePage(event) {
+    pages.forEach((page) => {
+        if (page.dataset.jsPageName === event.currentTarget.dataset.jsToPage) {
+            page.classList.remove('h-invisible');
+        } else {
+            page.classList.add('h-invisible');
+        }
+    });
 }
 
 window.onload = function () {

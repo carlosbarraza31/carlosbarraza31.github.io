@@ -36,7 +36,8 @@
     scale: 1.5;
   }
 }
-.b-main {
+.b-main,
+.b-about {
   align-items: center;
   border: none;
   border-radius: 10px;
@@ -50,44 +51,65 @@
   width: 100%;
 }
 @media screen and (max-width: 768px) {
-  .b-main {
+  .b-main,
+  .b-about {
     margin-top: -60px;
   }
 }
-.b-main .icon {
+.b-main .icon,
+.b-about .icon {
   padding-bottom: 20px;
 }
-.b-main_title {
-  animation: increaseTitle;
+.b-main_title,
+.b-about_title {
   -webkit-animation: increaseTitle;
+  animation: increaseTitle;
   animation-timeline: scroll();
-}
-.b-main_title {
   font-size: 96px;
   font-weight: 700;
 }
 @media screen and (max-width: 768px) {
-  .b-main_title {
+  .b-main_title,
+  .b-about_title {
     font-size: 76px;
   }
 }
-.b-main_subtitle {
+.b-main_subtitle,
+.b-about_subtitle {
   font-size: 48px;
   font-weight: 350;
 }
 @media screen and (max-width: 768px) {
-  .b-main_subtitle {
+  .b-main_subtitle,
+  .b-about_subtitle {
     font-size: 32px;
   }
 }
-.b-main_pet_grid {
+.b-main_description,
+.b-about_description {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  margin-top: 36px;
+  padding: 12px 24px;
+  font-size: 20px;
+  font-weight: 350;
+}
+@media screen and (max-width: 768px) {
+  .b-main_description,
+  .b-about_description {
+    font-size: 16px;
+  }
+}
+.b-main_pet_grid,
+.b-about_pet_grid {
   animation-name: increaseGrid;
   animation-timeline: view();
   display: flex;
   gap: 24px;
   padding-top: 48px;
 }
-.b-main_pet_grid .pet {
+.b-main_pet_grid .pet,
+.b-about_pet_grid .pet {
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -98,62 +120,70 @@
   padding: 12px;
   transition: all 0.4s ease-in-out;
 }
-.b-main_pet_grid .pet.m-expanded {
-  cursor: auto;
-}
-.b-main_pet_grid .pet_image {
+.b-main_pet_grid .pet_image,
+.b-about_pet_grid .pet_image {
   display: flex;
   justify-content: center;
   padding-bottom: 12px;
 }
-.b-main_pet_grid .pet_image img {
+.b-main_pet_grid .pet_image img,
+.b-about_pet_grid .pet_image img {
   border-radius: 10px;
   height: 120px;
   width: 120px;
   transition: all 0.4s ease-in-out;
 }
 @media screen and (max-width: 768px) {
-  .b-main_pet_grid .pet_image img {
+  .b-main_pet_grid .pet_image img,
+  .b-about_pet_grid .pet_image img {
     height: 60px;
     width: 60px;
   }
 }
-.b-main_pet_grid .pet_image.m-expanded img {
+.b-main_pet_grid .pet_image.m-expanded img,
+.b-about_pet_grid .pet_image.m-expanded img {
   height: 200px;
   width: 200px;
 }
 @media screen and (max-width: 768px) {
-  .b-main_pet_grid .pet_image.m-expanded img {
+  .b-main_pet_grid .pet_image.m-expanded img,
+  .b-about_pet_grid .pet_image.m-expanded img {
     height: 80px;
     width: 80px;
   }
 }
-.b-main_pet_grid .pet_name {
+.b-main_pet_grid .pet_name,
+.b-about_pet_grid .pet_name {
   display: flex;
   font-size: 18px;
   justify-content: center;
   padding-bottom: 8px;
   transition: all 0.4s ease-in-out;
 }
-.b-main_pet_grid .pet_name.m-expanded {
+.b-main_pet_grid .pet_name.m-expanded,
+.b-about_pet_grid .pet_name.m-expanded {
   border-bottom: 1px solid white;
   font-size: 24px;
   font-weight: bold;
   padding-bottom: 8px;
   margin-bottom: 12px;
 }
-.b-main_pet_grid .pet_info {
+.b-main_pet_grid .pet_info,
+.b-about_pet_grid .pet_info {
   font-size: 14px;
   transition: all 0.4s ease-in-out;
 }
-.b-main_pet_grid .pet_info .title {
+.b-main_pet_grid .pet_info .title,
+.b-about_pet_grid .pet_info .title {
   font-weight: bold;
   transition: all 0.4s ease-in-out;
 }
-.b-main_pet_grid .pet_info div {
+.b-main_pet_grid .pet_info div,
+.b-about_pet_grid .pet_info div {
   padding: 8px 0;
 }
-.b-main_pet_grid .pet_info .gallery_button {
+.b-main_pet_grid .pet_info .gallery_button,
+.b-about_pet_grid .pet_info .gallery_button {
   background-color: floralwhite;
   border: none;
   border-radius: 5px;
@@ -165,21 +195,26 @@
   transition: all 0.4s ease-in-out;
   width: 100%;
 }
-.b-main_pet_grid .pet_info .gallery_button:hover {
+.b-main_pet_grid .pet_info .gallery_button:hover,
+.b-about_pet_grid .pet_info .gallery_button:hover {
   background-color: floralwhite;
 }
-.b-main_pet_grid .pet:hover {
+.b-main_pet_grid .pet:hover,
+.b-about_pet_grid .pet:hover {
   background-color: rgba(255, 250, 240, 0.4);
   color: white;
   transform: translateY(-20px);
 }
-.b-main_pet_grid .pet:hover .gallery_button {
+.b-main_pet_grid .pet:hover .gallery_button,
+.b-about_pet_grid .pet:hover .gallery_button {
   background-color: white;
 }
-.b-main_pet_grid .pet:hover .gallery_button:hover {
+.b-main_pet_grid .pet:hover .gallery_button:hover,
+.b-about_pet_grid .pet:hover .gallery_button:hover {
   background-color: gainsboro;
 }
-.b-main .section {
+.b-main .section,
+.b-about .section {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -190,11 +225,13 @@
   scroll-snap-align: start;
 }
 @media screen and (max-width: 768px) {
-  .b-main .section {
+  .b-main .section,
+  .b-about .section {
     font-size: 76px;
   }
 }
-.b-main .scroll_down {
+.b-main .scroll_down,
+.b-about .scroll_down {
   animation-iteration-count: infinite;
   animation-name: scrollDown;
   animation-direction: alternate;
@@ -202,42 +239,51 @@
   cursor: pointer;
   position: relative;
 }
-.b-main .up_indicators {
+.b-main .up_indicators,
+.b-about .up_indicators {
   cursor: pointer;
   display: none;
 }
-.b-main .up_indicators.m-active {
+.b-main .up_indicators.m-active,
+.b-about .up_indicators.m-active {
   display: contents;
 }
 .b-main .up_indicators.m-active .scroll_up,
-.b-main .up_indicators.m-active .back_text {
+.b-main .up_indicators.m-active .back_text,
+.b-about .up_indicators.m-active .scroll_up,
+.b-about .up_indicators.m-active .back_text {
   animation-iteration-count: infinite;
   animation-name: scrollUp;
   animation-direction: alternate;
   animation-duration: 1s;
   position: absolute;
 }
-.b-main .up_indicators.m-active .scroll_up {
+.b-main .up_indicators.m-active .scroll_up,
+.b-about .up_indicators.m-active .scroll_up {
   margin-top: 80px;
   transform: scaleY(-1);
 }
-.b-main .up_indicators.m-active .back_text {
+.b-main .up_indicators.m-active .back_text,
+.b-about .up_indicators.m-active .back_text {
   font-size: 16px;
   margin-top: 150px;
   margin-bottom: 24px;
 }
 @media screen and (max-width: 768px) {
-  .b-main .up_indicators.m-active .back_text {
+  .b-main .up_indicators.m-active .back_text,
+  .b-about .up_indicators.m-active .back_text {
     font-size: 14px;
   }
 }
-.b-main .pet_gallery {
+.b-main .pet_gallery,
+.b-about .pet_gallery {
   border: none;
   border-radius: 10px;
   padding: 24px 20px;
 }
 @media screen and (max-width: 768px) {
-  .b-main .pet_gallery {
+  .b-main .pet_gallery,
+  .b-about .pet_gallery {
     border-radius: 20px;
     margin-bottom: 0;
     max-height: 80vh;
@@ -245,16 +291,19 @@
     width: 100vw;
   }
 }
-.b-main .pet_gallery .drag_icon {
+.b-main .pet_gallery .drag_icon,
+.b-about .pet_gallery .drag_icon {
   display: none;
   width: 100%;
 }
 @media screen and (max-width: 768px) {
-  .b-main .pet_gallery .drag_icon {
+  .b-main .pet_gallery .drag_icon,
+  .b-about .pet_gallery .drag_icon {
     display: inline;
   }
 }
-.b-main .pet_gallery .close_icon {
+.b-main .pet_gallery .close_icon,
+.b-about .pet_gallery .close_icon {
   cursor: pointer;
   padding: 24px 20px;
   position: absolute;
@@ -262,26 +311,31 @@
   top: 0;
 }
 @media screen and (max-width: 768px) {
-  .b-main .pet_gallery .close_icon {
+  .b-main .pet_gallery .close_icon,
+  .b-about .pet_gallery .close_icon {
     padding: 48px 20px;
   }
 }
-.b-main .pet_gallery .close_icon:hover {
+.b-main .pet_gallery .close_icon:hover,
+.b-about .pet_gallery .close_icon:hover {
   opacity: 0.6;
 }
-.b-main .pet_gallery .gallery_title {
+.b-main .pet_gallery .gallery_title,
+.b-about .pet_gallery .gallery_title {
   font-size: 24px;
   font-weight: bold;
   text-transform: uppercase;
   padding-bottom: 20px;
 }
-.b-main .pet_gallery .gallery_images {
+.b-main .pet_gallery .gallery_images,
+.b-about .pet_gallery .gallery_images {
   align-content: center;
   display: flex;
   flex-wrap: wrap;
 }
 @media screen and (max-width: 768px) {
-  .b-main .pet_gallery .gallery_images {
+  .b-main .pet_gallery .gallery_images,
+  .b-about .pet_gallery .gallery_images {
     align-content: center;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -291,25 +345,30 @@
     scroll-snap-type: y mandatory;
   }
 }
-.b-main .pet_gallery .gallery_images.h-hidden {
+.b-main .pet_gallery .gallery_images.h-hidden,
+.b-about .pet_gallery .gallery_images.h-hidden {
   display: none;
 }
-.b-main .pet_gallery .gallery_image {
+.b-main .pet_gallery .gallery_image,
+.b-about .pet_gallery .gallery_image {
   height: 256px;
   transition: all 0.4s ease-in-out;
   width: 196px;
 }
 @media screen and (max-width: 768px) {
-  .b-main .pet_gallery .gallery_image {
+  .b-main .pet_gallery .gallery_image,
+  .b-about .pet_gallery .gallery_image {
     height: auto;
     scroll-snap-align: start;
     width: auto;
   }
 }
-.b-main .pet_gallery .gallery_image:hover {
+.b-main .pet_gallery .gallery_image:hover,
+.b-about .pet_gallery .gallery_image:hover {
   transform: rotateY(180deg);
 }
-.b-main .pet_gallery .gallery_close {
+.b-main .pet_gallery .gallery_close,
+.b-about .pet_gallery .gallery_close {
   background-color: #00fad4;
   border: none;
   border-radius: 5px;
@@ -321,10 +380,26 @@
   text-transform: uppercase;
   width: 100%;
 }
-.b-main .pet_gallery .gallery_close:hover {
+.b-main .pet_gallery .gallery_close:hover,
+.b-about .pet_gallery .gallery_close:hover {
   background-color: #80ffec;
 }
-.b-main .contact_sidebar {
+
+.overlay {
+  background-color: gray;
+  display: none;
+  height: 100vh;
+  left: 0;
+  opacity: 0.5;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+}
+.overlay.m-active {
+  display: block;
+}
+
+.contact_sidebar {
   background-color: rgba(255, 250, 240, 0.6);
   border: none;
   color: floralwhite;
@@ -338,26 +413,29 @@
   width: 300px;
 }
 @media screen and (max-width: 768px) {
-  .b-main .contact_sidebar {
+  .contact_sidebar {
     background-color: rgb(255, 250, 240);
     color: black;
   }
 }
-.b-main .contact_sidebar.m-expanded {
+.contact_sidebar.m-expanded {
+  border-radius: 20px;
   margin-right: 0;
 }
-.b-main .contact_sidebar .close_icon {
+.contact_sidebar .close_icon {
   background-color: lightblue;
+  border-radius: 20px 20px 0 0;
 }
-.b-main .contact_sidebar .close_icon img {
+.contact_sidebar .close_icon img {
   height: 16px;
-  padding: 8px 0 0 8px;
+  padding: 12px 0 0 12px;
   width: 16px;
 }
-.b-main .contact_sidebar .close_icon img:hover {
+.contact_sidebar .close_icon img:hover {
   cursor: pointer;
+  opacity: 0.4;
 }
-.b-main .contact_sidebar .title {
+.contact_sidebar .title {
   background-color: lightblue;
   color: floralwhite;
   font-size: 16px;
@@ -366,54 +444,41 @@
   text-align: center;
   text-transform: uppercase;
 }
-.b-main .contact_sidebar ul {
+.contact_sidebar ul {
   padding: 0 12px;
 }
-.b-main .contact_sidebar li {
+.contact_sidebar li {
   list-style: none;
   padding: 12px 8px;
 }
-.b-main .contact_sidebar .contact_grid {
+.contact_sidebar .contact_grid {
   display: grid;
   gap: 12px;
   grid-template-columns: 16px auto;
 }
-.b-main .contact_sidebar .contact_grid .contact_image {
+.contact_sidebar .contact_grid .contact_image {
   height: 16px;
   width: 16px;
 }
-.b-main .contact_sidebar .social_grid {
+.contact_sidebar .social_grid {
   display: grid;
   gap: 12px;
   grid-template-columns: 1fr 1fr 1fr;
   margin: 16px 48px 24px;
 }
-.b-main .contact_sidebar .social_grid a {
+.contact_sidebar .social_grid a {
   margin: auto;
 }
-.b-main .contact_sidebar .social_grid .social_icon {
+.contact_sidebar .social_grid .social_icon {
   height: 24px;
   transition: all 0.2s ease-in-out;
   width: 24px;
 }
-.b-main .contact_sidebar .social_grid .social_icon:hover {
+.contact_sidebar .social_grid .social_icon:hover {
   cursor: pointer;
   height: 32px;
   opacity: 0.6;
   width: 32px;
-}
-.b-main .overlay {
-  background-color: gray;
-  display: none;
-  height: 100vh;
-  left: 0;
-  opacity: 0.5;
-  position: fixed;
-  top: 0;
-  width: 100vw;
-}
-.b-main .overlay.m-active {
-  display: block;
 }
 
 header {
@@ -490,15 +555,19 @@ header a.cta button:hover {
   color: floralwhite;
 }
 
+.b-page {
+  transition: all 1s ease-in-out;
+}
+
 body {
   background-image: url("../img/main_background.jpg");
-  background-size: 100vw;
+  background-size: 100vw 300vh;
   margin: 0;
   overflow: hidden;
 }
 @media screen and (max-width: 768px) {
   body {
-    background-size: cover;
+    background-size: 250vw 100vh;
   }
 }
 
@@ -523,4 +592,11 @@ main {
 
 .h-hidden {
   display: none;
+}
+
+.h-invisible {
+  height: 0;
+  scale: 0;
+  opacity: 0;
+  width: 0;
 }/*# sourceMappingURL=main.css.map */

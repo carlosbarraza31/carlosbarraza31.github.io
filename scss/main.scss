@@ -41,7 +41,8 @@
     }
 }
 
-.b-main {
+.b-main,
+.b-about {
     align-items: center;
     border: none;
     border-radius: 10px;
@@ -63,12 +64,9 @@
     }
 
     &_title {
-        animation: increaseTitle;
         -webkit-animation: increaseTitle;
+        animation: increaseTitle;
         animation-timeline: scroll();
-    }
-
-    &_title {
         font-size: 96px;
         font-weight: 700;
 
@@ -83,6 +81,19 @@
 
         @media screen and (max-width: 768px) {
             font-size: 32px;
+        }
+    }
+
+    &_description {
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        margin-top: 36px;
+        padding: 12px 24px;
+        font-size: 20px;
+        font-weight: 350;
+
+        @media screen and (max-width: 768px) {
+            font-size: 16px;
         }
     }
 
@@ -104,10 +115,6 @@
                 justify-content: center;
                 padding: 12px;
                 transition: all 0.4s ease-in-out;
-
-                &.m-expanded {
-                    cursor: auto;
-                }
 
                 &_image {
                     display: flex;
@@ -359,110 +366,113 @@
             }
         }
     }
+}
 
-    .contact_sidebar {
-        background-color: rgba(255, 250, 240, 0.6);
-        border: none;
-        color: floralwhite;
-        font-family: 'Quicksand', sans-serif;
-        font-size: 14px;
-        margin-right: -300px;
-        padding: 0;
-        position: fixed;
-        top: 70px;
-        transition: all 0.4s ease-in-out;
-        width: 300px;
+.overlay {
+    background-color: gray;
+    display: none;
+    height: 100vh;
+    left: 0;
+    opacity: 0.5;
+    position: fixed;
+    top: 0;
+    width: 100vw;
 
-        @media screen and (max-width: 768px) {
-            background-color: rgba(255, 250, 240, 1);
-            color: black;
-        }
+    &.m-active {
+        display: block;
+    }
+}
 
-        &.m-expanded {
-            margin-right: 0;
-        }
+.contact_sidebar {
+    background-color: rgba(255, 250, 240, 0.6);
+    border: none;
+    color: floralwhite;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 14px;
+    margin-right: -300px;
+    padding: 0;
+    position: fixed;
+    top: 70px;
+    transition: all 0.4s ease-in-out;
+    width: 300px;
 
-        .close_icon {
-            background-color: lightblue;
+    @media screen and (max-width: 768px) {
+        background-color: rgba(255, 250, 240, 1);
+        color: black;
+    }
 
-            img {
-                height: 16px;
-                padding: 8px 0 0 8px;
-                width: 16px;
+    &.m-expanded {
+        border-radius: 20px;
+        margin-right: 0;
+    }
 
-                &:hover {
-                    cursor: pointer;
-                }
-            }
-        }
+    .close_icon {
+        background-color: lightblue;
+        border-radius: 20px 20px 0 0;
 
-        .title {
-            background-color: lightblue;
-            color: floralwhite;
-            font-size: 16px;
-            font-weight: 700;
-            padding-bottom: 12px;
-            text-align: center;
-            text-transform: uppercase;
-        }
+        img {
+            height: 16px;
+            padding: 12px 0 0 12px;
+            width: 16px;
 
-        ul {
-            padding: 0 12px;
-        }
-
-        li {
-            list-style: none;
-            padding: 12px 8px;
-        }
-
-        .contact_grid {
-            display: grid;
-            gap: 12px;
-            grid-template-columns: 16px auto;
-
-            .contact_image {
-                height: 16px;
-                width: 16px;
-            }
-        }
-
-        .social_grid {
-            display: grid;
-            gap: 12px;
-            grid-template-columns: 1fr 1fr 1fr;
-            margin: 16px 48px 24px;
-
-            a {
-                margin: auto;
-            }
-
-            .social_icon {
-                height: 24px;
-                transition: all 0.2s ease-in-out;
-                width: 24px;
-
-                &:hover {
-                    cursor: pointer;
-                    height: 32px;
-                    opacity: 0.6;
-                    width: 32px;
-                }
+            &:hover {
+                cursor: pointer;
+                opacity: 0.4;
             }
         }
     }
 
-    .overlay {
-        background-color: gray;
-        display: none;
-        height: 100vh;
-        left: 0;
-        opacity: 0.5;
-        position: fixed;
-        top: 0;
-        width: 100vw;
+    .title {
+        background-color: lightblue;
+        color: floralwhite;
+        font-size: 16px;
+        font-weight: 700;
+        padding-bottom: 12px;
+        text-align: center;
+        text-transform: uppercase;
+    }
 
-        &.m-active {
-            display: block;
+    ul {
+        padding: 0 12px;
+    }
+
+    li {
+        list-style: none;
+        padding: 12px 8px;
+    }
+
+    .contact_grid {
+        display: grid;
+        gap: 12px;
+        grid-template-columns: 16px auto;
+
+        .contact_image {
+            height: 16px;
+            width: 16px;
+        }
+    }
+
+    .social_grid {
+        display: grid;
+        gap: 12px;
+        grid-template-columns: 1fr 1fr 1fr;
+        margin: 16px 48px 24px;
+
+        a {
+            margin: auto;
+        }
+
+        .social_icon {
+            height: 24px;
+            transition: all 0.2s ease-in-out;
+            width: 24px;
+
+            &:hover {
+                cursor: pointer;
+                height: 32px;
+                opacity: 0.6;
+                width: 32px;
+            }
         }
     }
 }
@@ -547,15 +557,19 @@ header {
     }
 }
 
+.b-page {
+    transition: all 1s ease-in-out;
+}
+
 
 body {
     background-image: url('../img/main_background.jpg');
-    background-size: 100vw;
+    background-size: 100vw 300vh;
     margin: 0;
     overflow: hidden;
 
     @media screen and (max-width: 768px) {
-        background-size: cover;
+        background-size: 250vw 100vh;
     }
 }
 
@@ -580,4 +594,11 @@ main {
 
 .h-hidden {
     display: none;
+}
+
+.h-invisible {
+    height: 0;
+    scale: 0;
+    opacity: 0;
+    width: 0;
 }
