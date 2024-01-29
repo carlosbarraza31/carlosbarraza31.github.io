@@ -87,6 +87,7 @@
     &_description {
         background-color: rgba(255, 255, 255, 0.2);
         border-radius: 20px;
+        margin-bottom: 48px;
         margin-top: 36px;
         padding: 12px 24px;
         font-size: 20px;
@@ -210,6 +211,10 @@
         }
     }
 
+    .info_icon {
+        margin-top: 85px;
+    }
+
     .section {
         align-items: center;
         display: flex;
@@ -222,6 +227,14 @@
 
         @media screen and (max-width: 768px) {
             font-size: 76px;
+        }
+
+        &.m-overflow {
+            height: unset;
+
+            @media screen and (max-width: 768px) {
+                margin-top: 85px;
+            }
         }
     }
 
@@ -386,6 +399,7 @@
 .contact_sidebar {
     background-color: rgba(255, 250, 240, 0.6);
     border: none;
+    border-radius: 20px;
     color: floralwhite;
     font-family: 'Quicksand', sans-serif;
     font-size: 14px;
@@ -402,7 +416,6 @@
     }
 
     &.m-expanded {
-        border-radius: 20px;
         margin-right: 0;
     }
 
