@@ -15,7 +15,25 @@
         <nav>
             <ul class="nav_links">
                 <li><a class="m-link" href="#">Services</a></li>
-                <li><a class="m-link" href="#">Projects</a></li>
+                <li class="pet_list">
+                    <a class="dropdown_link" href="#">Pets
+                        <img class="dropdown_icon" src="img/dropdown_icon.svg" alt="dropdown_icon">
+                        <ul class="dropdown_content">
+                            <li class="pet_item pet_nav_button" data-js-pet="franky" data-js-to-page="pet-page">
+                                <img src="img/dog_head.svg" alt="dog_head">
+                                Franky
+                            </li>
+                            <li class="pet_item pet_nav_button" data-js-pet="petunia" data-js-to-page="pet-page">
+                                <img src="img/dog_head.svg" alt="dog_head">
+                                Petunia
+                            </li>
+                            <li class="pet_item pet_nav_button" data-js-pet="rayo" data-js-to-page="pet-page">
+                                <img src="img/dog_head.svg" alt="dog_head">
+                                Rayo
+                            </li>
+                        </ul>
+                    </a>
+                </li>
                 <li><a class="m-link" href="#" data-js-to-page="about">About</a></li>
             </ul>
         </nav>
@@ -165,7 +183,7 @@
                     About
                 </div>
                 <div class="b-about_description">
-                    Hey there, I am Carlos, the creator of this little website. <br> <br>
+                    Hey there, I am Carlos, the creator of this website. <br> <br>
 
                     The idea of creating it came up to me one fateful Sunday evening.. one of those dreadful times when I started
                     feeling my weekly existential crisis coming in, which usually happened the day before having to go back to work to
@@ -181,6 +199,29 @@
 
                     Enjoy!
                 </div>
+            </div>
+        </div>
+        <div class="b-pet-page b-page h-invisible" data-js-page-name="pet-page">
+            <div class="subpage h-invisible" data-js-pet="franky">
+                <section class="section">
+                    <div class="b-pet-page_title">
+                        Franky
+                    </div>
+                </section>
+            </div>
+            <div class="subpage h-invisible" data-js-pet="petunia">
+                <section class="section">
+                    <div class="b-pet-page_title">
+                        Petunia
+                    </div>
+                </section>
+            </div>
+            <div class="subpage h-invisible" data-js-pet="rayo">
+                <section class="section">
+                    <div class="b-pet-page_title">
+                        Rayo
+                    </div>
+                </section>
             </div>
         </div>
         <div class="overlay">
@@ -226,7 +267,12 @@
             </ul>
         </dialog>
         <div class="footer">
-            &copy Copyright 2024 Carlos Barraza
+            <div class="credits">
+                Photo from <a href="https://unsplash.com/es/@fakurian?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash" target=”_blank”>Milad Fakurian</a> on <a href="https://unsplash.com/es/fotos/globos-amarillos-y-blancos-sobre-superficie-naranja-PGdW_bHDbpI?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash" target=”_blank”>Unsplash</a>
+            </div>
+            <div class="copyright">
+                &copy Copyright 2024 Carlos Barraza
+            </div>
         </div>
     </main>
 </body>

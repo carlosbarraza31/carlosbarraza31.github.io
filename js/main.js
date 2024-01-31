@@ -12,6 +12,8 @@ const downIndicators = document.querySelector('.scroll_down');
 const sections = document.querySelectorAll('.section');
 const pageButtons = document.querySelectorAll('.m-link');
 const pages = document.querySelectorAll('.b-page');
+const petNavBtns = document.querySelectorAll('.pet_nav_button');
+const subPages = document.querySelectorAll('.subpage');
 
 petCards.forEach(item => item.addEventListener('click', showPetInfo));
 galleryBtns.forEach(item => item.addEventListener('click', showPetGallery));
@@ -20,6 +22,7 @@ contactBtn.addEventListener('click', toggleContactInfo);
 upIndicators.addEventListener('click', this.focusSection.bind(this, parseInt(upIndicators.dataset.jsScrollTo)));
 downIndicators.addEventListener('click', this.focusSection.bind(this, parseInt(downIndicators.dataset.jsScrollTo)));
 pageButtons.forEach(item => item.addEventListener('click', changePage));
+petNavBtns.forEach(item => item.addEventListener('click', showPetPage));
 
 function showPetInfo() {
     const petInfo = this.querySelector('.pet_info');
@@ -148,6 +151,17 @@ function changePage(event) {
             page.classList.add('h-invisible');
         }
     });
+}
+
+function showPetPage(event) {
+    changePage(event);
+    subPages.forEach((subPage) => {
+        if (subPage.dataset.jsPet === event.currentTarget.dataset.jsPet) {
+            subPage.classList.remove('h-invisible');
+        } else {
+            subPage.classList.add('h-invisible');
+        }
+    })
 }
 
 window.onload = function () {
