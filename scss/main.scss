@@ -378,6 +378,44 @@
             }
         }
     }
+
+    &_card-grid {
+        background-color: rgba(#fffaf0, 0.2);
+        border-radius: 20px;
+        display: grid;
+        grid-template-columns: 256px auto;
+        gap: 24px;
+        margin-top: 24px;
+        max-width: 70vw;
+
+        @media screen and (max-width: 768px) {
+            gap: 0;
+            grid-template-rows: 256px auto;
+        }
+
+        img {
+            clip-path: circle(40%);
+            height: 256px;
+            width: 256px;
+
+            @media screen and (max-width: 768px) {
+                grid-row: 1;
+            }
+        }
+
+        .pet_card_info {
+            align-items: center;
+            display: flex;
+            font-size: 16px;
+            padding: 20px 24px 20px 0;
+
+            @media screen and (max-width: 768px) {
+                font-size: 14px;
+                grid-row: 2;
+                padding: 24px 20px;
+            }
+        }
+    }
 }
 
 .b-about {
@@ -570,7 +608,7 @@ header {
                 }
             }
 
-            &:hover {
+            &:hover, &:active {
                 .dropdown_content {
                     display: block;
                 }
