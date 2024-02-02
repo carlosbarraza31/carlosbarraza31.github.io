@@ -14,6 +14,7 @@ const pageButtons = document.querySelectorAll('.m-link');
 const pages = document.querySelectorAll('.b-page');
 const petNavBtns = document.querySelectorAll('.pet_nav_button');
 const subPages = document.querySelectorAll('.subpage');
+const petList = document.querySelector('.pet_list');
 
 petCards.forEach(item => item.addEventListener('click', showPetInfo));
 galleryBtns.forEach(item => item.addEventListener('click', showPetGallery));
@@ -23,6 +24,7 @@ upIndicators.addEventListener('click', this.focusSection.bind(this, parseInt(upI
 downIndicators.addEventListener('click', this.focusSection.bind(this, parseInt(downIndicators.dataset.jsScrollTo)));
 pageButtons.forEach(item => item.addEventListener('click', changePage));
 petNavBtns.forEach(item => item.addEventListener('click', showPetPage));
+petList.addEventListener('click', togglePetList);
 
 function showPetInfo() {
     const petInfo = this.querySelector('.pet_info');
@@ -182,7 +184,12 @@ function showPetPage(event) {
                 subPage.classList.add('h-hidden');
             }, "500");
         }
-    })
+    });
+}
+
+function togglePetList() {
+    petList.classList.toggle('m-active');
+    petList.querySelector('.dropdown_content').classList.toggle('m-active');
 }
 
 window.onload = function () {

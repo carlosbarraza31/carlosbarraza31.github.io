@@ -659,8 +659,10 @@ header .nav_links .pet_list .dropdown_icon {
   transform-origin: 8px 10px;
   transition: all 0.4s ease-in-out;
 }
-header .nav_links .pet_list:hover .dropdown_icon {
-  transform: rotateX(180deg);
+@media screen and (min-width: 769px) {
+  header .nav_links .pet_list:hover .dropdown_icon {
+    transform: rotateX(180deg);
+  }
 }
 header .nav_links .pet_list .dropdown_content {
   background-color: rgba(173, 216, 230, 0.4);
@@ -683,8 +685,26 @@ header .nav_links .pet_list .dropdown_content .pet_item:hover {
 header .nav_links .pet_list .dropdown_content .pet_item a {
   pointer-events: none;
 }
-header .nav_links .pet_list:hover .dropdown_content, header .nav_links .pet_list:active .dropdown_content {
-  display: block;
+@media screen and (max-width: 768px) {
+  header .nav_links .pet_list .dropdown_content.m-active {
+    display: block;
+  }
+}
+@media screen and (min-width: 769px) {
+  header .nav_links .pet_list:hover .dropdown_content, header .nav_links .pet_list:active .dropdown_content {
+    display: block;
+  }
+}
+@media screen and (max-width: 768px) {
+  header .nav_links .pet_list.m-active {
+    color: bisque;
+  }
+  header .nav_links .pet_list.m-active a.dropdown_link {
+    color: bisque;
+  }
+  header .nav_links .pet_list.m-active .dropdown_icon {
+    transform: rotateX(180deg);
+  }
 }
 header .nav_links li {
   cursor: pointer;
@@ -701,8 +721,10 @@ header a {
   text-decoration: none;
   transition: all 0.2s ease-in-out;
 }
-header a:hover {
-  color: bisque;
+@media screen and (min-width: 769px) {
+  header a:hover {
+    color: bisque;
+  }
 }
 header a.cta button {
   background-color: floralwhite;
