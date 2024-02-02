@@ -683,6 +683,10 @@ header {
 .subpage {
     overflow-y: auto;
 
+    @media screen and (max-width: 768px) {
+        max-height: 90vh;
+    }
+
     .section {
         @media screen and (max-width: 768px) {
             display: flex;
