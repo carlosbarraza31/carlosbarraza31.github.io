@@ -232,7 +232,9 @@
             min-height: 600px;
 
             @media screen and (max-width: 768px) {
+                display: flex;
                 min-height: 900px;
+                padding-bottom: 64px;
             }
         }
     }
@@ -387,10 +389,13 @@
         gap: 24px;
         margin-top: 24px;
         max-width: 70vw;
+        transition: all 0.4s ease-in-out;
 
         @media screen and (max-width: 768px) {
             gap: 0;
             grid-template-rows: 256px auto;
+            max-width: unset;
+            width: 90vw;
         }
 
         img {
@@ -403,16 +408,26 @@
             }
         }
 
+        .pet_card_image {
+            @media screen and (max-width: 768px) {
+                display: flex;
+                justify-content: center;
+                width: 90vw;
+            }
+        }
+
         .pet_card_info {
             align-items: center;
             display: flex;
             font-size: 16px;
             padding: 20px 24px 20px 0;
+            transition: all 0.4s ease-in-out;
 
             @media screen and (max-width: 768px) {
                 font-size: 14px;
                 grid-row: 2;
                 padding: 24px 20px;
+                width: 80vw;
             }
         }
     }
@@ -589,6 +604,7 @@ header {
                 display: none;
                 padding: 0;
                 position: absolute;
+                z-index: 5;
 
                 .pet_item {
                     align-items: center;
@@ -661,7 +677,19 @@ header {
 
 .b-page,
 .subpage {
-    transition: all 1s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+.subpage {
+    overflow-y: auto;
+
+    .section {
+        @media screen and (max-width: 768px) {
+            display: flex;
+            height: auto;
+            margin: 75px 0 64px;
+        }
+    }
 }
 
 
@@ -710,8 +738,5 @@ main {
 }
 
 .h-invisible {
-    height: 0;
-    scale: 0;
-    opacity: 0;
-    width: 0;
+    margin-right: -200vw;
 }

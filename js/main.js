@@ -33,9 +33,14 @@ function showPetInfo() {
     petImage.classList.toggle('m-expanded');
     petName.classList.toggle('m-expanded');
     this.classList.toggle('m-expanded');
-    upIndicators.classList.toggle('m-active');
 
     hideOtherPets(this);
+
+    const isCardExpanded = [...petCards].some((petCard) => {
+        return petCard.classList.contains('m-expanded');
+    });
+
+    upIndicators.classList.toggle('m-active', !isCardExpanded);
 }
 
 function hideOtherPets(currentPet) {
@@ -146,9 +151,17 @@ function focusSection(sectionIndex) {
 function changePage(event) {
     pages.forEach((page) => {
         if (page.dataset.jsPageName === event.currentTarget.dataset.jsToPage) {
-            page.classList.remove('h-invisible');
+            setTimeout(() => {
+                page.classList.remove('h-hidden');
+                setTimeout(() => {
+                    page.classList.remove('h-invisible');
+                }, "500");
+            }, "500");
         } else {
             page.classList.add('h-invisible');
+            setTimeout(() => {
+                page.classList.add('h-hidden');
+            }, "500");
         }
     });
 }
@@ -157,9 +170,17 @@ function showPetPage(event) {
     changePage(event);
     subPages.forEach((subPage) => {
         if (subPage.dataset.jsPet === event.currentTarget.dataset.jsPet) {
-            subPage.classList.remove('h-invisible');
+            setTimeout(() => {
+                subPage.classList.remove('h-hidden');
+                setTimeout(() => {
+                    subPage.classList.remove('h-invisible');
+                }, "500");
+            }, "500");
         } else {
             subPage.classList.add('h-invisible');
+            setTimeout(() => {
+                subPage.classList.add('h-hidden');
+            }, "500");
         }
     })
 }
