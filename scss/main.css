@@ -38,7 +38,8 @@
 }
 .b-main,
 .b-about,
-.b-pet-page {
+.b-pet-page,
+.b-pet-generator-page {
   align-items: center;
   border: none;
   border-radius: 10px;
@@ -54,18 +55,21 @@
 @media screen and (max-width: 768px) {
   .b-main,
   .b-about,
-  .b-pet-page {
+  .b-pet-page,
+  .b-pet-generator-page {
     margin-top: -60px;
   }
 }
 .b-main .icon,
 .b-about .icon,
-.b-pet-page .icon {
+.b-pet-page .icon,
+.b-pet-generator-page .icon {
   padding-bottom: 20px;
 }
 .b-main_title,
 .b-about_title,
-.b-pet-page_title {
+.b-pet-page_title,
+.b-pet-generator-page_title {
   -webkit-animation: increaseTitle;
   animation: increaseTitle;
   animation-timeline: scroll();
@@ -75,26 +79,30 @@
 @media screen and (max-width: 768px) {
   .b-main_title,
   .b-about_title,
-  .b-pet-page_title {
+  .b-pet-page_title,
+  .b-pet-generator-page_title {
     font-size: 76px;
   }
 }
 .b-main_subtitle,
 .b-about_subtitle,
-.b-pet-page_subtitle {
+.b-pet-page_subtitle,
+.b-pet-generator-page_subtitle {
   font-size: 48px;
   font-weight: 350;
 }
 @media screen and (max-width: 768px) {
   .b-main_subtitle,
   .b-about_subtitle,
-  .b-pet-page_subtitle {
+  .b-pet-page_subtitle,
+  .b-pet-generator-page_subtitle {
     font-size: 32px;
   }
 }
 .b-main_description,
 .b-about_description,
-.b-pet-page_description {
+.b-pet-page_description,
+.b-pet-generator-page_description {
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 20px;
   margin-bottom: 48px;
@@ -106,13 +114,15 @@
 @media screen and (max-width: 768px) {
   .b-main_description,
   .b-about_description,
-  .b-pet-page_description {
+  .b-pet-page_description,
+  .b-pet-generator-page_description {
     font-size: 16px;
   }
 }
 .b-main_pet_grid,
 .b-about_pet_grid,
-.b-pet-page_pet_grid {
+.b-pet-page_pet_grid,
+.b-pet-generator-page_pet_grid {
   animation-name: increaseGrid;
   animation-timeline: view();
   display: flex;
@@ -121,7 +131,8 @@
 }
 .b-main_pet_grid .pet,
 .b-about_pet_grid .pet,
-.b-pet-page_pet_grid .pet {
+.b-pet-page_pet_grid .pet,
+.b-pet-generator-page_pet_grid .pet {
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -134,14 +145,16 @@
 }
 .b-main_pet_grid .pet_image,
 .b-about_pet_grid .pet_image,
-.b-pet-page_pet_grid .pet_image {
+.b-pet-page_pet_grid .pet_image,
+.b-pet-generator-page_pet_grid .pet_image {
   display: flex;
   justify-content: center;
   padding-bottom: 12px;
 }
 .b-main_pet_grid .pet_image img,
 .b-about_pet_grid .pet_image img,
-.b-pet-page_pet_grid .pet_image img {
+.b-pet-page_pet_grid .pet_image img,
+.b-pet-generator-page_pet_grid .pet_image img {
   border-radius: 10px;
   height: 120px;
   width: 120px;
@@ -150,28 +163,32 @@
 @media screen and (max-width: 768px) {
   .b-main_pet_grid .pet_image img,
   .b-about_pet_grid .pet_image img,
-  .b-pet-page_pet_grid .pet_image img {
+  .b-pet-page_pet_grid .pet_image img,
+  .b-pet-generator-page_pet_grid .pet_image img {
     height: 60px;
     width: 60px;
   }
 }
 .b-main_pet_grid .pet_image.m-expanded img,
 .b-about_pet_grid .pet_image.m-expanded img,
-.b-pet-page_pet_grid .pet_image.m-expanded img {
+.b-pet-page_pet_grid .pet_image.m-expanded img,
+.b-pet-generator-page_pet_grid .pet_image.m-expanded img {
   height: 200px;
   width: 200px;
 }
 @media screen and (max-width: 768px) {
   .b-main_pet_grid .pet_image.m-expanded img,
   .b-about_pet_grid .pet_image.m-expanded img,
-  .b-pet-page_pet_grid .pet_image.m-expanded img {
+  .b-pet-page_pet_grid .pet_image.m-expanded img,
+  .b-pet-generator-page_pet_grid .pet_image.m-expanded img {
     height: 80px;
     width: 80px;
   }
 }
 .b-main_pet_grid .pet_name,
 .b-about_pet_grid .pet_name,
-.b-pet-page_pet_grid .pet_name {
+.b-pet-page_pet_grid .pet_name,
+.b-pet-generator-page_pet_grid .pet_name {
   display: flex;
   font-size: 18px;
   justify-content: center;
@@ -180,7 +197,8 @@
 }
 .b-main_pet_grid .pet_name.m-expanded,
 .b-about_pet_grid .pet_name.m-expanded,
-.b-pet-page_pet_grid .pet_name.m-expanded {
+.b-pet-page_pet_grid .pet_name.m-expanded,
+.b-pet-generator-page_pet_grid .pet_name.m-expanded {
   border-bottom: 1px solid white;
   font-size: 24px;
   font-weight: bold;
@@ -189,24 +207,28 @@
 }
 .b-main_pet_grid .pet_info,
 .b-about_pet_grid .pet_info,
-.b-pet-page_pet_grid .pet_info {
+.b-pet-page_pet_grid .pet_info,
+.b-pet-generator-page_pet_grid .pet_info {
   font-size: 14px;
   transition: all 0.4s ease-in-out;
 }
 .b-main_pet_grid .pet_info .title,
 .b-about_pet_grid .pet_info .title,
-.b-pet-page_pet_grid .pet_info .title {
+.b-pet-page_pet_grid .pet_info .title,
+.b-pet-generator-page_pet_grid .pet_info .title {
   font-weight: bold;
   transition: all 0.4s ease-in-out;
 }
 .b-main_pet_grid .pet_info div,
 .b-about_pet_grid .pet_info div,
-.b-pet-page_pet_grid .pet_info div {
+.b-pet-page_pet_grid .pet_info div,
+.b-pet-generator-page_pet_grid .pet_info div {
   padding: 8px 0;
 }
 .b-main_pet_grid .pet_info .gallery_button,
 .b-about_pet_grid .pet_info .gallery_button,
-.b-pet-page_pet_grid .pet_info .gallery_button {
+.b-pet-page_pet_grid .pet_info .gallery_button,
+.b-pet-generator-page_pet_grid .pet_info .gallery_button {
   background-color: floralwhite;
   border: none;
   border-radius: 5px;
@@ -220,29 +242,34 @@
 }
 .b-main_pet_grid .pet_info .gallery_button:hover,
 .b-about_pet_grid .pet_info .gallery_button:hover,
-.b-pet-page_pet_grid .pet_info .gallery_button:hover {
+.b-pet-page_pet_grid .pet_info .gallery_button:hover,
+.b-pet-generator-page_pet_grid .pet_info .gallery_button:hover {
   background-color: floralwhite;
 }
 .b-main_pet_grid .pet:hover,
 .b-about_pet_grid .pet:hover,
-.b-pet-page_pet_grid .pet:hover {
+.b-pet-page_pet_grid .pet:hover,
+.b-pet-generator-page_pet_grid .pet:hover {
   background-color: rgba(255, 250, 240, 0.4);
   color: white;
   transform: translateY(-20px);
 }
 .b-main_pet_grid .pet:hover .gallery_button,
 .b-about_pet_grid .pet:hover .gallery_button,
-.b-pet-page_pet_grid .pet:hover .gallery_button {
+.b-pet-page_pet_grid .pet:hover .gallery_button,
+.b-pet-generator-page_pet_grid .pet:hover .gallery_button {
   background-color: white;
 }
 .b-main_pet_grid .pet:hover .gallery_button:hover,
 .b-about_pet_grid .pet:hover .gallery_button:hover,
-.b-pet-page_pet_grid .pet:hover .gallery_button:hover {
+.b-pet-page_pet_grid .pet:hover .gallery_button:hover,
+.b-pet-generator-page_pet_grid .pet:hover .gallery_button:hover {
   background-color: gainsboro;
 }
 .b-main .section,
 .b-about .section,
-.b-pet-page .section {
+.b-pet-page .section,
+.b-pet-generator-page .section {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -255,13 +282,15 @@
 @media screen and (max-width: 768px) {
   .b-main .section,
   .b-about .section,
-  .b-pet-page .section {
+  .b-pet-page .section,
+  .b-pet-generator-page .section {
     font-size: 76px;
   }
 }
 .b-main .section.m-overflow,
 .b-about .section.m-overflow,
-.b-pet-page .section.m-overflow {
+.b-pet-page .section.m-overflow,
+.b-pet-generator-page .section.m-overflow {
   height: unset;
   justify-content: start;
   min-height: 600px;
@@ -269,7 +298,8 @@
 @media screen and (max-width: 768px) {
   .b-main .section.m-overflow,
   .b-about .section.m-overflow,
-  .b-pet-page .section.m-overflow {
+  .b-pet-page .section.m-overflow,
+  .b-pet-generator-page .section.m-overflow {
     display: flex;
     min-height: 900px;
     padding-bottom: 64px;
@@ -277,7 +307,8 @@
 }
 .b-main .scroll_down,
 .b-about .scroll_down,
-.b-pet-page .scroll_down {
+.b-pet-page .scroll_down,
+.b-pet-generator-page .scroll_down {
   animation-iteration-count: infinite;
   animation-name: scrollDown;
   animation-direction: alternate;
@@ -287,13 +318,15 @@
 }
 .b-main .up_indicators,
 .b-about .up_indicators,
-.b-pet-page .up_indicators {
+.b-pet-page .up_indicators,
+.b-pet-generator-page .up_indicators {
   cursor: pointer;
   display: none;
 }
 .b-main .up_indicators.m-active,
 .b-about .up_indicators.m-active,
-.b-pet-page .up_indicators.m-active {
+.b-pet-page .up_indicators.m-active,
+.b-pet-generator-page .up_indicators.m-active {
   display: contents;
 }
 .b-main .up_indicators.m-active .scroll_up,
@@ -301,7 +334,9 @@
 .b-about .up_indicators.m-active .scroll_up,
 .b-about .up_indicators.m-active .back_text,
 .b-pet-page .up_indicators.m-active .scroll_up,
-.b-pet-page .up_indicators.m-active .back_text {
+.b-pet-page .up_indicators.m-active .back_text,
+.b-pet-generator-page .up_indicators.m-active .scroll_up,
+.b-pet-generator-page .up_indicators.m-active .back_text {
   animation-iteration-count: infinite;
   animation-name: scrollUp;
   animation-direction: alternate;
@@ -310,13 +345,15 @@
 }
 .b-main .up_indicators.m-active .scroll_up,
 .b-about .up_indicators.m-active .scroll_up,
-.b-pet-page .up_indicators.m-active .scroll_up {
+.b-pet-page .up_indicators.m-active .scroll_up,
+.b-pet-generator-page .up_indicators.m-active .scroll_up {
   margin-top: 80px;
   transform: scaleY(-1);
 }
 .b-main .up_indicators.m-active .back_text,
 .b-about .up_indicators.m-active .back_text,
-.b-pet-page .up_indicators.m-active .back_text {
+.b-pet-page .up_indicators.m-active .back_text,
+.b-pet-generator-page .up_indicators.m-active .back_text {
   font-size: 16px;
   margin-top: 150px;
   margin-bottom: 24px;
@@ -324,13 +361,15 @@
 @media screen and (max-width: 768px) {
   .b-main .up_indicators.m-active .back_text,
   .b-about .up_indicators.m-active .back_text,
-  .b-pet-page .up_indicators.m-active .back_text {
+  .b-pet-page .up_indicators.m-active .back_text,
+  .b-pet-generator-page .up_indicators.m-active .back_text {
     font-size: 14px;
   }
 }
 .b-main .pet_gallery,
 .b-about .pet_gallery,
-.b-pet-page .pet_gallery {
+.b-pet-page .pet_gallery,
+.b-pet-generator-page .pet_gallery {
   border: none;
   border-radius: 10px;
   padding: 24px 20px;
@@ -338,7 +377,8 @@
 @media screen and (max-width: 768px) {
   .b-main .pet_gallery,
   .b-about .pet_gallery,
-  .b-pet-page .pet_gallery {
+  .b-pet-page .pet_gallery,
+  .b-pet-generator-page .pet_gallery {
     border-radius: 20px;
     margin-bottom: 0;
     max-height: 80vh;
@@ -348,20 +388,23 @@
 }
 .b-main .pet_gallery .drag_icon,
 .b-about .pet_gallery .drag_icon,
-.b-pet-page .pet_gallery .drag_icon {
+.b-pet-page .pet_gallery .drag_icon,
+.b-pet-generator-page .pet_gallery .drag_icon {
   display: none;
   width: 100%;
 }
 @media screen and (max-width: 768px) {
   .b-main .pet_gallery .drag_icon,
   .b-about .pet_gallery .drag_icon,
-  .b-pet-page .pet_gallery .drag_icon {
+  .b-pet-page .pet_gallery .drag_icon,
+  .b-pet-generator-page .pet_gallery .drag_icon {
     display: inline;
   }
 }
 .b-main .pet_gallery .close_icon,
 .b-about .pet_gallery .close_icon,
-.b-pet-page .pet_gallery .close_icon {
+.b-pet-page .pet_gallery .close_icon,
+.b-pet-generator-page .pet_gallery .close_icon {
   cursor: pointer;
   padding: 24px 20px;
   position: absolute;
@@ -371,18 +414,21 @@
 @media screen and (max-width: 768px) {
   .b-main .pet_gallery .close_icon,
   .b-about .pet_gallery .close_icon,
-  .b-pet-page .pet_gallery .close_icon {
+  .b-pet-page .pet_gallery .close_icon,
+  .b-pet-generator-page .pet_gallery .close_icon {
     padding: 48px 20px;
   }
 }
 .b-main .pet_gallery .close_icon:hover,
 .b-about .pet_gallery .close_icon:hover,
-.b-pet-page .pet_gallery .close_icon:hover {
+.b-pet-page .pet_gallery .close_icon:hover,
+.b-pet-generator-page .pet_gallery .close_icon:hover {
   opacity: 0.6;
 }
 .b-main .pet_gallery .gallery_title,
 .b-about .pet_gallery .gallery_title,
-.b-pet-page .pet_gallery .gallery_title {
+.b-pet-page .pet_gallery .gallery_title,
+.b-pet-generator-page .pet_gallery .gallery_title {
   font-size: 24px;
   font-weight: bold;
   text-transform: uppercase;
@@ -390,7 +436,8 @@
 }
 .b-main .pet_gallery .gallery_images,
 .b-about .pet_gallery .gallery_images,
-.b-pet-page .pet_gallery .gallery_images {
+.b-pet-page .pet_gallery .gallery_images,
+.b-pet-generator-page .pet_gallery .gallery_images {
   align-content: center;
   display: flex;
   flex-wrap: wrap;
@@ -398,7 +445,8 @@
 @media screen and (max-width: 768px) {
   .b-main .pet_gallery .gallery_images,
   .b-about .pet_gallery .gallery_images,
-  .b-pet-page .pet_gallery .gallery_images {
+  .b-pet-page .pet_gallery .gallery_images,
+  .b-pet-generator-page .pet_gallery .gallery_images {
     align-content: center;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -410,12 +458,14 @@
 }
 .b-main .pet_gallery .gallery_images.h-hidden,
 .b-about .pet_gallery .gallery_images.h-hidden,
-.b-pet-page .pet_gallery .gallery_images.h-hidden {
+.b-pet-page .pet_gallery .gallery_images.h-hidden,
+.b-pet-generator-page .pet_gallery .gallery_images.h-hidden {
   display: none;
 }
 .b-main .pet_gallery .gallery_image,
 .b-about .pet_gallery .gallery_image,
-.b-pet-page .pet_gallery .gallery_image {
+.b-pet-page .pet_gallery .gallery_image,
+.b-pet-generator-page .pet_gallery .gallery_image {
   height: 256px;
   transition: all 0.4s ease-in-out;
   width: 196px;
@@ -423,7 +473,8 @@
 @media screen and (max-width: 768px) {
   .b-main .pet_gallery .gallery_image,
   .b-about .pet_gallery .gallery_image,
-  .b-pet-page .pet_gallery .gallery_image {
+  .b-pet-page .pet_gallery .gallery_image,
+  .b-pet-generator-page .pet_gallery .gallery_image {
     height: auto;
     scroll-snap-align: start;
     width: auto;
@@ -431,12 +482,14 @@
 }
 .b-main .pet_gallery .gallery_image:hover,
 .b-about .pet_gallery .gallery_image:hover,
-.b-pet-page .pet_gallery .gallery_image:hover {
+.b-pet-page .pet_gallery .gallery_image:hover,
+.b-pet-generator-page .pet_gallery .gallery_image:hover {
   transform: rotateY(180deg);
 }
 .b-main .pet_gallery .gallery_close,
 .b-about .pet_gallery .gallery_close,
-.b-pet-page .pet_gallery .gallery_close {
+.b-pet-page .pet_gallery .gallery_close,
+.b-pet-generator-page .pet_gallery .gallery_close {
   background-color: #00fad4;
   border: none;
   border-radius: 5px;
@@ -450,12 +503,14 @@
 }
 .b-main .pet_gallery .gallery_close:hover,
 .b-about .pet_gallery .gallery_close:hover,
-.b-pet-page .pet_gallery .gallery_close:hover {
+.b-pet-page .pet_gallery .gallery_close:hover,
+.b-pet-generator-page .pet_gallery .gallery_close:hover {
   background-color: #80ffec;
 }
 .b-main_card-grid,
 .b-about_card-grid,
-.b-pet-page_card-grid {
+.b-pet-page_card-grid,
+.b-pet-generator-page_card-grid {
   background-color: rgba(255, 250, 240, 0.2);
   border-radius: 20px;
   display: grid;
@@ -468,7 +523,8 @@
 @media screen and (max-width: 768px) {
   .b-main_card-grid,
   .b-about_card-grid,
-  .b-pet-page_card-grid {
+  .b-pet-page_card-grid,
+  .b-pet-generator-page_card-grid {
     gap: 0;
     grid-template-rows: 256px auto;
     max-width: unset;
@@ -477,7 +533,8 @@
 }
 .b-main_card-grid img,
 .b-about_card-grid img,
-.b-pet-page_card-grid img {
+.b-pet-page_card-grid img,
+.b-pet-generator-page_card-grid img {
   clip-path: circle(40%);
   height: 256px;
   width: 256px;
@@ -485,14 +542,16 @@
 @media screen and (max-width: 768px) {
   .b-main_card-grid img,
   .b-about_card-grid img,
-  .b-pet-page_card-grid img {
+  .b-pet-page_card-grid img,
+  .b-pet-generator-page_card-grid img {
     grid-row: 1;
   }
 }
 @media screen and (max-width: 768px) {
   .b-main_card-grid .pet_card_image,
   .b-about_card-grid .pet_card_image,
-  .b-pet-page_card-grid .pet_card_image {
+  .b-pet-page_card-grid .pet_card_image,
+  .b-pet-generator-page_card-grid .pet_card_image {
     display: flex;
     justify-content: center;
     width: 90vw;
@@ -500,7 +559,8 @@
 }
 .b-main_card-grid .pet_card_info,
 .b-about_card-grid .pet_card_info,
-.b-pet-page_card-grid .pet_card_info {
+.b-pet-page_card-grid .pet_card_info,
+.b-pet-generator-page_card-grid .pet_card_info {
   align-items: center;
   display: flex;
   font-size: 16px;
@@ -510,7 +570,8 @@
 @media screen and (max-width: 768px) {
   .b-main_card-grid .pet_card_info,
   .b-about_card-grid .pet_card_info,
-  .b-pet-page_card-grid .pet_card_info {
+  .b-pet-page_card-grid .pet_card_info,
+  .b-pet-generator-page_card-grid .pet_card_info {
     font-size: 14px;
     grid-row: 2;
     padding: 24px 20px;
@@ -523,6 +584,75 @@
 }
 .b-about .info_icon {
   margin-top: 24px;
+}
+
+.b-pet-generator-page.b-page section {
+  height: unset;
+  margin-top: 85px;
+  scroll-snap-align: unset;
+}
+@media screen and (max-width: 768px) {
+  .b-pet-generator-page.b-page section {
+    margin: 75px 0;
+  }
+}
+.b-pet-generator-page.b-page .breed_grid {
+  display: grid;
+  grid-template-columns: 512px auto;
+  gap: 48px;
+  margin-top: 48px;
+}
+@media screen and (max-width: 768px) {
+  .b-pet-generator-page.b-page .breed_grid {
+    grid-template-columns: none;
+    grid-template-rows: 256px auto;
+  }
+}
+.b-pet-generator-page.b-page .breed_grid .breed_image {
+  align-items: center;
+  display: flex;
+  height: 100%;
+}
+@media screen and (max-width: 768px) {
+  .b-pet-generator-page.b-page .breed_grid .breed_image {
+    justify-content: center;
+  }
+}
+.b-pet-generator-page.b-page .breed_grid .breed_image img {
+  height: 512px;
+  width: 512px;
+}
+@media screen and (max-width: 768px) {
+  .b-pet-generator-page.b-page .breed_grid .breed_image img {
+    height: 256px;
+    width: 256px;
+  }
+}
+.b-pet-generator-page.b-page .breed_grid .breeds_list {
+  font-size: 16px;
+  margin-top: 48px;
+}
+.b-pet-generator-page.b-page .breed_grid .breeds_list .breeds_subtitle {
+  margin-bottom: 24px;
+}
+.b-pet-generator-page.b-page .breed_grid .breeds_list .breed_item {
+  background: floralwhite;
+  border: 1px solid darkgray;
+  border-left: 3px solid orange;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  color: black;
+  font-family: "Quicksand", sans-serif;
+  margin: 12px 8px;
+  padding: 12px 8px;
+  transition: all 0.2s ease-in-out;
+}
+.b-pet-generator-page.b-page .breed_grid .breeds_list .breed_item:hover {
+  box-shadow: rgba(0, 0, 0, 0.3) 0 4px 12px;
+  box-sizing: border-box;
+  color: gray;
+  cursor: pointer;
+  transform: translateY(-5px);
 }
 
 .overlay {
@@ -713,7 +843,9 @@ header .nav_links li {
 }
 @media screen and (max-width: 768px) {
   header .nav_links li {
+    max-width: 50px;
     padding: 0 4px;
+    text-align: center;
   }
 }
 header a {
