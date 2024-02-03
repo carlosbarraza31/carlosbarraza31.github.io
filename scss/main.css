@@ -619,6 +619,7 @@
   }
 }
 .b-pet-generator-page.b-page .breed_grid .breed_image img {
+  border-radius: 20px;
   height: 512px;
   width: 512px;
 }
