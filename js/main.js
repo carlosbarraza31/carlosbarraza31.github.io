@@ -15,6 +15,9 @@ const pages = document.querySelectorAll('.b-page');
 const petNavBtns = document.querySelectorAll('.pet_nav_button');
 const subPages = document.querySelectorAll('.subpage');
 const petList = document.querySelector('.pet_list');
+const petGeneratorLink = document.querySelector('.pet_generator_link');
+let breedItems;
+let breedImage;
 
 petCards.forEach(item => item.addEventListener('click', showPetInfo));
 galleryBtns.forEach(item => item.addEventListener('click', showPetGallery));
@@ -25,6 +28,7 @@ downIndicators.addEventListener('click', this.focusSection.bind(this, parseInt(d
 pageButtons.forEach(item => item.addEventListener('click', changePage));
 petNavBtns.forEach(item => item.addEventListener('click', showPetPage));
 petList.addEventListener('click', togglePetList);
+petGeneratorLink.addEventListener('click', fetchDogData);
 
 function showPetInfo() {
     const petInfo = this.querySelector('.pet_info');
@@ -190,6 +194,80 @@ function showPetPage(event) {
 function togglePetList() {
     petList.classList.toggle('m-active');
     petList.querySelector('.dropdown_content').classList.toggle('m-active');
+}
+
+function fetchDogData() {
+    const dogBreedsUrl = "https://dog.ceo/api/breeds/list/all";
+    let dogBreeds;
+
+    fetch(dogBreedsUrl).then(response =>
+        response.json().then(data => ({
+            data: data,
+            status: response.status
+        })
+    )).then(res => {
+        if (res.data.status !== 'success') {
+            throw new Error('Connection error. ');
+        }
+        dogBreeds = res.data.message;
+        const breedsList = document.querySelector('.breeds_list');
+        const breedsListChildren = breedsList.children;
+
+        for (const child of breedsListChildren) {
+            child.remove();
+        }
+
+        for (breed in dogBreeds) {
+            let randNum = Math.random();
+
+            if (randNum > 0.8) {
+                let newBreed = document.createElement('button');
+                newBreed.innerText = breed;
+                newBreed.classList.add('breed_item');
+                newBreed.setAttribute('data-js-breed', breed);
+                breedsList.appendChild(newBreed);
+            }
+        }
+
+        breedItems = document.querySelectorAll('.breed_item');
+        breedImage = document.querySelector('.dog_image');
+        breedItems.forEach(item => item.addEventListener('click', showBreedImage));
+    })
+    .catch(err => {
+        console.log(err);
+    });
+}
+
+function showBreedImage(event) {
+    const selectedBreed = event.currentTarget.dataset.jsBreed;
+    const breedUrl = `https://dog.ceo/api/breed/${selectedBreed}/images`;
+
+    fetch(breedUrl)
+    .then(response =>
+        response.json().then(data => ({
+            data: data,
+            status: response.status
+        }))
+    ).then (res => {
+        if (res.data.status !== 'success') {
+            throw new Error('Connection error. ');
+        }
+
+        const breedUrls = res.data.message;
+        const breedSample = breedUrls[getRandomIntInclusive(0, breedUrls.length)];
+
+        breedImage.setAttribute('src', breedSample);
+        breedImage.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" })
+    })
+    .catch(err => {
+        console.log(err);
+    });
+}
+
+function getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 window.onload = function () {

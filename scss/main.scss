@@ -43,7 +43,8 @@
 
 .b-main,
 .b-about,
-.b-pet-page {
+.b-pet-page,
+.b-pet-generator-page {
     align-items: center;
     border: none;
     border-radius: 10px;
@@ -441,6 +442,83 @@
     }
 }
 
+.b-pet-generator-page {
+    &.b-page {
+        section {
+            height: unset;
+            margin-top: 85px;
+            scroll-snap-align: unset;
+
+            @media screen and (max-width: 768px) {
+                margin: 75px 0;
+            }
+        }
+
+        .breed_grid {
+            display: grid;
+            grid-template-columns: 512px auto;
+            gap: 48px;
+            margin-top: 48px;
+
+            @media screen and (max-width: 768px) {
+                grid-template-columns: none;
+                grid-template-rows: 256px auto;
+            }
+
+            .breed_image {
+                align-items: center;
+                display: flex;
+                height: 100%;
+
+                @media screen and (max-width: 768px) {
+                    justify-content: center;
+                }
+
+                img {
+                    height: 512px;
+                    width: 512px;
+
+                    @media screen and (max-width: 768px) {
+                        height: 256px;
+                        width: 256px;
+                    }
+                }
+            }
+
+            .breeds_list {
+                font-size: 16px;
+                margin-top: 48px;
+
+                .breeds_subtitle {
+                    margin-bottom: 24px;
+                }
+
+                .breed_item {
+                    background: floralwhite;
+                    border: 1px solid darkgray;
+                    border-left: 3px solid orange;
+                    border-radius: 5px;
+                    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+                    color: black;
+                    font-family: 'Quicksand', sans-serif;
+                    margin: 12px 8px;
+                    padding: 12px 8px;
+                    transition: all 0.2s ease-in-out;
+
+                    &:hover {
+                        box-shadow: rgba(0, 0, 0, 0.3) 0 4px 12px;
+                        box-sizing: border-box;
+                        color: gray;
+                        cursor: pointer;
+                        transform: translateY(-5px);
+                    }
+                }
+            }
+        }
+
+    }
+}
+
 .overlay {
     background-color: gray;
     display: none;
@@ -663,7 +741,9 @@ header {
             padding: 0 20px;
 
             @media screen and (max-width: 768px) {
+                max-width: 50px;
                 padding: 0 4px;
+                text-align: center;
             }
         }
     }
