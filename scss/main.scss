@@ -450,8 +450,7 @@
             scroll-snap-align: unset;
 
             @media screen and (max-width: 768px) {
-                margin: 75px 0;
-                margin-bottom: 150px;
+                margin: 75px 24px 150px;
             }
         }
 
@@ -488,8 +487,14 @@
             }
 
             .breeds_list {
+                background-color: rgba(255, 255, 255, 0.2);
+                border-radius: 10px;
                 font-size: 16px;
                 margin-top: 48px;
+
+                @media screen and (max-width: 768px) {
+                    margin-top: 24px;
+                }
 
                 .breeds_subtitle {
                     margin-bottom: 24px;
@@ -662,6 +667,14 @@ header {
             padding: 0;
         }
 
+        .pet_generator_link {
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            word-break: break-all;
+        }
+
         .pet_list {
             .dropdown_link {
                 li {
@@ -740,10 +753,12 @@ header {
         li {
             cursor: pointer;
             display: inline-block;
+            line-height: 20px;
             padding: 0 20px;
+            vertical-align: middle;
 
             @media screen and (max-width: 768px) {
-                max-width: 50px;
+                max-width: 80px;
                 padding: 0 4px;
                 text-align: center;
             }
