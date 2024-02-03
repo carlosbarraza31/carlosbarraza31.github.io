@@ -594,6 +594,7 @@
 @media screen and (max-width: 768px) {
   .b-pet-generator-page.b-page section {
     margin: 75px 0;
+    margin-bottom: 150px;
   }
 }
 .b-pet-generator-page.b-page .breed_grid {
