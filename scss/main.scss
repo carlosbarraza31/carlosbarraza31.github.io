@@ -565,9 +565,9 @@
 
                 .breed_item {
                     background: floralwhite;
-                    border: 1px solid darkgray;
-                    border-left: 3px solid orange;
-                    border-radius: 5px;
+                    border: none
+                    border-left: 3px solid aquamarine;
+                    border-radius: 10px;
                     box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
                     color: black;
                     font-family: 'Quicksand', sans-serif;
@@ -583,6 +583,41 @@
                         transform: translateY(-5px);
                     }
                 }
+            }
+        }
+
+        .error_notification {
+            align-items: center;
+            background-color: white;
+            border-radius: 10px;
+            border: none;
+            color: gray;
+            display: grid;
+            font-size: 16px;
+            gap: 16px;
+            grid-template-columns: 16px auto 16px;
+            grid-template-rows: none;
+            margin-top: 24px;
+            padding: 16px 12px;
+
+            .error_icon,
+            .close_icon {
+                height: 16px;
+                width: 16px;
+            }
+
+            .close_icon {
+                position: relative;
+                top: -8px;
+
+                &:hover {
+                    cursor: pointer;
+                    opacity: 0.4;
+                }
+            }
+
+            &.h-hidden {
+                display: none;
             }
         }
 

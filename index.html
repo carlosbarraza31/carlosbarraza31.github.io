@@ -468,16 +468,22 @@
             const [data, setData] = React.useState([]);
             const dogBreedsUrl = "https://dog.ceo/api/breeds/list/all";
             const dogImageRef = React.useRef(null);
+            const errorNotifRef = React.useRef(null);
+            const errorNotifTextRef = React.useRef(null);
 
             function getRandomIntInclusive(min, max) {
                 min = Math.ceil(min);
                 max = Math.floor(max);
                 return Math.floor(Math.random() * (max - min + 1) + min);
             }
+            function handleNotificacionClose() {
+                errorNotifRef.current.classList.add('h-hidden');
+            }
 
             const showBreedImage = async(event) => {
                 const selectedBreed = event.currentTarget.getAttribute('data-js-breed');
                 const breedUrl = `https://dog.ceo/api/breed/${selectedBreed}/images`;
+                console.log()
 
                 try {
                     const response = await fetch(breedUrl);
@@ -485,11 +491,16 @@
                     const breedUrls = result.message;
 
                     const breedSample = breedUrls[getRandomIntInclusive(0, breedUrls.length)];
+                    if (!breedSample) {
+                        throw new Error('Connection error. Please try again. ');
+                    }
                     dogImageRef.current.setAttribute('src', breedSample);
-                    dogImageRef.current.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" })
+                    dogImageRef.current.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
 
                 } catch (e) {
-                    console.error('Error fetching data:', error);
+                    errorNotifRef.current.classList.remove('h-hidden');
+                    errorNotifTextRef.current.innerText = e;
+                    errorNotifRef.current.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
                 }
             }
 
@@ -511,7 +522,8 @@
                     })
                     setData(randomResult);
                 } catch (e) {
-                    console.error('Error fetching data:', error);
+                    errorNotifRef.current.classList.remove('h-hidden');
+                    errorNotifTextRef.current.innerText = error;
                 }
             }
 
@@ -520,6 +532,11 @@
                     <section className="section">
                         <div className="b-pet-generator-page_title">
                             Dog Image Generator
+                        </div>
+                        <div className='error_notification h-hidden' ref={errorNotifRef}>
+                            <img className='error_icon' src='img/error_icon.svg' alt='error icon'></img>
+                            <div className='error_text'><span ref={errorNotifTextRef}></span></div>
+                            <img className='close_icon' src='img/notification_close.svg' onClick={handleNotificacionClose}></img>
                         </div>
                         <div className="breed_grid">
                             <div className="breed_image">
