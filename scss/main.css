@@ -10,6 +10,16 @@
     top: 30px;
   }
 }
+@-webkit-keyframes scrollDown {
+  from {
+    -webkit-opacity: 1;
+    -webkit-top: 0px;
+  }
+  to {
+    -webkit-opacity: 0.2;
+    -webkit-top: 30px;
+  }
+}
 @keyframes scrollUp {
   from {
     opacity: 0.2;
@@ -20,6 +30,16 @@
     top: 0px;
   }
 }
+@-webkit-keyframes scrollUp {
+  from {
+    -webkit-opacity: 0.2;
+    -webkit-top: 30px;
+  }
+  to {
+    -webkit-opacity: 1;
+    -webkit-top: 0px;
+  }
+}
 @keyframes increaseTitle {
   from {
     font-size: 1em;
@@ -28,12 +48,28 @@
     font-size: 0.4em;
   }
 }
+@-webkit-keyframes increaseTitle {
+  from {
+    -webkit-font-size: 1em;
+  }
+  to {
+    -webkit-font-size: 0.4em;
+  }
+}
 @keyframes increaseGrid {
   from {
     scale: 0;
   }
   to {
     scale: 1.5;
+  }
+}
+@-webkit-keyframes increaseGrid {
+  from {
+    -webkit-scale: 0;
+  }
+  to {
+    -webkit-scale: 1.5;
   }
 }
 .b-main,
@@ -70,11 +106,13 @@
 .b-about_title,
 .b-pet-page_title,
 .b-pet-generator-page_title {
-  -webkit-animation: increaseTitle;
-  animation: increaseTitle;
+  -webkit-animation-name: increaseTitle;
+  -webkit-animation-timeline: scroll();
+  animation-name: increaseTitle;
   animation-timeline: scroll();
   font-size: 96px;
   font-weight: 700;
+  text-align: center;
   text-transform: capitalize;
 }
 @media screen and (max-width: 768px) {
@@ -126,6 +164,8 @@
 .b-pet-generator-page_pet_grid {
   animation-name: increaseGrid;
   animation-timeline: view();
+  -webkit-animation-name: increaseGrid;
+  -webkit-animation-timeline: view();
   display: flex;
   gap: 24px;
   padding-top: 48px;
@@ -318,10 +358,8 @@
 .b-about .scroll_down,
 .b-pet-page .scroll_down,
 .b-pet-generator-page .scroll_down {
-  animation-iteration-count: infinite;
-  animation-name: scrollDown;
-  animation-direction: alternate;
-  animation-duration: 1s;
+  animation: scrollDown 1s infinite alternate;
+  -webkit-animation: scrollDown 1s infinite alternate;
   cursor: pointer;
   position: relative;
 }
@@ -346,10 +384,8 @@
 .b-pet-page .up_indicators.m-active .back_text,
 .b-pet-generator-page .up_indicators.m-active .scroll_up,
 .b-pet-generator-page .up_indicators.m-active .back_text {
-  animation-iteration-count: infinite;
-  animation-name: scrollUp;
-  animation-direction: alternate;
-  animation-duration: 1s;
+  animation: scrolUp 1s infinite alternate;
+  -webkit-animation: scrolUp 1s infinite alternate;
   position: absolute;
 }
 .b-main .up_indicators.m-active .scroll_up,
