@@ -7,337 +7,626 @@
 
     <title>Fampek Pets Wiki</title>
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
-    <header>
-        <img class="nav_logo" src="img/nav_logo.svg" alt="logo" data-js-refresh>
-        <div class="page_title" data-js-refresh>Fampek Pets</div>
-        <nav>
-            <ul class="nav_links">
-                <li><a class="m-link pet_generator_link" href="#" data-js-to-page="dog-generator-page">Dog Image Generator</a></li>
-                <li class="pet_list">
-                    <a class="dropdown_link" href="#">Pets
-                        <img class="dropdown_icon" src="img/dropdown_icon.svg" alt="dropdown_icon">
-                        <ul class="dropdown_content">
-                            <li class="pet_item pet_nav_button" data-js-pet="franky" data-js-to-page="pet-page">
-                                <img src="img/dog_head.svg" alt="dog_head">
-                                Franky
+    <div id="root"></div>
+    <script type="text/babel">
+
+        function FampekPetsOutline() {
+            const [isContactExpanded, setContactExpanded] = React.useState(false);
+            const [shownPage, setShownPage] = React.useState('home');
+            const [pagePet, setPagePet] = React.useState('none');
+
+            function handleContactClick() {
+                setContactExpanded(!isContactExpanded);
+            }
+
+            function handleClickOverlay(event) {
+                event.currentTarget.classList.remove('m-active');
+                setContactExpanded(false);
+            }
+
+            function handleShowPage(event) {
+                setShownPage(event.currentTarget.getAttribute('data-js-to-page'));
+
+                if (event.currentTarget.getAttribute('data-js-pet') !== 'none') {
+                    setPagePet(event.currentTarget.getAttribute('data-js-pet'));
+                }
+            }
+
+            return (
+                <>
+                    <Header handleContactClick={handleContactClick} handleShowPage={handleShowPage}/>
+                    <FampekPets isContactExpanded={isContactExpanded} handleClickOverlay={handleClickOverlay} shownPage={shownPage} pagePet={pagePet}/>
+                    <Footer/>
+                </>
+            );
+        }
+
+        function FampekPets(props) {
+            let isContactExpanded = props.isContactExpanded;
+            let handleClickOverlay = props.handleClickOverlay;
+            let shownPage = props.shownPage;
+            let pagePet = props.pagePet;
+
+            return (
+                <main>
+                    <Homepage shownPage={shownPage}/>
+                    <AboutPage shownPage={shownPage}/>
+                    <PetPage shownPage={shownPage} pagePet={pagePet}/>
+                    <PetGeneratorPage shownPage={shownPage}/>
+                    <Overlay isContactExpanded={isContactExpanded} handleClickOverlay={handleClickOverlay}/>
+                    <ContactSidebar isContactExpanded={isContactExpanded} handleClickOverlay={handleClickOverlay}/>
+                </main>
+            );
+        }
+
+        function Header(props) {
+            let handleContactClick = props.handleContactClick;
+            let handleShowPage = props.handleShowPage;
+            const [togglePetList, setTogglePetList] = React.useState(false);
+
+            function handleRefresh() {
+                window.location.reload(false);
+            }
+
+            function handleTogglePetList() {
+                setTogglePetList(!togglePetList);
+            }
+
+            return (
+                <header>
+                    <img className="nav_logo" src="img/nav_logo.svg" alt="logo" onClick={handleRefresh} data-js-refresh ></img>
+                    <div className="page_title" onClick={handleRefresh} data-js-refresh>Fampek Pets</div>
+                    <nav>
+                        <ul className="nav_links">
+                            <li><a className="m-link pet_generator_link" href="#" data-js-to-page="dog-generator-page" onClick={handleShowPage}>Dog Image Generator</a></li>
+                            <li className={`pet_list ${togglePetList ? 'm-active' : ''}`} onClick={handleTogglePetList}>
+                                <a className="dropdown_link" href="#">Pets
+                                    <img className="dropdown_icon" src="img/dropdown_icon.svg" alt="dropdown_icon"></img>
+                                    <ul className={`dropdown_content ${togglePetList ? 'm-active' : ''}`}>
+                                        <li className="pet_item pet_nav_button" data-js-pet="franky" data-js-to-page="pet-page" onClick={handleShowPage}>
+                                            <img src="img/dog_head.svg" alt="dog_head"></img>
+                                            Franky
+                                        </li>
+                                        <li className="pet_item pet_nav_button" data-js-pet="petunia" data-js-to-page="pet-page" onClick={handleShowPage}>
+                                            <img src="img/dog_head.svg" alt="dog_head"></img>
+                                            Petunia
+                                        </li>
+                                        <li className="pet_item pet_nav_button" data-js-pet="rayo" data-js-to-page="pet-page" onClick={handleShowPage}>
+                                            <img src="img/dog_head.svg" alt="dog_head"></img>
+                                            Rayo
+                                        </li>
+                                    </ul>
+                                </a>
                             </li>
-                            <li class="pet_item pet_nav_button" data-js-pet="petunia" data-js-to-page="pet-page">
-                                <img src="img/dog_head.svg" alt="dog_head">
-                                Petunia
-                            </li>
-                            <li class="pet_item pet_nav_button" data-js-pet="rayo" data-js-to-page="pet-page">
-                                <img src="img/dog_head.svg" alt="dog_head">
-                                Rayo
-                            </li>
+                            <li><a className="m-link" href="#" data-js-to-page="about" onClick={handleShowPage}>About</a></li>
                         </ul>
-                    </a>
-                </li>
-                <li><a class="m-link" href="#" data-js-to-page="about">About</a></li>
-            </ul>
-        </nav>
-        <a class="cta" href="#"><button data-js-contact-button>Contact</button></a>
-    </header>
-    <main>
-        <div class="b-main b-page" data-js-page-name="home">
-            <section class="section">
-                <svg class="icon" width="80px" height="80px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3.15452 1.01195C5.11987 1.32041 7.17569 2.2474 8.72607 3.49603C9.75381 3.17407 10.8558 2.99995 12 2.99995C13.1519 2.99995 14.261 3.17641 15.2946 3.5025C16.882 2.27488 18.8427 1.31337 20.8354 1.01339C21.2596 0.95092 21.7008 1.16534 21.8945 1.55273C22.6719 3.38958 22.6983 5.57987 22.2202 7.49248L22.2128 7.52213C22.0847 8.03536 21.9191 8.69868 21.3876 8.92182C21.7827 9.89315 22 10.9466 22 12.0526C22 14.825 20.8618 17.6774 19.8412 20.2348L19.8412 20.2348L19.7379 20.4936C19.1182 22.0486 17.7316 23.1196 16.125 23.418L13.8549 23.8397C13.1549 23.9697 12.4562 23.7172 12 23.2082C11.5438 23.7172 10.8452 23.9697 10.1452 23.8397L7.87506 23.418C6.26852 23.1196 4.88189 22.0486 4.26214 20.4936L4.15891 20.2348C3.13833 17.6774 2.00004 14.825 2.00004 12.0526C2.00004 10.9466 2.21737 9.89315 2.6125 8.92182C2.08046 8.69845 1.91916 8.05124 1.7909 7.53658L1.7799 7.49248C1.32311 5.66527 1.23531 3.2968 2.10561 1.55273C2.29827 1.16741 2.72906 0.945855 3.15452 1.01195ZM6.58478 4.44052C5.45516 5.10067 4.47474 5.9652 3.71373 6.98132C3.41572 5.76461 3.41236 4.41153 3.67496 3.18754C4.68842 3.48029 5.68018 3.89536 6.58478 4.44052ZM20.2863 6.98133C19.5303 5.97184 18.5577 5.11195 17.4374 4.45347C18.3364 3.9005 19.3043 3.45749 20.3223 3.17455C20.5884 4.40199 20.5853 5.76068 20.2863 6.98133ZM8.85364 5.56694C9.81678 5.20285 10.8797 4.99995 12 4.99995C13.1204 4.99995 14.1833 5.20285 15.1464 5.56694C18.0554 6.66661 20 9.1982 20 12.0526C20 14.4676 18.9891 16.9876 18.0863 19.238L18.0862 19.2382C18.0167 19.4115 17.9478 19.5832 17.8801 19.7531C17.5291 20.6338 16.731 21.2712 15.7597 21.4516L13.4896 21.8733L12.912 20.5896C12.7505 20.2307 12.3935 19.9999 12 19.9999C11.6065 19.9999 11.2496 20.2307 11.0881 20.5896L10.5104 21.8733L8.24033 21.4516C7.26908 21.2712 6.471 20.6338 6.12001 19.7531C6.05237 19.5834 5.98357 19.4119 5.91414 19.2388L5.91395 19.2384L5.91381 19.238C5.01102 16.9876 4.00004 14.4676 4.00004 12.0526C4.00004 9.1982 5.94472 6.66661 8.85364 5.56694ZM10.5 15.9999C10.1212 15.9999 9.77497 16.2139 9.60557 16.5527C9.43618 16.8915 9.47274 17.2969 9.7 17.5999L11.2 19.5999C11.3889 19.8517 11.6852 19.9999 12 19.9999C12.3148 19.9999 12.6111 19.8517 12.8 19.5999L14.3 17.5999C14.5273 17.2969 14.5638 16.8915 14.3944 16.5527C14.225 16.2139 13.8788 15.9999 13.5 15.9999H10.5ZM9.62134 11.1212C9.62134 11.9497 8.94977 12.6212 8.12134 12.6212C7.29291 12.6212 6.62134 11.9497 6.62134 11.1212C6.62134 10.2928 7.29291 9.62125 8.12134 9.62125C8.94977 9.62125 9.62134 10.2928 9.62134 11.1212ZM16 12.4999C16.8284 12.4999 17.5 11.8284 17.5 10.9999C17.5 10.1715 16.8284 9.49994 16 9.49994C15.1716 9.49994 14.5 10.1715 14.5 10.9999C14.5 11.8284 15.1716 12.4999 16 12.4999Z" fill="#fffaf0"/>
-                </svg>
-                <div class="b-main_title">
-                    Welcome!
+                    </nav>
+                    <a className="cta" href="#" onClick={handleContactClick}><button data-js-contact-button>Contact</button></a>
+                </header>
+            );
+        }
+        function Homepage(props) {
+            const [isGridVisible, setGridVisible] = React.useState(false);
+            const [showGallery, setShowGallery] = React.useState(false);
+            const [selectedPet, setSelectedPet] = React.useState('franky');
+
+            let shownPage = props.shownPage;
+            let pageName = 'home';
+
+            function handleScroll(event) {
+                let petGrid = event.currentTarget.querySelector('.b-main_pet_grid');
+                let upIndicators = event.currentTarget.querySelector('.up_indicators');
+
+                setGridVisible(isElementVisible(petGrid));
+            }
+
+            function handleClick(event) {
+                let section2 = event.currentTarget.parentElement.parentElement.querySelector('.section_2');
+                section2.scrollIntoView(
+                    { behavior: "smooth", block: "start", inline: "nearest" }
+                );
+            }
+
+            function handleUpClick(event){
+                let section1 = event.currentTarget.parentElement.parentElement.querySelector('.section_1');
+                section1.scrollIntoView(
+                    { behavior: "smooth", block: "start", inline: "nearest" }
+                );
+            }
+
+            function handleShowGallery(event) {
+                let petGallery = document.querySelector('.pet_gallery');
+                setSelectedPet(event.currentTarget.getAttribute('data-js-pet'));
+                petGallery.showModal();
+                setShowGallery(true);
+            }
+
+            return (
+                <div className={`b-main b-page ${pageName === shownPage ? '' : 'h-invisible'}`} data-js-page-name="home" onScroll={handleScroll}>
+                    <HomepageSection1 handleClick={handleClick}/>
+                    <HomepageSection2 isGridVisible={isGridVisible} handleUpClick={handleUpClick} handleShowGallery={handleShowGallery}/>
+                    <PetGallery selectedPet={selectedPet} showGallery={showGallery}/>
                 </div>
-                <div class="b-main_subtitle">
-                    Please choose a pet.
-                </div>
-                <img class="scroll_down" src="img/scroll_down.svg" alt="scroll down" data-js-scroll-to="1">
-            </section>
-            <section class="section">
-                <div class="up_indicators" data-js-scroll-to="0">
-                    <img class="scroll_up" src="img/scroll_down.svg" alt="scroll down">
-                    <div class="back_text">
+            );
+        }
+
+        function HomepageSection1(props) {
+            let handleClick = props.handleClick;
+
+            return (
+                <section className="section section_1">
+                    <svg className="icon" width="80px" height="80px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fillRule="evenodd" clipRule="evenodd" d="M3.15452 1.01195C5.11987 1.32041 7.17569 2.2474 8.72607 3.49603C9.75381 3.17407 10.8558 2.99995 12 2.99995C13.1519 2.99995 14.261 3.17641 15.2946 3.5025C16.882 2.27488 18.8427 1.31337 20.8354 1.01339C21.2596 0.95092 21.7008 1.16534 21.8945 1.55273C22.6719 3.38958 22.6983 5.57987 22.2202 7.49248L22.2128 7.52213C22.0847 8.03536 21.9191 8.69868 21.3876 8.92182C21.7827 9.89315 22 10.9466 22 12.0526C22 14.825 20.8618 17.6774 19.8412 20.2348L19.8412 20.2348L19.7379 20.4936C19.1182 22.0486 17.7316 23.1196 16.125 23.418L13.8549 23.8397C13.1549 23.9697 12.4562 23.7172 12 23.2082C11.5438 23.7172 10.8452 23.9697 10.1452 23.8397L7.87506 23.418C6.26852 23.1196 4.88189 22.0486 4.26214 20.4936L4.15891 20.2348C3.13833 17.6774 2.00004 14.825 2.00004 12.0526C2.00004 10.9466 2.21737 9.89315 2.6125 8.92182C2.08046 8.69845 1.91916 8.05124 1.7909 7.53658L1.7799 7.49248C1.32311 5.66527 1.23531 3.2968 2.10561 1.55273C2.29827 1.16741 2.72906 0.945855 3.15452 1.01195ZM6.58478 4.44052C5.45516 5.10067 4.47474 5.9652 3.71373 6.98132C3.41572 5.76461 3.41236 4.41153 3.67496 3.18754C4.68842 3.48029 5.68018 3.89536 6.58478 4.44052ZM20.2863 6.98133C19.5303 5.97184 18.5577 5.11195 17.4374 4.45347C18.3364 3.9005 19.3043 3.45749 20.3223 3.17455C20.5884 4.40199 20.5853 5.76068 20.2863 6.98133ZM8.85364 5.56694C9.81678 5.20285 10.8797 4.99995 12 4.99995C13.1204 4.99995 14.1833 5.20285 15.1464 5.56694C18.0554 6.66661 20 9.1982 20 12.0526C20 14.4676 18.9891 16.9876 18.0863 19.238L18.0862 19.2382C18.0167 19.4115 17.9478 19.5832 17.8801 19.7531C17.5291 20.6338 16.731 21.2712 15.7597 21.4516L13.4896 21.8733L12.912 20.5896C12.7505 20.2307 12.3935 19.9999 12 19.9999C11.6065 19.9999 11.2496 20.2307 11.0881 20.5896L10.5104 21.8733L8.24033 21.4516C7.26908 21.2712 6.471 20.6338 6.12001 19.7531C6.05237 19.5834 5.98357 19.4119 5.91414 19.2388L5.91395 19.2384L5.91381 19.238C5.01102 16.9876 4.00004 14.4676 4.00004 12.0526C4.00004 9.1982 5.94472 6.66661 8.85364 5.56694ZM10.5 15.9999C10.1212 15.9999 9.77497 16.2139 9.60557 16.5527C9.43618 16.8915 9.47274 17.2969 9.7 17.5999L11.2 19.5999C11.3889 19.8517 11.6852 19.9999 12 19.9999C12.3148 19.9999 12.6111 19.8517 12.8 19.5999L14.3 17.5999C14.5273 17.2969 14.5638 16.8915 14.3944 16.5527C14.225 16.2139 13.8788 15.9999 13.5 15.9999H10.5ZM9.62134 11.1212C9.62134 11.9497 8.94977 12.6212 8.12134 12.6212C7.29291 12.6212 6.62134 11.9497 6.62134 11.1212C6.62134 10.2928 7.29291 9.62125 8.12134 9.62125C8.94977 9.62125 9.62134 10.2928 9.62134 11.1212ZM16 12.4999C16.8284 12.4999 17.5 11.8284 17.5 10.9999C17.5 10.1715 16.8284 9.49994 16 9.49994C15.1716 9.49994 14.5 10.1715 14.5 10.9999C14.5 11.8284 15.1716 12.4999 16 12.4999Z" fill="#fffaf0"/>
+                    </svg>
+                    <div className="b-main_title">
+                        Welcome!
+                    </div>
+                    <div className="b-main_subtitle">
+                        Please choose a pet.
+                    </div>
+                    <DownIndicators handleClick={handleClick}/>
+                </section>
+            );
+        }
+
+        function DownIndicators(props) {
+            let handleClick = props.handleClick;
+            return (
+                <>
+                    <img className="scroll_down" src="img/scroll_down.svg" alt="scroll down" data-js-scroll-to="1" onClick={handleClick}></img>
+                </>
+            );
+        }
+
+        function HomepageSection2(props) {
+            const [hasExpanded, setExpanded] = React.useState(false);
+            let handleUpClick = props.handleUpClick;
+            let handleShowGallery = props.handleShowGallery;
+
+            function handleClick(isExpanded) {
+                setExpanded(isExpanded);
+            }
+
+            return (
+                <section className="section section_2">
+                    <UpIndicators isExpanded={hasExpanded} isGridVisible={props.isGridVisible} handleClick={handleUpClick}/>
+                    <PetGridContainer warnExpanded={handleClick} handleShowGallery={handleShowGallery}/>
+                </section>
+            );
+        }
+
+        function UpIndicators(props) {
+            let hasExpanded = props.isExpanded;
+            let isGridVisible = props.isGridVisible;
+            let handleClick = props.handleClick;
+
+            return (
+                <div className={`up_indicators ${hasExpanded || !isGridVisible ? '' : 'm-active'}`} data-js-scroll-to="0" onClick={handleClick}>
+                    <img className="scroll_up" src="img/scroll_down.svg" alt="scroll down"></img>
+                    <div className="back_text">
                         Go back
                     </div>
                 </div>
-                <div class="b-main_pet_grid">
-                    <div class="pet">
-                        <div class="pet_name">
-                            Franky
-                        </div>
-                        <div class="pet_image">
-                            <img src="img/Franky.jpg" alt="Franky">
-                        </div>
-                        <div class="pet_info h-hidden">
-                            <div>
-                                <span class="title">Name:</span>
-                                Franky Polo Barraza Estrada
-                            </div>
-                            <div>
-                                <span class="title">Date of birth:</span>
-                                November 17th, 2018
-                            </div>
-                            <div>
-                                <span class="title">Age:</span>
-                                6 years
-                            </div>
-                            <div class="button">
-                                <button class="gallery_button" data-js-pet="franky">View gallery</button>
-                            </div>
-                        </div>
+            );
+
+        }
+
+        function PetGridContainer(props) {
+            const [showPet, setShowPet] = React.useState('franky');
+            const [hasExpanded, setExpanded] = React.useState(false);
+            let handleShowGallery = props.handleShowGallery;
+
+            function handleClick(event, isExpanded) {
+                let newPet = event.currentTarget.getAttribute('pet');
+                let hasExpandedClass = event.currentTarget.children[0].classList.contains('m-expanded');
+
+                setExpanded(hasExpandedClass);
+                setShowPet(newPet);
+
+                let warnParent = event.currentTarget.getAttribute('pet') === newPet && !hasExpandedClass;
+                props.warnExpanded(warnParent);
+            }
+
+            return (
+                <div className="b-main_pet_grid">
+                    <PetGrid pet={{name:'Franky', imgSrc:"img/Franky.jpg", fullName:"Franky Polo Barraza Estrada", birthDate:"November 17th, 2018", age:"6"}} onClick={handleClick} isExpanded={showPet === 'Franky' && !hasExpanded} handleShowGallery={handleShowGallery}/>
+                    <PetGrid pet={{name:"Petunia", imgSrc:"img/Petunia.jpg", fullName:"Petunia Ofelia Barraza Estrada", birthDate:"March 21st, 2019", age:"4"}} onClick={handleClick} isExpanded={showPet === 'Petunia' && !hasExpanded} handleShowGallery={handleShowGallery}/>
+                    <PetGrid pet={{name:"Rayo", imgSrc:"img/Rayo.jpg", fullName:"Rayo Macchiato Barraza Estrada", birthDate:"August 24th, 2020",  age:"3"}} onClick={handleClick} isExpanded={showPet === 'Rayo' && !hasExpanded} handleShowGallery={handleShowGallery}/>
+                </div>
+            );
+        }
+
+        function PetGrid({pet, onClick, isExpanded, handleShowGallery}) {
+
+            return (
+                <div className="pet" onClick={onClick} pet={pet.name}>
+                    <div className={`pet_name ${isExpanded ? 'm-expanded' : ''}`}>
+                        {pet.name}
                     </div>
-                    <div class="pet">
-                        <div class="pet_name">
-                            Petunia
-                        </div>
-                        <div class="pet_image">
-                            <img src="img/Petunia.jpg" alt="Petunia">
-                        </div>
-                        <div class="pet_info h-hidden">
-                            <div>
-                                <span class="title">Name:</span>
-                                Petunia Ofelia Barraza Estrada
-                            </div>
-                            <div>
-                                <span class="title">Date of birth:</span>
-                                March 21st, 2019
-                            </div>
-                            <div>
-                                <span class="title">Age:</span>
-                                4 years
-                            </div>
-                            <div class="button">
-                                <button class="gallery_button" data-js-pet="petunia">View gallery</button>
-                            </div>
-                        </div>
+                    <div className={`pet_image ${isExpanded? 'm-expanded' : ''}`}>
+                        <img src={pet.imgSrc} alt={pet.name}></img>
                     </div>
-                    <div class="pet">
-                        <div class="pet_name">
-                            Rayo
+                    <PetInfo pet={pet} isExpanded={isExpanded} handleShowGallery={handleShowGallery}/>
+                </div>
+            );
+        }
+
+        function PetInfo(props) {
+            let pet = props.pet;
+            let isExpanded = props.isExpanded;
+            let handleShowGallery = props.handleShowGallery;
+
+            return (
+                <div className={`pet_info ${isExpanded ? '' : 'h-hidden'}`}>
+                    <div>
+                        <span className="title">Name: </span>
+                    {pet.fullName}
+                    </div>
+                    <div>
+                        <span className="title">Date of birth: </span>
+                        {pet.birthDate}
+                    </div>
+                    <div>
+                        <span className="title">Age: </span>
+                        {pet.age} years
+                    </div>
+                    <GalleryButton pet={pet} handleShowGallery={handleShowGallery}/>
+                </div>
+            );
+        }
+
+        function GalleryButton(props) {
+            let pet = props.pet;
+            let handleShowGallery = props.handleShowGallery;
+
+            return (
+                <div className="button">
+                    <button className="gallery_button" data-js-pet={pet.name.toLowerCase()} onClick={handleShowGallery}>View gallery</button>
+                </div>
+            );
+        }
+
+        function PetGallery(props) {
+            let pets = ["franky", "petunia", "rayo"];
+            let selectedPet = props.selectedPet;
+
+            const modalRef = React.useRef(null);
+            const dragIconRef = React.useRef(null);
+            let touchStart;
+
+            function handleCloseModal(event) {
+                modalRef.current.close();
+            }
+
+            function modalMove(event, petGallery) {
+                const currentY = event.touches[0].clientY;
+                petGallery.style.maxHeight = (((window.innerHeight - currentY) / window.innerHeight) * 100) + 'vh';
+            }
+
+            function snapModal(touchStart, petGallery) {
+                petGallery.style.transition = "all 0.4s ease-in-out";
+                petGallery.style.maxHeight = (((window.innerHeight - touchStart) / window.innerHeight) * 100) + 'vh';
+            }
+
+            function handleTouchStart(event) {
+                touchStart = event.touches[0].clientY;
+                modalRef.current.style.transition = "none";
+            }
+
+            function handleTouchMove(event) {
+                modalMove(event, modalRef.current);
+            }
+
+            function handleTouchEnd() {
+                snapModal(touchStart, modalRef.current);
+            }
+
+            return (
+                <dialog className="pet_gallery" ref={modalRef}>
+                    <svg className="drag_icon" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd} ref={dragIconRef}>
+                        <g id="Interface / Drag_Horizontal">
+                        <g id="Vector">
+                        <path d="M18 14C17.4477 14 17 14.4477 17 15C17 15.5523 17.4477 16 18 16C18.5523 16 19 15.5523 19 15C19 14.4477 18.5523 14 18 14Z" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M12 14C11.4477 14 11 14.4477 11 15C11 15.5523 11.4477 16 12 16C12.5523 16 13 15.5523 13 15C13 14.4477 12.5523 14 12 14Z" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M6 14C5.44772 14 5 14.4477 5 15C5 15.5523 5.44772 16 6 16C6.55228 16 7 15.5523 7 15C7 14.4477 6.55228 14 6 14Z" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M18 8C17.4477 8 17 8.44772 17 9C17 9.55228 17.4477 10 18 10C18.5523 10 19 9.55228 19 9C19 8.44772 18.5523 8 18 8Z" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M12 8C11.4477 8 11 8.44772 11 9C11 9.55228 11.4477 10 12 10C12.5523 10 13 9.55228 13 9C13 8.44772 12.5523 8 12 8Z" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M6 8C5.44772 8 5 8.44772 5 9C5 9.55228 5.44772 10 6 10C6.55228 10 7 9.55228 7 9C7 8.44772 6.55228 8 6 8Z" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </g>
+                        </g>
+                    </svg>
+                    <svg className="close_icon" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={handleCloseModal}>
+                        <path fillRule="evenodd" clipRule="evenodd" d="M12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C22 4.92893 22 7.28595 22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22ZM8.96965 8.96967C9.26254 8.67678 9.73742 8.67678 10.0303 8.96967L12 10.9394L13.9696 8.96969C14.2625 8.6768 14.7374 8.6768 15.0303 8.96969C15.3232 9.26258 15.3232 9.73746 15.0303 10.0303L13.0606 12L15.0303 13.9697C15.3232 14.2625 15.3232 14.7374 15.0303 15.0303C14.7374 15.3232 14.2625 15.3232 13.9696 15.0303L12 13.0607L10.0303 15.0303C9.73744 15.3232 9.26256 15.3232 8.96967 15.0303C8.67678 14.7374 8.67678 14.2626 8.96967 13.9697L10.9393 12L8.96965 10.0303C8.67676 9.73744 8.67676 9.26256 8.96965 8.96967Z" fill="#1C274C"/>
+                    </svg>
+                    <div className="gallery_title">
+                        {selectedPet}
+                    </div>
+                    <GalleryImages selectedPet={selectedPet}/>
+
+                    <button className="gallery_close" onClick={handleCloseModal}>Close</button>
+                </dialog>
+            );
+        }
+
+        function GalleryImages(props) {
+            let pet = props.selectedPet;
+
+            return (
+                <div className="gallery_images" data-js-pet={pet}>
+                    <img className="gallery_image" src={`img/${pet}/${pet}_1.jpg`} alt={pet}></img>
+                    <img className="gallery_image" src={`img/${pet}/${pet}_2.jpg`} alt={pet}></img>
+                    <img className="gallery_image" src={`img/${pet}/${pet}_3.jpg`} alt={pet}></img>
+                </div>
+            );
+        }
+
+        function AboutPage(props) {
+            let shownPage = props.shownPage;
+            let pageName = "about";
+
+            const aboutRef = React.useRef(null);
+
+            return (
+                <div className={`b-about b-page ${pageName === shownPage ? '' : 'h-invisible'}`} data-js-page-name="about">
+                    <div className="section m-overflow">
+                        <img className="info_icon" src="img/info_icon.svg" alt="info_icon"></img>
+                        <div className="b-about_title">
+                            About
                         </div>
-                        <div class="pet_image">
-                            <img src="img/Rayo.jpg" alt="Rayo">
+                        <div className="b-about_description">
+                            Hey there, I am Carlos, the creator of this website. <br></br> <br></br>
+
+                            The idea of creating it came up to me one fateful Sunday evening.. one of those dreadful times when I started
+                            feeling my weekly existential crisis coming in, which usually happened the day before having to go back to work to
+                            endure another week. I was feeling anxious and decided to start working on a personal project to
+                            entertain my mind and this website is what came up. <br></br><br></br>
+
+                            I chose to center the topic of this website around my three furry friends: <strong>Franky, Petunia and Rayo</strong>, so that people who
+                            visit this website can get to know them a little. They are my three dogs and I love spending my time taking care of them. <br></br><br></br>
+
+                            I am currently working as a software engineer and most of my experience is centered in the back-end. As of late I
+                            have grown more curious about front-end tools, so I wanted to use this website as training grounds, for practicing CSS
+                            and styles. <br></br><br></br>
+
+                            Enjoy!
                         </div>
-                        <div class="pet_info h-hidden">
-                            <div>
-                                <span class="title">Name:</span>
-                                Rayo Macchiato Barraza Estrada
-                            </div>
-                            <div>
-                                <span class="title">Date of birth:</span>
-                                August 24th, 2020
-                            </div>
-                            <div>
-                                <span class="title">Age:</span>
-                                3 years
-                            </div>
-                            <div class="button">
-                                <button class="gallery_button" data-js-pet="rayo">View gallery</button>
-                            </div>
-                        </div>
+                        <img className="react_image" src="img/react.png" alt="react icon"></img>
+                        <div className="react_description">Made with React</div>
                     </div>
                 </div>
-            </section>
-            <dialog class="pet_gallery">
-                <svg class="drag_icon" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g id="Interface / Drag_Horizontal">
-                    <g id="Vector">
-                    <path d="M18 14C17.4477 14 17 14.4477 17 15C17 15.5523 17.4477 16 18 16C18.5523 16 19 15.5523 19 15C19 14.4477 18.5523 14 18 14Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M12 14C11.4477 14 11 14.4477 11 15C11 15.5523 11.4477 16 12 16C12.5523 16 13 15.5523 13 15C13 14.4477 12.5523 14 12 14Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M6 14C5.44772 14 5 14.4477 5 15C5 15.5523 5.44772 16 6 16C6.55228 16 7 15.5523 7 15C7 14.4477 6.55228 14 6 14Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M18 8C17.4477 8 17 8.44772 17 9C17 9.55228 17.4477 10 18 10C18.5523 10 19 9.55228 19 9C19 8.44772 18.5523 8 18 8Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M12 8C11.4477 8 11 8.44772 11 9C11 9.55228 11.4477 10 12 10C12.5523 10 13 9.55228 13 9C13 8.44772 12.5523 8 12 8Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M6 8C5.44772 8 5 8.44772 5 9C5 9.55228 5.44772 10 6 10C6.55228 10 7 9.55228 7 9C7 8.44772 6.55228 8 6 8Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </g>
-                    </g>
-                </svg>
-                <svg class="close_icon" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C22 4.92893 22 7.28595 22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22ZM8.96965 8.96967C9.26254 8.67678 9.73742 8.67678 10.0303 8.96967L12 10.9394L13.9696 8.96969C14.2625 8.6768 14.7374 8.6768 15.0303 8.96969C15.3232 9.26258 15.3232 9.73746 15.0303 10.0303L13.0606 12L15.0303 13.9697C15.3232 14.2625 15.3232 14.7374 15.0303 15.0303C14.7374 15.3232 14.2625 15.3232 13.9696 15.0303L12 13.0607L10.0303 15.0303C9.73744 15.3232 9.26256 15.3232 8.96967 15.0303C8.67678 14.7374 8.67678 14.2626 8.96967 13.9697L10.9393 12L8.96965 10.0303C8.67676 9.73744 8.67676 9.26256 8.96965 8.96967Z" fill="#1C274C"/>
-                </svg>
-                <div class="gallery_title">
-                    Pet Gallery
-                </div>
-                <div class="gallery_images h-hidden" data-js-pet="franky">
-                    <img class="gallery_image" src="img/franky/franky_1.jpg" alt="Franky">
-                    <img class="gallery_image" src="img/franky/franky_2.jpg" alt="Franky">
-                    <img class="gallery_image" src="img/franky/franky_3.jpg" alt="Franky">
-                </div>
-                <div class="gallery_images h-hidden" data-js-pet="petunia">
-                    <img class="gallery_image" src="img/petunia/petunia_1.jpg" alt="Franky">
-                    <img class="gallery_image" src="img/petunia/petunia_2.jpg" alt="Franky">
-                    <img class="gallery_image" src="img/petunia/petunia_3.jpg" alt="Franky">
-                </div>
-                <div class="gallery_images h-hidden" data-js-pet="rayo">
-                    <img class="gallery_image" src="img/rayo/rayo_1.jpg" alt="Franky">
-                    <img class="gallery_image" src="img/rayo/rayo_2.jpg" alt="Franky">
-                    <img class="gallery_image" src="img/rayo/rayo_3.jpg" alt="Franky">
-                </div>
+            );
+        }
 
-                <button class="gallery_close">Close</button>
-            </dialog>
-        </div>
-        <div class="b-about b-page h-invisible h-hidden" data-js-page-name="about">
-            <div class="section m-overflow">
-                <img class="info_icon" src="img/info_icon.svg" alt="info_icon">
-                <div class="b-about_title">
-                    About
-                </div>
-                <div class="b-about_description">
-                    Hey there, I am Carlos, the creator of this website. <br> <br>
+        function PetPage(props) {
+            let pet = props.pagePet;
+            let pageName = 'pet-page';
+            let shownPage = props.shownPage;
+            let petImage;
 
-                    The idea of creating it came up to me one fateful Sunday evening.. one of those dreadful times when I started
-                    feeling my weekly existential crisis coming in, which usually happened the day before having to go back to work to
-                    endure another week. I was feeling anxious and decided to start working on a personal project to
-                    entertain my mind and this website is what came up. <br><br>
+            if (pet !== 'none') {
+                petImage = <img src={`img/${pet}_card_image.jpg`} alt="pet image"></img>;
+            }
 
-                    I chose to center the topic of this website around my three furry friends: <strong>Franky, Petunia and Rayo</strong>, so that people who
-                    visit this website can get to know them a little. They are my three dogs and I love spending my time taking care of them. <br><br>
-
-                    I am currently working as a software engineer and most of my experience is centered in the back-end. As of late I
-                    have grown more curious about front-end engineering, so I wanted to use this website as training grounds, for practicing CSS
-                    and styles. <br><br>
-
-                    Enjoy!
-                </div>
-            </div>
-        </div>
-        <div class="b-pet-page b-page h-invisible h-hidden" data-js-page-name="pet-page">
-            <div class="subpage h-invisible h-hidden" data-js-pet="franky">
-                <section class="section">
-                    <div class="b-pet-page_title">
-                        Franky
+            return (
+                <div className={`b-pet-page b-page ${shownPage === pageName ? '' : 'h-invisible'}`} data-js-page-name="pet-page">
+                    <div className="subpage" data-js-pet={pet}>
+                        <section className="section">
+                            <div className="b-pet-page_title">
+                                {pet}
+                            </div>
+                            <div className="b-pet-page_card-grid">
+                                <div className="pet_card_image">
+                                    {petImage}
+                                </div>
+                                <div className="pet_card_info">
+                                    <PetDescription pet={pet}/>
+                                </div>
+                            </div>
+                        </section>
                     </div>
-                    <div class="b-pet-page_card-grid">
-                        <div class="pet_card_image">
-                            <img src="img/franky_card_image.jpg" alt="pet image">
+                </div>
+            );
+        }
+
+
+        function PetDescription(props) {
+            let pet = props.pet;
+
+            switch (pet) {
+                case 'franky':
+                    return (
+                        <a>
+                            Franky is a small-sized, black-haired dog with a white streak on his chest. <br></br><br></br> It is believed he was born in Sinaloa, Mexico, where he was later taken to a local dog shelter and then traveled to Mexico City, which is where my sister adopted him. <br></br><br></br> He has a strong temper. He might seem a bit elusive at first but if he likes you, you will eventually grow on him.',
+                        </a>
+                    );
+                case 'petunia':
+                    return (
+                        <a>
+                            Petunia is a small-sized dog with a unique fur; its colors are a mix between gray, black, white and brown streaks. <br></br><br></br> She was found during one of our walks back when we only had Franky. I heard some crying in the middle of a patch of grass and there she was, shaking and full of fear. I decided to carry her in my arms and get her home. <br></br><br></br> She is a playful dog but can be a bit nervous around other dogs sometimes. It takes time for her to be able to trust them and when she does, there is no stopping her from wanting to play all the time!
+                        </a>
+                    );
+                case 'rayo':
+                    return (
+                        <a>
+                            Rayo is a big-sized dog with an orange fur and a white streak going from his abdomen all the way to his face and neck, which makes it look like he has a \'lightning\' across his face, hence his name. <br></br><br></br> He was found abandoned in a highway inside a cardboard box. My sister\'s friend took him in but then he was given to our care. He has grown a lot since then! <br></br><br></br> Rayo is a very kind dog who loves meeting other dogs! I would say he is the friendliest of them. he loves running and taking long walks, and is quite playful... I\'m not sure he is aware of how big he is.
+                        </a>
+                    );
+            }
+        }
+
+        function PetGeneratorPage(props) {
+            let shownPage = props.shownPage;
+            let pageName = 'dog-generator-page';
+
+            const [data, setData] = React.useState([]);
+            const dogBreedsUrl = "https://dog.ceo/api/breeds/list/all";
+            const dogImageRef = React.useRef(null);
+
+            function getRandomIntInclusive(min, max) {
+                min = Math.ceil(min);
+                max = Math.floor(max);
+                return Math.floor(Math.random() * (max - min + 1) + min);
+            }
+
+            const showBreedImage = async(event) => {
+                const selectedBreed = event.currentTarget.getAttribute('data-js-breed');
+                const breedUrl = `https://dog.ceo/api/breed/${selectedBreed}/images`;
+
+                try {
+                    const response = await fetch(breedUrl);
+                    const result = await response.json();
+                    const breedUrls = result.message;
+
+                    const breedSample = breedUrls[getRandomIntInclusive(0, breedUrls.length)];
+                    dogImageRef.current.setAttribute('src', breedSample);
+                    dogImageRef.current.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" })
+
+                } catch (e) {
+                    console.error('Error fetching data:', error);
+                }
+            }
+
+            React.useEffect(() => {
+                fetchData();
+            }, []);
+
+            const fetchData = async () => {
+                try {
+                    const response = await fetch(dogBreedsUrl);
+                    const result = await response.json();
+                    let randomResult = [];
+
+                    Object.keys(result.message).forEach(breed => {
+                        let randNum = Math.random();
+                        if (randNum > 0.8) {
+                            randomResult.push(breed);
+                        }
+                    })
+                    setData(randomResult);
+                } catch (e) {
+                    console.error('Error fetching data:', error);
+                }
+            }
+
+            return (
+                <div className={`b-pet-generator-page b-page ${shownPage === pageName ? '' : 'h-invisible'}`} data-js-page-name="dog-generator-page">
+                    <section className="section">
+                        <div className="b-pet-generator-page_title">
+                            Dog Image Generator
                         </div>
-                        <div class="pet_card_info">
-                            Franky is a small-sized, black-haired dog with a white streak on his chest. <br><br>
-
-                            It is believed he was born in Sinaloa, Mexico, where he was later taken to a local dog shelter and then traveled
-                            to Mexico City, which is where my sister adopted him. <br><br>
-
-                            He has a strong temper. He might seem a bit elusive at first but if he likes you, you will eventually
-                            grow on him.
+                        <div className="breed_grid">
+                            <div className="breed_image">
+                                <img className="dog_image" src ="img/dog_placeholder.svg" alt="dog_placeholder" ref={dogImageRef}></img>
+                            </div>
+                            <div className="breeds_container">
+                                <div className="b-pet-generator-page_subtitle breeds_subtitle">
+                                    Choose a breed!
+                                </div>
+                                <div className="breeds_list">
+                                    {data ? data.map(breed => <button className="breed_item" data-js-breed={breed} key={breed} onClick={showBreedImage}>{breed}</button>) : null}
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </section>
-            </div>
-            <div class="subpage h-invisible h-hidden" data-js-pet="petunia">
-                <section class="section">
-                    <div class="b-pet-page_title">
-                        Petunia
-                    </div>
-                    <div class="b-pet-page_card-grid">
-                        <div class="pet_card_image">
-                            <img src="img/petunia_card_image.jpg" alt="pet image">
-                        </div>
-                        <div class="pet_card_info">
-                            Petunia is a small-sized dog with a unique fur; its colors are a mix between gray, black, white and brown streaks. <br><br>
-
-                            She was found during one of our walks back when we only had Franky. I heard some crying in the middle of a patch of grass
-                            and there she was, shaking and full of fear. I decided to carry her in my arms and get her home. <br><br>
-
-                            She is a playful dog but can be a bit nervous around other dogs sometimes. It takes time for her to be able to trust them
-                            and when she does, there is no stopping her from wanting to play all the time!
-                        </div>
-                    </div>
-                </section>
-            </div>
-            <div class="subpage h-invisible h-hidden" data-js-pet="rayo">
-                <section class="section">
-                    <div class="b-pet-page_title">
-                        Rayo
-                    </div>
-                    <div class="b-pet-page_card-grid">
-                        <div class="pet_card_image">
-                            <img src="img/rayo_card_image.jpg" alt="pet image">
-                        </div>
-                        <div class="pet_card_info">
-                            Rayo is a big-sized dog with an orange fur and a white streak going from his abdomen all the way
-                            to his face and neck, which makes it look like he has a 'lightning' across his face, hence his name. <br><br>
-
-                            He was found abandoned in a highway inside a cardboard box. My sister's friend took him in but then he was given to our care.
-                            He has grown a lot since then! <br><br>
-
-                            Rayo is a very kind dog who loves meeting other dogs! I would say he is the friendliest of them. he loves running and taking long walks,
-                            and is quite playful... I'm not sure he is aware of how big he is.
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
-        <div class="b-pet-generator-page b-page h-invisible h-hidden" data-js-page-name="dog-generator-page">
-            <section class="section">
-                <div class="b-pet-generator-page_title">
-                    Dog Image Generator
+                    </section>
                 </div>
-                <div class="breed_grid">
-                    <div class="breed_image">
-                        <img class ="dog_image" src ="img/dog_placeholder.svg" alt="dog_placeholder">
-                    </div>
-                    <div class="breeds_container">
-                        <div class="b-pet-generator-page_subtitle breeds_subtitle">
-                            Choose a breed!
-                        </div>
-                        <div class="breeds_list">
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-        <div class="overlay">
-        </div>
-        <dialog class="contact_sidebar" open>
-            <div class="close_icon">
-                <img class="close_icon_svg" src="img/close_icon.svg" alt="close_icon">
-            </div>
-            <div class="title">
-                Contact Information
-            </div>
-            <ul>
-                <li>
-                    <div class="contact_grid">
-                        <img class="contact_image" src="img/person_icon.svg" alt="person icon">
-                        <div class="contact_data">Carlos Barraza</div>
-                    </div>
-                </li>
-                <li>
-                    <div class="contact_grid">
-                        <img class="contact_image"  src="img/mail_icon.svg" alt="email icon">
-                        <div class="contact_data">cbarrazaestrada@gmail.com</div>
-                    </div>
-                </li>
-                <li>
-                    <div class="contact_grid">
-                        <img class="contact_image"  src="img/location_icon.svg" alt="location icon">
-                        <div class="contact_data">Mexico</div>
-                    </div>
-                </li>
+            );
+        }
 
-                <div class="social_grid">
-                    <a href="https://www.instagram.com/carlosbarrazaes" target=”_blank”>
-                        <img class="social_icon" src="img/insta_icon.svg" alt="insta_icon">
-                    </a>
-                    <a href="https://www.linkedin.com/in/carlos-barraza-estrada-8246bb132" target=”_blank”>
-                        <img class="social_icon" src="img/linkedin_icon.svg" alt="linkedin_icon">
-                    </a>
-                    <a href="https://www.threads.net/@carlosbarrazaes" target=”_blank”>
-                        <img class="social_icon" src="img/threads_icon.svg" alt="threads_icon">
-                    </a>
+        function Overlay(props) {
+            let isContactExpanded = props.isContactExpanded;
+            let handleClickOverlay = props.handleClickOverlay;
+
+            return (
+                <div className={`overlay ${isContactExpanded ? 'm-active' : ''}`} onClick={handleClickOverlay}>
                 </div>
-            </ul>
-        </dialog>
-        <div class="footer">
-            <div class="credits">
-                Photo from <a href="https://unsplash.com/es/@fakurian?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash" target=”_blank”>Milad Fakurian</a> on <a href="https://unsplash.com/es/fotos/globos-amarillos-y-blancos-sobre-superficie-naranja-PGdW_bHDbpI?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash" target=”_blank”>Unsplash</a>
-            </div>
-            <div class="copyright">
-                &copy Copyright 2024 Carlos Barraza
-            </div>
-        </div>
-    </main>
+            );
+        }
+
+        function ContactSidebar(props) {
+            let isContactExpanded = props.isContactExpanded;
+            let handleClickOverlay = props.handleClickOverlay;
+
+            return (
+                <dialog className={`contact_sidebar ${isContactExpanded ? 'm-expanded' : ''}`}open>
+                    <div className="close_icon" onClick={handleClickOverlay}>
+                        <img className="close_icon_svg" src="img/close_icon.svg" alt="close_icon"></img>
+                    </div>
+                    <div className="title">
+                        Contact Information
+                    </div>
+                    <ul>
+                        <li>
+                            <div className="contact_grid">
+                                <img className="contact_image" src="img/person_icon.svg" alt="person icon"></img>
+                                <div className="contact_data">Carlos Barraza</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div className="contact_grid">
+                                <img className="contact_image"  src="img/mail_icon.svg" alt="email icon"></img>
+                                <div className="contact_data">cbarrazaestrada@gmail.com</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div className="contact_grid">
+                                <img className="contact_image"  src="img/location_icon.svg" alt="location icon"></img>
+                                <div className="contact_data">Mexico</div>
+                            </div>
+                        </li>
+
+                        <div className="social_grid">
+                            <a href="https://www.instagram.com/carlosbarrazaes" target="_blank">
+                                <img className="social_icon" src="img/insta_icon.svg" alt="insta_icon"></img>
+                            </a>
+                            <a href="https://www.linkedin.com/in/carlos-barraza-estrada-8246bb132" target="_blank">
+                                <img className="social_icon" src="img/linkedin_icon.svg" alt="linkedin_icon"></img>
+                            </a>
+                            <a href="https://www.threads.net/@carlosbarrazaes" target="_blank">
+                                <img className="social_icon" src="img/threads_icon.svg" alt="threads_icon"></img>
+                            </a>
+                        </div>
+                    </ul>
+                </dialog>
+            );
+        }
+
+        function Footer() {
+            return (
+                <div className="footer">
+                    <div className="credits">
+                        Photo from <a href="https://unsplash.com/es/@fakurian?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash" target="_blank">Milad Fakurian</a> on <a href="https://unsplash.com/es/fotos/globos-amarillos-y-blancos-sobre-superficie-naranja-PGdW_bHDbpI?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash" target="_blank">Unsplash</a>
+                    </div>
+                    <div className="copyright">
+                        &copy; Copyright 2024 Carlos Barraza
+                    </div>
+                </div>
+            );
+        }
+
+        function isElementVisible(el) {
+            const rect = el.getBoundingClientRect();
+
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        const container = document.getElementById('root');
+        const root = ReactDOM.createRoot(container);
+        root.render(
+            <FampekPetsOutline/>
+        );
+
+    </script>
 </body>
-<script src="js/main.js"></script>
-
 </html>

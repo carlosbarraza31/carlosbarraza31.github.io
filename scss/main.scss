@@ -71,6 +71,7 @@
         animation-timeline: scroll();
         font-size: 96px;
         font-weight: 700;
+        text-transform: capitalize;
 
         @media screen and (max-width: 768px) {
             font-size: 76px;
@@ -118,6 +119,10 @@
                 justify-content: center;
                 padding: 12px;
                 transition: all 0.4s ease-in-out;
+
+                @media screen and (max-width: 768px) {
+                    max-width: 25vw;
+                }
 
                 &_image {
                     display: flex;
@@ -288,7 +293,7 @@
         padding: 24px 20px;
 
         @media screen and (max-width: 768px) {
-            border-radius: 20px;
+            border-radius: 20px 20px 0 0;
             margin-bottom: 0;
             max-height: 80vh;
             overflow: hidden;
@@ -437,8 +442,26 @@
 .b-about {
     margin: 0;
 
+    .section {
+        margin-bottom: 85px;
+        scroll-snap-align: unset;
+    }
+
     .info_icon {
         margin-top: 24px;
+    }
+
+    .react_image {
+        height: 128px;
+
+        @media screen and (max-width: 768px) {
+            height: 96px;
+        }
+    }
+
+    .react_description {
+        font-size: 16px;
+        padding-top: 12px;
     }
 }
 
@@ -862,10 +885,11 @@ main {
     }
 }
 
-.h-hidden {
-    display: none;
-}
-
 .h-invisible {
     margin-right: -200vw;
+    position: fixed;
+}
+
+.h-hidden {
+    display: none;
 }
