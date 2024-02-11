@@ -12,17 +12,6 @@
     }
 }
 
-@-webkit-keyframes scrollDown {
-    from {
-        -webkit-opacity: 1;
-        -webkit-top: 0px;
-    }
-    to {
-        -webkit-opacity: 0.2;
-        -webkit-top: 30px;
-    }
-}
-
 @keyframes scrollUp {
     from {
         opacity: 0.2;
@@ -31,17 +20,6 @@
     to {
         opacity: 1;
         top: 0px;
-    }
-}
-
-@-webkit-keyframes scrollUp {
-    from {
-        -webkit-opacity: 0.2;
-        -webkit-top: 30px;
-    }
-    to {
-        -webkit-opacity: 1;
-        -webkit-top: 0px;
     }
 }
 
@@ -54,30 +32,12 @@
     }
 }
 
-@-webkit-keyframes increaseTitle {
-    from {
-        -webkit-font-size: 1em;
-    }
-    to {
-        -webkit-font-size: 0.4em;
-    }
-}
-
 @keyframes increaseGrid {
     from {
         scale: 0;
     }
     to {
         scale: 1.5;
-    }
-}
-
-@-webkit-keyframes increaseGrid {
-    from {
-        -webkit-scale: 0;
-    }
-    to {
-        -webkit-scale: 1.5;
     }
 }
 
@@ -106,8 +66,6 @@
     }
 
     &_title {
-        -webkit-animation-name: increaseTitle;
-        -webkit-animation-timeline: scroll();
         animation-name: increaseTitle;
         animation-timeline: scroll();
         font-size: 96px;
@@ -147,8 +105,6 @@
         &_grid {
             animation-name: increaseGrid;
             animation-timeline: view();
-            -webkit-animation-name: increaseGrid;
-            -webkit-animation-timeline: view();
             display: flex;
             gap: 24px;
             padding-top: 48px;
@@ -291,7 +247,6 @@
 
     .scroll_down {
         animation: scrollDown 1s infinite alternate;
-        -webkit-animation: scrollDown 1s infinite alternate;
         cursor: pointer;
         position: relative;
     }
@@ -305,8 +260,7 @@
 
             .scroll_up,
             .back_text {
-                animation: scrolUp 1s infinite alternate;
-                -webkit-animation: scrolUp 1s infinite alternate;
+                animation: scrollUp 1s infinite alternate;
                 position: absolute;
             }
 
