@@ -706,7 +706,7 @@
 }
 .b-pet-generator-page.b-page .breed_grid .breeds_list .breed_item {
   background: floralwhite;
-  border: 1px solid darkgray;
+  border: none;
   border-left: 3px solid aquamarine;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
@@ -728,14 +728,16 @@
   background-color: white;
   border-radius: 10px;
   border: none;
-  color: gray;
+  box-shadow: rgb(38, 57, 77) 0px 10px 10px -10px;
+  color: black;
   display: grid;
   font-size: 16px;
   gap: 16px;
   grid-template-columns: 16px auto 16px;
   grid-template-rows: none;
-  margin-top: 24px;
+  margin: 24px 0;
   padding: 16px 12px;
+  width: -webkit-fill-available;
 }
 .b-pet-generator-page.b-page .error_notification .error_icon,
 .b-pet-generator-page.b-page .error_notification .close_icon {
