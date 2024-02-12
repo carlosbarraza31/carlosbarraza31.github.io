@@ -85,6 +85,14 @@
   top: 20vh;
   width: 200px;
 }
+@media screen and (max-width: 768px) {
+  .b-main .star,
+  .b-about .star,
+  .b-pet-page .star,
+  .b-pet-generator-page .star {
+    width: 90px;
+  }
+}
 .b-main .star-2,
 .b-about .star-2,
 .b-pet-page .star-2,
@@ -95,6 +103,14 @@
   right: 20vw;
   width: 150px;
 }
+@media screen and (max-width: 768px) {
+  .b-main .star-2,
+  .b-about .star-2,
+  .b-pet-page .star-2,
+  .b-pet-generator-page .star-2 {
+    width: 50px;
+  }
+}
 .b-main .star-3,
 .b-about .star-3,
 .b-pet-page .star-3,
@@ -104,6 +120,14 @@
   top: 30vh;
   right: 80vw;
   width: 150px;
+}
+@media screen and (max-width: 768px) {
+  .b-main .star-3,
+  .b-about .star-3,
+  .b-pet-page .star-3,
+  .b-pet-generator-page .star-3 {
+    width: 70px;
+  }
 }
 .b-main_title,
 .b-about_title,
