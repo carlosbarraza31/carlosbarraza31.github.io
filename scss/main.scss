@@ -41,6 +41,15 @@
     }
 }
 
+@keyframes fadeAway {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
 .b-main,
 .b-about,
 .b-pet-page,
@@ -63,6 +72,31 @@
 
     .icon {
         padding-bottom: 20px;
+    }
+
+    .star {
+        display: block;
+        opacity: 0.6;
+        position: absolute;
+        right: 10vw;
+        top: 20vh;
+        width: 200px;
+
+        &-2{
+            opacity: 0.6;
+            position: absolute;
+            top: 60vh;
+            right: 20vw;
+            width: 150px;
+        }
+
+        &-3{
+            opacity: 0.6;
+            position: absolute;
+            top: 30vh;
+            right: 80vw;
+            width: 150px;
+        }
     }
 
     &_title {
