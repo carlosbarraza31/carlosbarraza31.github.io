@@ -116,25 +116,63 @@
             const [isGridVisible, setGridVisible] = React.useState(false);
             const [showGallery, setShowGallery] = React.useState(false);
             const [selectedPet, setSelectedPet] = React.useState('franky');
-            const starRef = React.useRef(null);
-            const starRef2 = React.useRef(null);
-            const starRef3 = React.useRef(null);
-
+            const [isScrolling, setScrolling] = React.useState(false);
+            const [scrollTop, setScrollTop] = React.useState(0);
             const homepageRef = React.useRef(null);
 
             let shownPage = props.shownPage;
             let pageName = 'home';
 
+            let twinklingStarsObj = [
+                {
+                    alt: false,
+                    yFactor: '-1',
+                    xFactor: '0.5',
+                    rotate3dFactor: '1, 2, 3'
+                },
+                {
+                    alt: false,
+                    yFactor: '-1.3',
+                    xFactor: '0.4',
+                    rotate3dFactor: '3, 2, 2'
+                },
+                {
+                    alt: false,
+                    yFactor: '-1.5',
+                    xFactor: '-0.6',
+                    rotate3dFactor: '3, 2, 1'
+                },
+                {
+                    alt: true,
+                    yFactor: '0.1',
+                    xFactor: '-0.8',
+                    rotate3dFactor: '1, 2, 3'
+                },
+                {
+                    alt: true,
+                    yFactor: '0.6',
+                    xFactor: '0.4',
+                    rotate3dFactor: '5, 1, 2'
+                },
+                {
+                    alt: true,
+                    yFactor: '0.3',
+                    xFactor: '1.3',
+                    rotate3dFactor: '3, 2, 1'
+                }
+            ]
+
+            let twinklingStarsElements = twinklingStarsObj.map((star, index) => {
+                return <TwinklingStar star={star} index={index} isHomePageScrolling={isScrolling} scrollTop={scrollTop} showStars={shownPage === pageName}/>
+            })
+
             function handleScroll(event) {
                 let petGrid = event.currentTarget.querySelector('.b-main_pet_grid');
                 let upIndicators = event.currentTarget.querySelector('.up_indicators');
-                let scrollTop = event.currentTarget.scrollTop;
 
+                setScrollTop(event.currentTarget.scrollTop);
+                setScrolling(scrollTop > 1);
                 setGridVisible(isElementVisible(petGrid));
-                starRef.current.style.transform = 'translateY(-' + scrollTop + 'px) translateX(' + scrollTop*0.5 + 'px) rotate3d(1, 2, 3, ' + scrollTop/(homepageRef.current.clientHeight) + 'turn)';
-                starRef2.current.style.transform = 'translateY(-' + scrollTop*1.3 + 'px) translateX(' + scrollTop*0.4 + 'px) rotate3d(3, 2, 2, ' + scrollTop/(homepageRef.current.clientHeight) + 'turn)';
-                starRef3.current.style.transform = 'translateY(-' + scrollTop*1.5 + 'px) translateX(-' + scrollTop*0.6 + 'px) rotate3d(3, 2, 1, ' + scrollTop/(homepageRef.current.clientHeight) + 'turn)';
-                console.log(homepageRef.clientHeight);
             }
 
             function handleClick(event) {
@@ -162,11 +200,26 @@
                 <div className={`b-main b-page ${pageName === shownPage ? '' : 'h-invisible'}`} data-js-page-name="home" onScroll={handleScroll} ref={homepageRef}>
                     <HomepageSection1 handleClick={handleClick}/>
                     <HomepageSection2 isGridVisible={isGridVisible} handleUpClick={handleUpClick} handleShowGallery={handleShowGallery}/>
-                    <img className="star" src="img/moving_star.svg" ref={starRef}></img>
-                    <img className="star-2" src="img/moving_star.svg" ref={starRef2}></img>
-                    <img className="star-3" src="img/moving_star.svg" ref={starRef3}></img>
+                    {twinklingStarsElements}
                     <PetGallery selectedPet={selectedPet} showGallery={showGallery}/>
                 </div>
+            );
+        }
+
+        function TwinklingStar(props) {
+            let star = props.star;
+            let index = props.index;
+            let isHomePageScrolling = props.isHomePageScrolling;
+            let scrollTop = props.scrollTop;
+            let showStars = props.showStars;
+            const starRef = React.useRef(null);
+
+            if (isHomePageScrolling) {
+                starRef.current.style.transform = `translateY(${scrollTop * star.yFactor}px) translateX(${scrollTop * star.xFactor}px) rotate3d(${star.rotate3dFactor}, ${scrollTop/(starRef.current.parentElement.clientHeight)}turn)`;
+            }
+
+            return (
+                <img key={index} className={`star star-${index + 1} ${isHomePageScrolling ? 'm-static' : ''} ${showStars ? '' : 'h-hidden'}`} src={`img/moving_star${star.alt ? '_alt' : ''}.svg`} ref={starRef}></img>
             );
         }
 

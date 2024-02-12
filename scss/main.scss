@@ -50,6 +50,15 @@
     }
 }
 
+@keyframes twinkle {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(40deg);
+    }
+}
+
 .b-main,
 .b-about,
 .b-pet-page,
@@ -75,20 +84,32 @@
     }
 
     .star {
+        animation: 1s ease-in-out infinite alternate twinkle;
         display: block;
         opacity: 0.6;
-        position: absolute;
-        right: 10vw;
-        top: 20vh;
-        width: 200px;
+        position: fixed;
 
-        @media screen and (max-width: 768px) {
-            width: 90px;
+        &.h-hidden {
+            display: none;
         }
 
-        &-2 {
-            opacity: 0.6;
-            position: absolute;
+        &.m-static {
+            animation: none;
+        }
+
+        &.star-1 {
+            animation-duration: 1s;
+            top: 20vh;
+            right: 10vw;
+            width: 200px;
+
+            @media screen and (max-width: 768px) {
+                width: 100px;
+            }
+        }
+
+        &.star-2 {
+            animation-duration: 0.8s;
             top: 60vh;
             right: 20vw;
             width: 150px;
@@ -98,16 +119,44 @@
             }
         }
 
-
-        &-3 {
-            opacity: 0.6;
-            position: absolute;
+        &.star-3 {
+            animation-duration: 1.3s;
             top: 30vh;
             right: 80vw;
             width: 150px;
 
             @media screen and (max-width: 768px) {
                 width: 70px;
+            }
+        }
+
+        &.star-4 {
+            bottom: 20vh;
+            left: 110vw;
+            width: 230px;
+
+            @media screen and (max-width: 768px) {
+                width: 110px;
+            }
+        }
+
+        &.star-5 {
+            top: 0;
+            right: 100vw;
+            width: 150px;
+
+            @media screen and (max-width: 768px) {
+                width: 70px;
+            }
+        }
+
+        &.star-6 {
+            top: 0;
+            right: 140vw;
+            width: 130px;
+
+            @media screen and (max-width: 768px) {
+                width: 60px;
             }
         }
     }
@@ -155,6 +204,7 @@
             display: flex;
             gap: 24px;
             padding-top: 48px;
+            z-index: 3;
 
             .pet {
                 border: none;
@@ -964,7 +1014,7 @@ main {
 }
 
 .h-invisible {
-    margin-right: -200vw;
+    left: 100vw;
     position: fixed;
 }
 
