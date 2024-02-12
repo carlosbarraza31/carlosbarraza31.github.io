@@ -116,6 +116,11 @@
             const [isGridVisible, setGridVisible] = React.useState(false);
             const [showGallery, setShowGallery] = React.useState(false);
             const [selectedPet, setSelectedPet] = React.useState('franky');
+            const starRef = React.useRef(null);
+            const starRef2 = React.useRef(null);
+            const starRef3 = React.useRef(null);
+
+            const homepageRef = React.useRef(null);
 
             let shownPage = props.shownPage;
             let pageName = 'home';
@@ -123,8 +128,13 @@
             function handleScroll(event) {
                 let petGrid = event.currentTarget.querySelector('.b-main_pet_grid');
                 let upIndicators = event.currentTarget.querySelector('.up_indicators');
+                let scrollTop = event.currentTarget.scrollTop;
 
                 setGridVisible(isElementVisible(petGrid));
+                starRef.current.style.transform = 'translateY(-' + scrollTop + 'px) translateX(' + scrollTop*0.5 + 'px) rotate3d(1, 2, 3, ' + scrollTop/(homepageRef.current.clientHeight) + 'turn)';
+                starRef2.current.style.transform = 'translateY(-' + scrollTop*1.3 + 'px) translateX(' + scrollTop*0.4 + 'px) rotate3d(3, 2, 2, ' + scrollTop/(homepageRef.current.clientHeight) + 'turn)';
+                starRef3.current.style.transform = 'translateY(-' + scrollTop*1.5 + 'px) translateX(-' + scrollTop*0.6 + 'px) rotate3d(3, 2, 1, ' + scrollTop/(homepageRef.current.clientHeight) + 'turn)';
+                console.log(homepageRef.clientHeight);
             }
 
             function handleClick(event) {
@@ -149,9 +159,12 @@
             }
 
             return (
-                <div className={`b-main b-page ${pageName === shownPage ? '' : 'h-invisible'}`} data-js-page-name="home" onScroll={handleScroll}>
+                <div className={`b-main b-page ${pageName === shownPage ? '' : 'h-invisible'}`} data-js-page-name="home" onScroll={handleScroll} ref={homepageRef}>
                     <HomepageSection1 handleClick={handleClick}/>
                     <HomepageSection2 isGridVisible={isGridVisible} handleUpClick={handleUpClick} handleShowGallery={handleShowGallery}/>
+                    <img className="star" src="img/moving_star.svg" ref={starRef}></img>
+                    <img className="star-2" src="img/moving_star.svg" ref={starRef2}></img>
+                    <img className="star-3" src="img/moving_star.svg" ref={starRef3}></img>
                     <PetGallery selectedPet={selectedPet} showGallery={showGallery}/>
                 </div>
             );
