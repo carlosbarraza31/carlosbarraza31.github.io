@@ -44,6 +44,14 @@
     opacity: 0;
   }
 }
+@keyframes twinkle {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(40deg);
+  }
+}
 .b-main,
 .b-about,
 .b-pet-page,
@@ -78,55 +86,120 @@
 .b-about .star,
 .b-pet-page .star,
 .b-pet-generator-page .star {
+  animation: 1s ease-in-out infinite alternate twinkle;
   display: block;
   opacity: 0.6;
-  position: absolute;
-  right: 10vw;
+  position: fixed;
+}
+.b-main .star.h-hidden,
+.b-about .star.h-hidden,
+.b-pet-page .star.h-hidden,
+.b-pet-generator-page .star.h-hidden {
+  display: none;
+}
+.b-main .star.m-static,
+.b-about .star.m-static,
+.b-pet-page .star.m-static,
+.b-pet-generator-page .star.m-static {
+  animation: none;
+}
+.b-main .star.star-1,
+.b-about .star.star-1,
+.b-pet-page .star.star-1,
+.b-pet-generator-page .star.star-1 {
+  animation-duration: 1s;
   top: 20vh;
+  right: 10vw;
   width: 200px;
 }
 @media screen and (max-width: 768px) {
-  .b-main .star,
-  .b-about .star,
-  .b-pet-page .star,
-  .b-pet-generator-page .star {
-    width: 90px;
+  .b-main .star.star-1,
+  .b-about .star.star-1,
+  .b-pet-page .star.star-1,
+  .b-pet-generator-page .star.star-1 {
+    width: 100px;
   }
 }
-.b-main .star-2,
-.b-about .star-2,
-.b-pet-page .star-2,
-.b-pet-generator-page .star-2 {
-  opacity: 0.6;
-  position: absolute;
+.b-main .star.star-2,
+.b-about .star.star-2,
+.b-pet-page .star.star-2,
+.b-pet-generator-page .star.star-2 {
+  animation-duration: 0.8s;
   top: 60vh;
   right: 20vw;
   width: 150px;
 }
 @media screen and (max-width: 768px) {
-  .b-main .star-2,
-  .b-about .star-2,
-  .b-pet-page .star-2,
-  .b-pet-generator-page .star-2 {
+  .b-main .star.star-2,
+  .b-about .star.star-2,
+  .b-pet-page .star.star-2,
+  .b-pet-generator-page .star.star-2 {
     width: 50px;
   }
 }
-.b-main .star-3,
-.b-about .star-3,
-.b-pet-page .star-3,
-.b-pet-generator-page .star-3 {
-  opacity: 0.6;
-  position: absolute;
+.b-main .star.star-3,
+.b-about .star.star-3,
+.b-pet-page .star.star-3,
+.b-pet-generator-page .star.star-3 {
+  animation-duration: 1.3s;
   top: 30vh;
   right: 80vw;
   width: 150px;
 }
 @media screen and (max-width: 768px) {
-  .b-main .star-3,
-  .b-about .star-3,
-  .b-pet-page .star-3,
-  .b-pet-generator-page .star-3 {
+  .b-main .star.star-3,
+  .b-about .star.star-3,
+  .b-pet-page .star.star-3,
+  .b-pet-generator-page .star.star-3 {
     width: 70px;
+  }
+}
+.b-main .star.star-4,
+.b-about .star.star-4,
+.b-pet-page .star.star-4,
+.b-pet-generator-page .star.star-4 {
+  bottom: 20vh;
+  left: 110vw;
+  width: 230px;
+}
+@media screen and (max-width: 768px) {
+  .b-main .star.star-4,
+  .b-about .star.star-4,
+  .b-pet-page .star.star-4,
+  .b-pet-generator-page .star.star-4 {
+    width: 110px;
+  }
+}
+.b-main .star.star-5,
+.b-about .star.star-5,
+.b-pet-page .star.star-5,
+.b-pet-generator-page .star.star-5 {
+  top: 0;
+  right: 100vw;
+  width: 150px;
+}
+@media screen and (max-width: 768px) {
+  .b-main .star.star-5,
+  .b-about .star.star-5,
+  .b-pet-page .star.star-5,
+  .b-pet-generator-page .star.star-5 {
+    width: 70px;
+  }
+}
+.b-main .star.star-6,
+.b-about .star.star-6,
+.b-pet-page .star.star-6,
+.b-pet-generator-page .star.star-6 {
+  top: 0;
+  right: 140vw;
+  width: 130px;
+}
+@media screen and (max-width: 768px) {
+  .b-main .star.star-6,
+  .b-about .star.star-6,
+  .b-pet-page .star.star-6,
+  .b-pet-generator-page .star.star-6 {
+    width: 60px;
   }
 }
 .b-main_title,
@@ -192,6 +265,7 @@
   display: flex;
   gap: 24px;
   padding-top: 48px;
+  z-index: 3;
 }
 .b-main_pet_grid .pet,
 .b-about_pet_grid .pet,
@@ -1070,7 +1144,7 @@ main {
 }
 
 .h-invisible {
-  margin-right: -200vw;
+  left: 100vw;
   position: fixed;
 }
 
