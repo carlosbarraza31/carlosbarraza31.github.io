@@ -145,7 +145,7 @@
                 {
                     alt: true,
                     yFactor: '0.1',
-                    xFactor: '-0.8',
+                    xFactor: '-0.5',
                     rotate3dFactor: '1, 2, 3'
                 },
                 {
@@ -157,7 +157,7 @@
                 {
                     alt: true,
                     yFactor: '0.3',
-                    xFactor: '1.3',
+                    xFactor: '0.5',
                     rotate3dFactor: '3, 2, 1'
                 }
             ]
@@ -169,10 +169,12 @@
             function handleScroll(event) {
                 let petGrid = event.currentTarget.querySelector('.b-main_pet_grid');
                 let upIndicators = event.currentTarget.querySelector('.up_indicators');
+                let pageHeight = event.currentTarget.clientHeight;
 
                 setScrollTop(event.currentTarget.scrollTop);
                 setScrolling(scrollTop > 1);
                 setGridVisible(isElementVisible(petGrid));
+                console.log('scrollTop: ' + scrollTop + ', pageHeight: ' + pageHeight);
             }
 
             function handleClick(event) {
@@ -219,7 +221,7 @@
             }
 
             return (
-                <img key={index} className={`star star-${index + 1} ${isHomePageScrolling ? 'm-static' : ''} ${showStars ? '' : 'h-hidden'}`} src={`img/moving_star${star.alt ? '_alt' : ''}.svg`} ref={starRef}></img>
+                <img key={index} className={`star star-${index + 1} ${isHomePageScrolling ? '' : 'm-static'} ${showStars ? '' : 'h-hidden'}`} src={`img/moving_star${star.alt ? '_alt' : ''}.svg`} ref={starRef}></img>
             );
         }
 

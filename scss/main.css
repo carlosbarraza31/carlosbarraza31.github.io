@@ -86,7 +86,7 @@
 .b-about .star,
 .b-pet-page .star,
 .b-pet-generator-page .star {
-  animation: 1s ease-in-out infinite alternate twinkle;
+  animation: none;
   display: block;
   opacity: 0.6;
   position: fixed;
@@ -101,13 +101,12 @@
 .b-about .star.m-static,
 .b-pet-page .star.m-static,
 .b-pet-generator-page .star.m-static {
-  animation: none;
+  animation: 1s ease-in-out infinite alternate twinkle;
 }
 .b-main .star.star-1,
 .b-about .star.star-1,
 .b-pet-page .star.star-1,
 .b-pet-generator-page .star.star-1 {
-  animation-duration: 1s;
   top: 20vh;
   right: 10vw;
   width: 200px;
@@ -159,7 +158,7 @@
 .b-pet-page .star.star-4,
 .b-pet-generator-page .star.star-4 {
   bottom: 20vh;
-  left: 110vw;
+  left: 100vw;
   width: 230px;
 }
 @media screen and (max-width: 768px) {
@@ -191,7 +190,7 @@
 .b-pet-page .star.star-6,
 .b-pet-generator-page .star.star-6 {
   top: 0;
-  right: 140vw;
+  right: 100vw;
   width: 130px;
 }
 @media screen and (max-width: 768px) {
