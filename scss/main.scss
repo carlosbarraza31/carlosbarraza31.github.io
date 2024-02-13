@@ -84,7 +84,7 @@
     }
 
     .star {
-        animation: 1s ease-in-out infinite alternate twinkle;
+        animation: none;
         display: block;
         opacity: 0.6;
         position: fixed;
@@ -94,11 +94,10 @@
         }
 
         &.m-static {
-            animation: none;
+            animation: 1s ease-in-out infinite alternate twinkle;
         }
 
         &.star-1 {
-            animation-duration: 1s;
             top: 20vh;
             right: 10vw;
             width: 200px;
@@ -132,7 +131,7 @@
 
         &.star-4 {
             bottom: 20vh;
-            left: 110vw;
+            left: 100vw;
             width: 230px;
 
             @media screen and (max-width: 768px) {
@@ -152,7 +151,7 @@
 
         &.star-6 {
             top: 0;
-            right: 140vw;
+            right: 100vw;
             width: 130px;
 
             @media screen and (max-width: 768px) {
