@@ -598,6 +598,7 @@
                     errorNotifRef.current.classList.remove('h-hidden');
                     errorNotifRef.current.classList.remove('h-faded');
                     errorNotifTextRef.current.innerText = e;
+                    setDogImageSource('img/dog_placeholder.svg');
                     errorNotifRef.current.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
                 }
             }
