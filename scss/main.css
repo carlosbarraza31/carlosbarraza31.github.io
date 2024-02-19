@@ -752,7 +752,7 @@
 
 .b-pet-generator-page.b-page section {
   height: unset;
-  margin-top: 85px;
+  margin: 85px 100px 50px;
   scroll-snap-align: unset;
 }
 @media screen and (max-width: 768px) {
@@ -760,38 +760,153 @@
     margin: 75px 24px 150px;
   }
 }
+.b-pet-generator-page.b-page .breed_notification {
+  align-items: center;
+  background-color: white;
+  border-left: 5px solid green;
+  border-radius: 5px;
+  box-shadow: rgb(38, 57, 77) 0px 5px 5px -5px;
+  color: black;
+  display: grid;
+  font-size: 14px;
+  gap: 12px;
+  grid-template-columns: auto auto auto;
+  opacity: 1;
+  padding: 8px 12px;
+  position: fixed;
+  right: 24px;
+  top: 100px;
+  transition: all 0.6s ease-in-out;
+}
+@media screen and (max-width: 768px) {
+  .b-pet-generator-page.b-page .breed_notification {
+    position: static;
+  }
+}
+.b-pet-generator-page.b-page .breed_notification.h-exit {
+  opacity: 0;
+  right: -300px;
+}
+.b-pet-generator-page.b-page .breed_notification .notification_icon {
+  height: 24px;
+  width: 24px;
+}
 .b-pet-generator-page.b-page .breed_grid {
   display: grid;
-  grid-template-columns: 512px auto;
+  grid-template-columns: auto auto;
   gap: 48px;
   margin-top: 48px;
 }
 @media screen and (max-width: 768px) {
   .b-pet-generator-page.b-page .breed_grid {
     grid-template-columns: none;
-    grid-template-rows: 256px auto;
   }
 }
 .b-pet-generator-page.b-page .breed_grid .breed_image {
   align-items: center;
-  display: flex;
+  display: grid;
   height: 100%;
+  grid-template-rows: auto auto;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: all 0.4s ease-in-out;
 }
 @media screen and (max-width: 768px) {
   .b-pet-generator-page.b-page .breed_grid .breed_image {
     justify-content: center;
   }
 }
-.b-pet-generator-page.b-page .breed_grid .breed_image img {
-  border-radius: 20px;
-  height: 512px;
-  width: 512px;
+.b-pet-generator-page.b-page .breed_grid .breed_image.m-loaded {
+  opacity: 1;
+  transform: scale(1);
+}
+.b-pet-generator-page.b-page .breed_grid .breed_image.m-loaded:hover, .b-pet-generator-page.b-page .breed_grid .breed_image.m-loaded:active {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+.b-pet-generator-page.b-page .breed_grid .breed_image .save_button {
+  align-items: center;
+  background-color: white;
+  border-radius: 0 20px 0 20px;
+  display: flex;
+  height: 60px;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+}
+.b-pet-generator-page.b-page .breed_grid .breed_image .save_button .save_icon {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+  position: absolute;
+  width: 36px;
+}
+.b-pet-generator-page.b-page .breed_grid .breed_image .save_button .save_icon svg {
+  fill: white;
+  transition: all 0.2s ease-in-out;
+}
+.b-pet-generator-page.b-page .breed_grid .breed_image .save_button .save_icon.m-saved svg {
+  fill: aquamarine;
+}
+.b-pet-generator-page.b-page .breed_grid .breed_image .save_button .save_icon.m-expanded svg {
+  scale: 1.2;
+  transform: translateY(-10px);
+}
+.b-pet-generator-page.b-page .breed_grid .breed_image .dog_image {
+  border-radius: 20px 20px 0 0;
+  height: 480px;
+  width: 480px;
 }
 @media screen and (max-width: 768px) {
-  .b-pet-generator-page.b-page .breed_grid .breed_image img {
-    height: 256px;
-    width: 256px;
+  .b-pet-generator-page.b-page .breed_grid .breed_image .dog_image {
+    height: auto;
+    width: 100%;
   }
+}
+.b-pet-generator-page.b-page .breed_grid .breed_image .breed_description {
+  align-items: center;
+  background-color: white;
+  border-radius: 0 0 20px 20px;
+  display: flex;
+  height: auto;
+  padding: 12px 18px;
+}
+.b-pet-generator-page.b-page .breed_grid .breed_image .breed_description .decoration {
+  background: linear-gradient(0deg, rgb(0, 173, 158) 0%, rgb(0, 212, 255) 100%);
+  border-radius: 20px;
+  height: 40px;
+  margin-right: 12px;
+  width: 12px;
+}
+.b-pet-generator-page.b-page .breed_grid .breed_image .breed_description .breed_wrapper {
+  width: -webkit-fill-available;
+}
+.b-pet-generator-page.b-page .breed_grid .breed_image .breed_description .breed_wrapper .breed_name,
+.b-pet-generator-page.b-page .breed_grid .breed_image .breed_description .breed_wrapper .extra_text {
+  color: black;
+  font-size: 16px;
+  text-transform: capitalize;
+}
+@media screen and (max-width: 768px) {
+  .b-pet-generator-page.b-page .breed_grid .breed_image .breed_description .breed_wrapper .breed_name,
+  .b-pet-generator-page.b-page .breed_grid .breed_image .breed_description .breed_wrapper .extra_text {
+    font-size: 14px;
+  }
+}
+.b-pet-generator-page.b-page .breed_grid .breed_image .breed_description .breed_wrapper .extra_text {
+  color: gray;
+  font-size: 14px;
+}
+@media screen and (max-width: 768px) {
+  .b-pet-generator-page.b-page .breed_grid .breed_image .breed_description .breed_wrapper .extra_text {
+    font-size: 12px;
+  }
+}
+.b-pet-generator-page.b-page .breed_grid .breed_image .breed_description .breed_logo {
+  width: 48px;
 }
 .b-pet-generator-page.b-page .breed_grid .breeds_list {
   background-color: rgba(255, 255, 255, 0.2);
@@ -840,23 +955,26 @@
   grid-template-rows: none;
   margin: 24px 0;
   padding: 16px 12px;
+  transition: all 0.4s ease-in-out;
   width: -webkit-fill-available;
-}
-.b-pet-generator-page.b-page .error_notification .error_icon,
-.b-pet-generator-page.b-page .error_notification .close_icon {
-  height: 16px;
-  width: 16px;
-}
-.b-pet-generator-page.b-page .error_notification .close_icon {
-  position: relative;
-  top: -8px;
-}
-.b-pet-generator-page.b-page .error_notification .close_icon:hover {
-  cursor: pointer;
-  opacity: 0.4;
 }
 .b-pet-generator-page.b-page .error_notification.h-hidden {
   display: none;
+}
+
+.error_icon,
+.close_icon {
+  height: 16px;
+  width: 16px;
+}
+
+.close_icon {
+  position: relative;
+  top: -8px;
+}
+.close_icon:hover {
+  cursor: pointer;
+  opacity: 0.4;
 }
 
 .overlay {
@@ -1152,10 +1270,23 @@ main {
 }
 
 .h-invisible {
-  position: fixed;
   left: 100vw;
+  display: none;
+  position: absolute;
+}
+
+.h-faded {
+  opacity: 0;
+}
+
+.h-exit {
+  right: 0;
+}
+
+.h-enter {
+  right: 24px;
 }
 
 .h-hidden {
-  display: none;
+  display: none !important;
 }/*# sourceMappingURL=main.css.map */

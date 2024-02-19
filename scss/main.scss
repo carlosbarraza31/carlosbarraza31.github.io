@@ -570,7 +570,7 @@
     &.b-page {
         section {
             height: unset;
-            margin-top: 85px;
+            margin: 85px 100px 50px;
             scroll-snap-align: unset;
 
             @media screen and (max-width: 768px) {
@@ -578,34 +578,166 @@
             }
         }
 
+        .breed_notification {
+            align-items: center;
+            background-color: white;
+            border-left: 5px solid green;
+            border-radius: 5px;
+            box-shadow: rgb(38, 57, 77) 0px 5px 5px -5px;
+            color: black;
+            display: grid;
+            font-size: 14px;
+            gap: 12px;
+            grid-template-columns: auto auto auto;
+            opacity: 1;
+            padding: 8px 12px;
+            position: fixed;
+            right: 24px;
+            top: 100px;
+            transition: all 0.6s ease-in-out;
+
+            @media screen and (max-width: 768px) {
+                position: static;
+            }
+
+            &.h-exit {
+                opacity: 0;
+                right: -300px;
+            }
+
+            .notification_icon {
+                height: 24px;
+                width: 24px;
+            }
+        }
+
         .breed_grid {
             display: grid;
-            grid-template-columns: 512px auto;
+            grid-template-columns: auto auto;
             gap: 48px;
             margin-top: 48px;
 
             @media screen and (max-width: 768px) {
                 grid-template-columns: none;
-                grid-template-rows: 256px auto;
             }
 
             .breed_image {
                 align-items: center;
-                display: flex;
+                display: grid;
                 height: 100%;
+                grid-template-rows: auto auto;
+                opacity: 0;
+                transform: scale(0.6);
+                transition: all 0.4s ease-in-out;
 
                 @media screen and (max-width: 768px) {
                     justify-content: center;
                 }
 
-                img {
-                    border-radius: 20px;
-                    height: 512px;
-                    width: 512px;
+                &.m-loaded {
+                    opacity: 1;
+                    transform: scale(1);
+
+                    &:hover,
+                    &:active {
+                        cursor: pointer;
+                        transform: scale(1.1);
+                    }
+                }
+
+                .save_button {
+                    align-items: center;
+                    background-color: white;
+                    border-radius: 0 20px 0 20px;
+                    display: flex;
+                    height: 60px;
+                    justify-content: center;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: 60px;
+
+                    .save_icon {
+                        align-items: center;
+                        display: flex;
+                        justify-content: center;
+                        padding: 8px;
+                        position: absolute;
+                        width: 36px;
+
+                        svg {
+                            fill: white;
+                            transition: all 0.2s ease-in-out;
+                        }
+
+                        &.m-saved {
+                            svg {
+                                fill: aquamarine;
+                            }
+                        }
+
+                        &.m-expanded {
+                            svg {
+                                scale: 1.2;
+                                transform: translateY(-10px);
+                            }
+                        }
+                    }
+                }
+
+                .dog_image {
+                    border-radius: 20px 20px 0 0;
+                    height: 480px;
+                    width: 480px;
 
                     @media screen and (max-width: 768px) {
-                        height: 256px;
-                        width: 256px;
+                        height: auto;
+                        width: 100%;
+                    }
+                }
+
+                .breed_description {
+                    align-items: center;
+                    background-color: white;
+                    border-radius: 0 0 20px 20px;
+                    display: flex;
+                    height: auto;
+                    padding: 12px 18px;
+
+                    .decoration {
+                        background: linear-gradient(0deg, rgba(0,173,158,1) 0%, rgba(0,212,255,1) 100%);
+                        border-radius: 20px;
+                        height: 40px;
+                        margin-right: 12px;
+                        width: 12px;
+                    }
+
+                    .breed_wrapper {
+                        width: -webkit-fill-available;
+
+                        .breed_name,
+                        .extra_text {
+                            color: black;
+                            font-size: 16px;
+                            text-transform: capitalize;
+
+                            @media screen and (max-width: 768px) {
+                                font-size: 14px;
+                            }
+                        }
+
+                        .extra_text {
+                            color: gray;
+                            font-size: 14px;
+
+                            @media screen and (max-width: 768px) {
+                                font-size: 12px;
+                            }
+                        }
+                    }
+
+                    .breed_logo {
+                        width: 48px;
                     }
                 }
             }
@@ -661,29 +793,30 @@
             grid-template-rows: none;
             margin: 24px 0;
             padding: 16px 12px;
+            transition: all 0.4s ease-in-out;
             width: -webkit-fill-available;
-
-            .error_icon,
-            .close_icon {
-                height: 16px;
-                width: 16px;
-            }
-
-            .close_icon {
-                position: relative;
-                top: -8px;
-
-                &:hover {
-                    cursor: pointer;
-                    opacity: 0.4;
-                }
-            }
 
             &.h-hidden {
                 display: none;
             }
         }
 
+    }
+}
+
+.error_icon,
+.close_icon {
+    height: 16px;
+    width: 16px;
+}
+
+.close_icon {
+    position: relative;
+    top: -8px;
+
+    &:hover {
+        cursor: pointer;
+        opacity: 0.4;
     }
 }
 
@@ -1024,10 +1157,23 @@ main {
 }
 
 .h-invisible {
-    position: fixed;
     left: 100vw;
+    display: none;
+    position: absolute;
+}
+
+.h-faded {
+    opacity: 0;
+}
+
+.h-exit {
+    right: 0;
+}
+
+.h-enter {
+    right: 24px;
 }
 
 .h-hidden {
-    display: none;
+    display: none !important;
 }
