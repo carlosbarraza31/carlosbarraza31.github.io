@@ -660,6 +660,10 @@
                                 </div>
                                 <div className="breeds_list">
                                     {data ? data.map(breed => <button className="breed_item" data-js-breed={breed} key={breed} onClick={showBreedImage}>{breed}</button>) : null}
+                                    <div class="refresh_button" onClick={fetchData}>
+                                        <img class="refresh_icon" src="img/refresh_icon.svg"></img>
+                                        <div class="refresh_text">Refresh breeds</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

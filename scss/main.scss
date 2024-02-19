@@ -623,6 +623,9 @@
 
             .breed_image {
                 align-items: center;
+                background-color: #ffffff30;
+                border-radius: 20px;
+                box-shadow: 10px 10px 20px -20px rgba(0,0,0,0.49);
                 display: grid;
                 height: 100%;
                 grid-template-rows: auto auto;
@@ -632,6 +635,11 @@
 
                 @media screen and (max-width: 768px) {
                     justify-content: center;
+                }
+
+                &:hover {
+                    background-color: #ffffff60;
+                    box-shadow: 10px 10px 17px -10px rgba(0,0,0,0.49);
                 }
 
                 &.m-loaded {
@@ -747,10 +755,43 @@
                 border-radius: 10px;
                 font-size: 16px;
                 margin-top: 48px;
+                padding-bottom: 48px;
+                position: relative;
 
                 @media screen and (max-width: 768px) {
                     margin-top: 24px;
                 }
+
+                .refresh_button {
+                    align-items: center;
+                    background-color: white;
+                    border-radius: 15px;
+                    box-shadow: 10px 10px 20px -20px rgba(0,0,0,0.49);
+                    display: flex;
+                    gap: 8px;
+                    padding: 8px;
+                    position: absolute;
+                    right: 12px;
+                    transition: all 0.2s ease-in-out;
+                    width: fit-content;
+
+                    &:hover {
+                        box-shadow: 10px 10px 17px -10px rgba(0,0,0,0.49);
+                        cursor: pointer;
+                        transform: scale(1.1);
+                    }
+
+                    .refresh_icon {
+                        height: 20px;
+                        width: 20px;
+                    }
+
+                    .refresh_text {
+                        color: black;
+                        font-size: 12px;
+                    }
+                }
+
 
                 .breeds_subtitle {
                     margin-bottom: 24px;
