@@ -61,6 +61,30 @@
     transform: rotate(40deg);
   }
 }
+@keyframes topBubbles {
+  0% {
+    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
+  }
+  50% {
+    background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 90% 30%;
+  }
+  100% {
+    background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+}
+@keyframes bottomBubbles {
+  0% {
+    background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%, 70% -10%, 70% 0%;
+  }
+  50% {
+    background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 105% 0%;
+  }
+  100% {
+    background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+}
 .b-main,
 .b-about,
 .b-pet-page,
@@ -819,19 +843,23 @@
     justify-content: center;
   }
 }
-.b-pet-generator-page.b-page .breed_grid .breed_image:hover {
-  box-shadow: 10px 10px 17px -10px rgba(0, 0, 0, 0.49);
-}
-.b-pet-generator-page.b-page .breed_grid .breed_image:hover .dog_image {
-  background-color: rgba(255, 255, 255, 0.3764705882);
+@media screen and (min-width: 769px) {
+  .b-pet-generator-page.b-page .breed_grid .breed_image:hover {
+    box-shadow: 10px 10px 17px -10px rgba(0, 0, 0, 0.49);
+  }
+  .b-pet-generator-page.b-page .breed_grid .breed_image:hover .dog_image {
+    background-color: rgba(255, 255, 255, 0.3764705882);
+  }
 }
 .b-pet-generator-page.b-page .breed_grid .breed_image.m-loaded {
   opacity: 1;
   transform: scale(1);
 }
-.b-pet-generator-page.b-page .breed_grid .breed_image.m-loaded:hover, .b-pet-generator-page.b-page .breed_grid .breed_image.m-loaded:active {
-  cursor: pointer;
-  transform: scale(1.1);
+@media screen and (min-width: 769px) {
+  .b-pet-generator-page.b-page .breed_grid .breed_image.m-loaded:hover, .b-pet-generator-page.b-page .breed_grid .breed_image.m-loaded:active {
+    cursor: pointer;
+    transform: scale(1.1);
+  }
 }
 .b-pet-generator-page.b-page .breed_grid .breed_image .save_button {
   align-items: center;
@@ -924,25 +952,31 @@
   border-radius: 10px;
   font-size: 16px;
   margin-top: 48px;
-  padding-bottom: 48px;
+  padding-bottom: 90px;
   position: relative;
+  transition: all 0.2s ease-in-out;
 }
 @media screen and (max-width: 768px) {
   .b-pet-generator-page.b-page .breed_grid .breeds_list {
     margin-top: 24px;
   }
 }
+.b-pet-generator-page.b-page .breed_grid .breeds_list.m-refresh {
+  opacity: 0.2;
+}
 .b-pet-generator-page.b-page .breed_grid .breeds_list .refresh_button {
   align-items: center;
   background-color: white;
   border-radius: 15px;
+  bottom: 12px;
   box-shadow: 10px 10px 20px -20px rgba(0, 0, 0, 0.49);
+  color: black;
   display: flex;
   gap: 8px;
   padding: 8px;
   position: absolute;
   right: 12px;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.1s ease-in-out;
   width: fit-content;
 }
 .b-pet-generator-page.b-page .breed_grid .breeds_list .refresh_button:hover {
@@ -950,13 +984,39 @@
   cursor: pointer;
   transform: scale(1.1);
 }
+.b-pet-generator-page.b-page .breed_grid .breeds_list .refresh_button:active {
+  background-color: #d55ce7;
+  color: white;
+  transform: scale(1.2);
+}
 .b-pet-generator-page.b-page .breed_grid .breeds_list .refresh_button .refresh_icon {
   height: 20px;
   width: 20px;
 }
 .b-pet-generator-page.b-page .breed_grid .breeds_list .refresh_button .refresh_text {
-  color: black;
   font-size: 12px;
+}
+.b-pet-generator-page.b-page .breed_grid .breeds_list .refresh_button.m-animate::before, .b-pet-generator-page.b-page .breed_grid .breeds_list .refresh_button.m-animate::after {
+  position: absolute;
+  content: "";
+  width: 150%;
+  left: 50%;
+  height: 100%;
+  transform: translateX(-50%);
+  z-index: -1000;
+  background-repeat: no-repeat;
+}
+.b-pet-generator-page.b-page .breed_grid .breeds_list .refresh_button.m-animate::before {
+  animation: topBubbles ease-in-out 0.6s forwards 1;
+  background-image: radial-gradient(circle, #7d2ae8 20%, transparent 20%), radial-gradient(circle, transparent 20%, #7d2ae8 20%, transparent 30%), radial-gradient(circle, #7d2ae8 20%, transparent 20%), radial-gradient(circle, #7d2ae8 20%, transparent 20%), radial-gradient(circle, transparent 10%, #7d2ae8 15%, transparent 20%), radial-gradient(circle, #7d2ae8 20%, transparent 20%), radial-gradient(circle, #7d2ae8 20%, transparent 20%), radial-gradient(circle, #7d2ae8 20%, transparent 20%), radial-gradient(circle, #7d2ae8 20%, transparent 20%);
+  background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%;
+  top: -70%;
+}
+.b-pet-generator-page.b-page .breed_grid .breeds_list .refresh_button.m-animate::after {
+  bottom: -70%;
+  background-image: radial-gradient(circle, #7d2ae8 20%, transparent 20%), radial-gradient(circle, #7d2ae8 20%, transparent 20%), radial-gradient(circle, transparent 10%, #7d2ae8 15%, transparent 20%), radial-gradient(circle, #7d2ae8 20%, transparent 20%), radial-gradient(circle, #7d2ae8 20%, transparent 20%), radial-gradient(circle, #7d2ae8 20%, transparent 20%), radial-gradient(circle, #7d2ae8 20%, transparent 20%);
+  background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+  animation: bottomBubbles ease-in-out 0.6s forwards 1;
 }
 .b-pet-generator-page.b-page .breed_grid .breeds_list .breeds_subtitle {
   margin-bottom: 24px;
@@ -971,14 +1031,21 @@
   font-family: "Quicksand", sans-serif;
   margin: 12px 8px;
   padding: 12px 8px;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
-.b-pet-generator-page.b-page .breed_grid .breeds_list .breed_item:hover {
-  box-shadow: rgba(0, 0, 0, 0.3) 0 4px 12px;
-  box-sizing: border-box;
-  color: gray;
-  cursor: pointer;
-  transform: translateY(-5px);
+@media screen and (min-width: 769px) {
+  .b-pet-generator-page.b-page .breed_grid .breeds_list .breed_item:hover {
+    box-shadow: rgba(0, 0, 0, 0.3) 0 4px 12px;
+    box-sizing: border-box;
+    color: gray;
+    cursor: pointer;
+    transform: translateY(-5px);
+  }
+}
+.b-pet-generator-page.b-page .breed_grid .breeds_list .breed_item:active {
+  background-color: #7fbdd3;
+  color: white;
+  transform: scale(1.2);
 }
 .b-pet-generator-page.b-page .error_notification {
   align-items: center;
@@ -1011,7 +1078,20 @@
   position: relative;
   top: -8px;
 }
-.close_icon:hover {
+.close_icon_contact {
+  background-color: lightblue;
+  border-radius: 20px 20px 0 0;
+  top: unset;
+  width: 100%;
+}
+.close_icon_svg {
+  height: 16px;
+  left: 8px;
+  position: relative;
+  top: 8px;
+  width: 16px;
+}
+.close_icon_svg:hover {
   cursor: pointer;
   opacity: 0.4;
 }
@@ -1309,9 +1389,7 @@ main {
 }
 
 .h-invisible {
-  left: 100vw;
   display: none;
-  position: absolute;
 }
 
 .h-faded {

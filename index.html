@@ -17,10 +17,13 @@
     <div id="root"></div>
     <script type="text/babel">
 
+        const SavedBreedsContext = React.createContext(null);
+
         function FampekPetsOutline() {
             const [isContactExpanded, setContactExpanded] = React.useState(false);
             const [shownPage, setShownPage] = React.useState('home');
             const [pagePet, setPagePet] = React.useState('none');
+            const [savedBreeds, setSavedBreeds] = React.useState([]);
 
             function handleContactClick() {
                 setContactExpanded(!isContactExpanded);
@@ -41,9 +44,11 @@
 
             return (
                 <>
-                    <Header handleContactClick={handleContactClick} handleShowPage={handleShowPage}/>
-                    <FampekPets isContactExpanded={isContactExpanded} handleClickOverlay={handleClickOverlay} shownPage={shownPage} pagePet={pagePet}/>
-                    <Footer/>
+                    <SavedBreedsContext.Provider value={{savedBreeds, setSavedBreeds}}>
+                        <Header handleContactClick={handleContactClick} handleShowPage={handleShowPage}/>
+                        <FampekPets isContactExpanded={isContactExpanded} handleClickOverlay={handleClickOverlay} shownPage={shownPage} pagePet={pagePet}/>
+                        <Footer/>
+                    </SavedBreedsContext.Provider>
                 </>
             );
         }
@@ -174,7 +179,6 @@
                 setScrollTop(event.currentTarget.scrollTop);
                 setScrolling(scrollTop > 1);
                 setGridVisible(isElementVisible(petGrid));
-                console.log('scrollTop: ' + scrollTop + ', pageHeight: ' + pageHeight);
             }
 
             function handleClick(event) {
@@ -533,17 +537,21 @@
 
             const [data, setData] = React.useState([]);
             const [isLoaded, setLoaded] = React.useState(true);
-            const [isSaved, setSaved] = React.useState(false);
-            const [isSavedExpanded, setSavedExpanded] = React.useState(false);
             const [isSaveButtonHidden, setSaveButtonHidden] = React.useState(true);
             const [dogImageSource, setDogImageSource] = React.useState('img/dog_placeholder.svg');
             const [isFocusCard, setFocusCard] = React.useState(false);
             const [isSelectedBreed, setSelectedBreed] = React.useState('Choose a breed!');
             const [isNotificationAppear, setNotificationAppear] = React.useState(false);
+            const [isSaved, setSaved] = React.useState(false);
+            const [isSavedExpanded, setSavedExpanded] = React.useState(false);
+
+            const {savedBreeds, setSavedBreeds} = React.useContext(SavedBreedsContext);
 
             const dogBreedsUrl = "https://dog.ceo/api/breeds/list/all";
             const errorNotifRef = React.useRef(null);
             const errorNotifTextRef = React.useRef(null);
+            const breedsListRef = React.useRef(null);
+            const refreshButtonRef = React.useRef(null);
 
             function getRandomIntInclusive(min, max) {
                 min = Math.ceil(min);
@@ -569,6 +577,7 @@
             const showBreedImage = async(event) => {
                 const selectedBreed = event.currentTarget.getAttribute('data-js-breed');
                 const breedUrl = `https://dog.ceo/api/breed/${selectedBreed}/images`;
+                setNotificationAppear(false);
                 setLoaded(false);
 
                 try {
@@ -587,8 +596,8 @@
 
                     setFocusCard(true);
                     setSelectedBreed(selectedBreed);
-
                     setSaveButtonHidden(false);
+                    setSaved(savedBreeds.includes(selectedBreed));
 
                     if (!errorNotifRef.current.classList.contains('h-hidden')) {
                         handleNotificationClose(errorNotifRef);
@@ -612,30 +621,55 @@
                     const response = await fetch(dogBreedsUrl);
                     const result = await response.json();
                     let randomResult = [];
+                    setNotificationAppear(false);
 
                     Object.keys(result.message).forEach(breed => {
                         let randNum = Math.random();
                         if (randNum > 0.8) {
                             randomResult.push(breed);
                         }
-                    })
-                    setData(randomResult);
+                    });
+
+                    setTimeout(() => {
+                        setData(randomResult);
+                    }, 400);
+
                 } catch (e) {
                     errorNotifRef.current.classList.remove('h-hidden');
-                    errorNotifTextRef.current.innerText = error;
+                    errorNotifTextRef.current.innerText = e;
                 }
             }
 
-            function handleSaveBreed() {
+            function handleSaveClick() {
+                setNotificationAppear(false);
                 setSaved(!isSaved);
                 setSavedExpanded(true);
-                console.log(!isSaved);
-                setNotificationAppear(!isSaved);
 
                 setTimeout(() => {
                     setSavedExpanded(false);
                 }, 200);
 
+                if (isSaved) {
+                    setSavedBreeds(savedBreeds.filter(breed => breed !== isSelectedBreed));
+                } else {
+                    setSavedBreeds([...savedBreeds, isSelectedBreed]);
+                    setNotificationAppear(true);
+                }
+            }
+
+            function handleRefreshClick() {
+                refreshButtonRef.current.classList.add('m-animate');
+                breedsListRef.current.classList.add('m-refresh');
+
+                setTimeout(() => {
+                    refreshButtonRef.current.classList.remove('m-animate');
+                }, 600);
+
+                setTimeout(() => {
+                    breedsListRef.current.classList.remove('m-refresh');
+                }, 200);
+
+                fetchData();
             }
 
             return (
@@ -654,16 +688,16 @@
                         </div>
                         <BreedNotification isAppear={isNotificationAppear}/>
                         <div className="breed_grid">
-                            <BreedCard isSelectedBreed={isSelectedBreed} isLoaded={isLoaded} isSaved={isSaved} isSavedExpanded={isSavedExpanded} handleSaveBreed={handleSaveBreed} isSaveButtonHidden={isSaveButtonHidden} dogImageSource={dogImageSource} isFocusCard={isFocusCard}/>
+                            <BreedCard isSelectedBreed={isSelectedBreed} isLoaded={isLoaded} isSaved={isSaved} isSavedExpanded={isSavedExpanded} handleSaveClick={handleSaveClick} isSaveButtonHidden={isSaveButtonHidden} dogImageSource={dogImageSource} isFocusCard={isFocusCard}/>
                             <div className="breeds_container">
                                 <div className="b-pet-generator-page_subtitle breeds_subtitle">
                                     Choose a breed!
                                 </div>
-                                <div className="breeds_list">
+                                <div className="breeds_list" ref={breedsListRef}>
                                     {data ? data.map(breed => <button className="breed_item" data-js-breed={breed} key={breed} onClick={showBreedImage}>{breed}</button>) : null}
-                                    <div class="refresh_button" onClick={fetchData}>
-                                        <img class="refresh_icon" src="img/refresh_icon.svg"></img>
-                                        <div class="refresh_text">Refresh breeds</div>
+                                    <div className="refresh_button" onClick={handleRefreshClick} ref={refreshButtonRef}>
+                                        <img className="refresh_icon" src="img/refresh_icon.svg"></img>
+                                        <div className="refresh_text">Refresh breeds</div>
                                     </div>
                                 </div>
                             </div>
@@ -675,13 +709,13 @@
 
         function BreedCard(props) {
             let isLoaded = props.isLoaded;
-            let isSaved = props.isSaved;
-            let isSavedExpanded = props.isSavedExpanded;
-            let handleSaveBreed = props.handleSaveBreed;
+            let handleSaveClick = props.handleSaveClick;
             let isSaveButtonHidden = props.isSaveButtonHidden;
             let isFocusCard = props.isFocusCard;
             let isSelectedBreed = props.isSelectedBreed;
             let dogImageSource = props.dogImageSource;
+            let isSaved = props.isSaved;
+            let isSavedExpanded = props.isSavedExpanded;
 
             const breedCardRef = React.useRef(null);
             const breedNameRef = React.useRef(null);
@@ -695,10 +729,14 @@
                 }
             }
 
+            function handleSaveBreed() {
+                
+            }
+
             return (
                 <div className={`breed_image ${isLoaded ? 'm-loaded' : ''}`} ref={breedCardRef}>
                     <div className={`save_button ${isSaveButtonHidden ? 'h-hidden' : ''}`}>
-                        <div className={`save_icon ${isSaved ? 'm-saved' : ''} ${isSavedExpanded ? 'm-expanded' : ''}`} onClick={handleSaveBreed}>
+                        <div className={`save_icon ${isSaved ? 'm-saved' : ''} ${isSavedExpanded ? 'm-expanded' : ''}`} onClick={handleSaveClick}>
                             <svg width="36px" height="36px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M5 6.2C5 5.07989 5 4.51984 5.21799 4.09202C5.40973 3.71569 5.71569 3.40973 6.09202 3.21799C6.51984 3 7.07989 3 8.2 3H15.8C16.9201 3 17.4802 3 17.908 3.21799C18.2843 3.40973 18.5903 3.71569 18.782 4.09202C19 4.51984 19 5.07989 19 6.2V21L12 16L5 21V6.2Z" stroke="#7FFFD4" strokeWidth="2" strokeLinejoin="round"/>
                             </svg>
@@ -763,7 +801,7 @@
 
             return (
                 <dialog className={`contact_sidebar ${isContactExpanded ? 'm-expanded' : ''}`}open>
-                    <div className="close_icon" onClick={handleClickOverlay}>
+                    <div className="close_icon_contact" onClick={handleClickOverlay}>
                         <img className="close_icon_svg" src="img/close_icon.svg" alt="close_icon"></img>
                     </div>
                     <div className="title">
