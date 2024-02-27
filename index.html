@@ -76,6 +76,8 @@
             let handleShowPage = props.handleShowPage;
             const [togglePetList, setTogglePetList] = React.useState(false);
 
+            const {savedBreeds, setSavedBreeds} = React.useContext(SavedBreedsContext);
+
             function handleRefresh() {
                 window.location.reload(false);
             }
@@ -111,6 +113,10 @@
                                 </a>
                             </li>
                             <li><a className="m-link" href="#" data-js-to-page="about" onClick={handleShowPage}>About</a></li>
+                            <li><a className={`m-link saved_breeds ${savedBreeds.length > 0 ? 'm-saved' : ''}`} href="#" data-js-to-page="saved_breeds" onClick={handleShowPage}>
+                                    <img className="saved_breeds_logo" src="img/saved_breeds.svg"></img>
+                                </a>
+                            </li>
                         </ul>
                     </nav>
                     <a className="cta" href="#" onClick={handleContactClick}><button data-js-contact-button>Contact</button></a>
@@ -727,10 +733,6 @@
                 if (extraTextRef.current.innerText === '') {
                     extraTextRef.current.innerText = 'Dog Breed';
                 }
-            }
-
-            function handleSaveBreed() {
-                
             }
 
             return (
