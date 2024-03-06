@@ -65,6 +65,7 @@
                     <AboutPage shownPage={shownPage}/>
                     <PetPage shownPage={shownPage} pagePet={pagePet}/>
                     <PetGeneratorPage shownPage={shownPage}/>
+                    <SavedBreedsPage shownPage={shownPage}/>
                     <Overlay isContactExpanded={isContactExpanded} handleClickOverlay={handleClickOverlay}/>
                     <ContactSidebar isContactExpanded={isContactExpanded} handleClickOverlay={handleClickOverlay}/>
                 </main>
@@ -75,8 +76,9 @@
             let handleContactClick = props.handleContactClick;
             let handleShowPage = props.handleShowPage;
             const [togglePetList, setTogglePetList] = React.useState(false);
-
             const {savedBreeds, setSavedBreeds} = React.useContext(SavedBreedsContext);
+
+            const savedBreedsRef = React.useRef(null);
 
             function handleRefresh() {
                 window.location.reload(false);
@@ -84,6 +86,12 @@
 
             function handleTogglePetList() {
                 setTogglePetList(!togglePetList);
+            }
+
+            if (savedBreeds.length > 0) {
+                var styles = window.getComputedStyle(savedBreedsRef.current,':after')
+                var content = styles['content'];
+                content = savedBreeds.length;
             }
 
             return (
@@ -113,8 +121,9 @@
                                 </a>
                             </li>
                             <li><a className="m-link" href="#" data-js-to-page="about" onClick={handleShowPage}>About</a></li>
-                            <li><a className={`m-link saved_breeds ${savedBreeds.length > 0 ? 'm-saved' : ''}`} href="#" data-js-to-page="saved_breeds" onClick={handleShowPage}>
-                                    <img className="saved_breeds_logo" src="img/saved_breeds.svg"></img>
+                            <li><a className={`m-link saved_breeds ${savedBreeds.length > 0 ? 'm-saved' : ''}`} href="#" data-js-to-page="savedBreeds" onClick={handleShowPage}>
+                                    <img className="saved_breeds_logo" src="img/saved_breeds.svg" ref={savedBreedsRef}></img>
+                                    <div className="saved_breeds_notification">{savedBreeds.length}</div>
                                 </a>
                             </li>
                         </ul>
@@ -123,6 +132,60 @@
                 </header>
             );
         }
+
+        function SavedBreedsPage(props) {
+            let shownPage = props.shownPage;
+            let pageName = 'savedBreeds';
+
+            const {savedBreeds, setSavedBreeds} = React.useContext(SavedBreedsContext);
+
+            const savedBreedsCards = savedBreeds.map(savedBreed =>
+                <SavedBreedCard key={savedBreed.name} breed={savedBreed.name} url={savedBreed.url}/>
+            )
+
+            return (
+                <div className={`b-saved_breeds b-page ${pageName === shownPage ? '' : 'h-invisible'}`} data-js-page-name="savedBreeds">
+                    <section className="section section_1">
+                        <svg className="icon" width="80px" height="80px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12.89 5.87988H5.10999C3.39999 5.87988 2 7.27987 2 8.98987V20.3499C2 21.7999 3.04 22.4199 4.31 21.7099L8.23999 19.5199C8.65999 19.2899 9.34 19.2899 9.75 19.5199L13.68 21.7099C14.95 22.4199 15.99 21.7999 15.99 20.3499V8.98987C16 7.27987 14.6 5.87988 12.89 5.87988Z" stroke="#fffaf0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M16 8.98987V20.3499C16 21.7999 14.96 22.4099 13.69 21.7099L9.76001 19.5199C9.34001 19.2899 8.65999 19.2899 8.23999 19.5199L4.31 21.7099C3.04 22.4099 2 21.7999 2 20.3499V8.98987C2 7.27987 3.39999 5.87988 5.10999 5.87988H12.89C14.6 5.87988 16 7.27987 16 8.98987Z" stroke="#fffaf0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M22 5.10999V16.47C22 17.92 20.96 18.53 19.69 17.83L16 15.77V8.98999C16 7.27999 14.6 5.88 12.89 5.88H8V5.10999C8 3.39999 9.39999 2 11.11 2H18.89C20.6 2 22 3.39999 22 5.10999Z" stroke="#fffaf0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                        <div className="b-main_title">
+                            Saved Breeds
+                        </div>
+                        <div className="b-main_subtitle">
+                            Here are all your saved breeds.
+                        </div>
+                        <div className="b-saved_breeds_container">
+                            {savedBreedsCards.length > 0 ? savedBreedsCards : <div className="b-no_breeds"><i>You currently have no saved breeds.</i></div>}
+                        </div>
+                    </section>
+                </div>
+            );
+        }
+
+        function SavedBreedCard(props) {
+            let breedName = props.breed;
+            let url = props.url;
+
+            const {savedBreeds, setSavedBreeds} = React.useContext(SavedBreedsContext);
+
+            function handleBreedDelete() {
+                setSavedBreeds(savedBreeds.filter(breed => breed.name !== breedName));
+            }
+
+            return (
+                <div className="b-breed_card">
+                    <img className="b-image" src={url}></img>
+                    <div className="b-breed">
+                        {breedName}
+                    </div>
+                    <img className="delete_icon" src="img/delete_icon.svg" onClick={handleBreedDelete}></img>
+                </div>
+            )
+        }
+
         function Homepage(props) {
             const [isGridVisible, setGridVisible] = React.useState(false);
             const [showGallery, setShowGallery] = React.useState(false);
@@ -603,7 +666,7 @@
                     setFocusCard(true);
                     setSelectedBreed(selectedBreed);
                     setSaveButtonHidden(false);
-                    setSaved(savedBreeds.includes(selectedBreed));
+                    setSaved(savedBreeds.some(breed => breed.name === selectedBreed));
 
                     if (!errorNotifRef.current.classList.contains('h-hidden')) {
                         handleNotificationClose(errorNotifRef);
@@ -646,7 +709,7 @@
                 }
             }
 
-            function handleSaveClick() {
+            function handleSaveClick(dogImageSource) {
                 setNotificationAppear(false);
                 setSaved(!isSaved);
                 setSavedExpanded(true);
@@ -656,9 +719,13 @@
                 }, 200);
 
                 if (isSaved) {
-                    setSavedBreeds(savedBreeds.filter(breed => breed !== isSelectedBreed));
+                    setSavedBreeds(savedBreeds.filter(breed => breed.name !== isSelectedBreed));
                 } else {
-                    setSavedBreeds([...savedBreeds, isSelectedBreed]);
+                    var newBreed = {
+                        name: isSelectedBreed,
+                        url: dogImageSource
+                    }
+                    setSavedBreeds([...savedBreeds, newBreed]);
                     setNotificationAppear(true);
                 }
             }
@@ -738,7 +805,7 @@
             return (
                 <div className={`breed_image ${isLoaded ? 'm-loaded' : ''}`} ref={breedCardRef}>
                     <div className={`save_button ${isSaveButtonHidden ? 'h-hidden' : ''}`}>
-                        <div className={`save_icon ${isSaved ? 'm-saved' : ''} ${isSavedExpanded ? 'm-expanded' : ''}`} onClick={handleSaveClick}>
+                        <div className={`save_icon ${isSaved ? 'm-saved' : ''} ${isSavedExpanded ? 'm-expanded' : ''}`} onClick={() => handleSaveClick(dogImageSource)}>
                             <svg width="36px" height="36px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M5 6.2C5 5.07989 5 4.51984 5.21799 4.09202C5.40973 3.71569 5.71569 3.40973 6.09202 3.21799C6.51984 3 7.07989 3 8.2 3H15.8C16.9201 3 17.4802 3 17.908 3.21799C18.2843 3.40973 18.5903 3.71569 18.782 4.09202C19 4.51984 19 5.07989 19 6.2V21L12 16L5 21V6.2Z" stroke="#7FFFD4" strokeWidth="2" strokeLinejoin="round"/>
                             </svg>

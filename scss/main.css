@@ -88,7 +88,8 @@
 .b-main,
 .b-about,
 .b-pet-page,
-.b-pet-generator-page {
+.b-pet-generator-page,
+.b-saved_breeds {
   align-items: center;
   border: none;
   border-radius: 10px;
@@ -105,20 +106,23 @@
   .b-main,
   .b-about,
   .b-pet-page,
-  .b-pet-generator-page {
+  .b-pet-generator-page,
+  .b-saved_breeds {
     margin-top: -60px;
   }
 }
 .b-main .icon,
 .b-about .icon,
 .b-pet-page .icon,
-.b-pet-generator-page .icon {
+.b-pet-generator-page .icon,
+.b-saved_breeds .icon {
   padding-bottom: 20px;
 }
 .b-main .star,
 .b-about .star,
 .b-pet-page .star,
-.b-pet-generator-page .star {
+.b-pet-generator-page .star,
+.b-saved_breeds .star {
   animation: none;
   display: block;
   opacity: 0.6;
@@ -127,19 +131,22 @@
 .b-main .star.h-hidden,
 .b-about .star.h-hidden,
 .b-pet-page .star.h-hidden,
-.b-pet-generator-page .star.h-hidden {
+.b-pet-generator-page .star.h-hidden,
+.b-saved_breeds .star.h-hidden {
   display: none;
 }
 .b-main .star.m-static,
 .b-about .star.m-static,
 .b-pet-page .star.m-static,
-.b-pet-generator-page .star.m-static {
+.b-pet-generator-page .star.m-static,
+.b-saved_breeds .star.m-static {
   animation: 0.7s ease-in-out infinite alternate twinkle;
 }
 .b-main .star.star-1,
 .b-about .star.star-1,
 .b-pet-page .star.star-1,
-.b-pet-generator-page .star.star-1 {
+.b-pet-generator-page .star.star-1,
+.b-saved_breeds .star.star-1 {
   top: 20vh;
   right: 10vw;
   width: 200px;
@@ -148,14 +155,16 @@
   .b-main .star.star-1,
   .b-about .star.star-1,
   .b-pet-page .star.star-1,
-  .b-pet-generator-page .star.star-1 {
+  .b-pet-generator-page .star.star-1,
+  .b-saved_breeds .star.star-1 {
     width: 100px;
   }
 }
 .b-main .star.star-2,
 .b-about .star.star-2,
 .b-pet-page .star.star-2,
-.b-pet-generator-page .star.star-2 {
+.b-pet-generator-page .star.star-2,
+.b-saved_breeds .star.star-2 {
   animation-duration: 0.8s;
   top: 60vh;
   right: 20vw;
@@ -165,14 +174,16 @@
   .b-main .star.star-2,
   .b-about .star.star-2,
   .b-pet-page .star.star-2,
-  .b-pet-generator-page .star.star-2 {
+  .b-pet-generator-page .star.star-2,
+  .b-saved_breeds .star.star-2 {
     width: 50px;
   }
 }
 .b-main .star.star-3,
 .b-about .star.star-3,
 .b-pet-page .star.star-3,
-.b-pet-generator-page .star.star-3 {
+.b-pet-generator-page .star.star-3,
+.b-saved_breeds .star.star-3 {
   animation-duration: 1.3s;
   top: 30vh;
   right: 80vw;
@@ -182,14 +193,16 @@
   .b-main .star.star-3,
   .b-about .star.star-3,
   .b-pet-page .star.star-3,
-  .b-pet-generator-page .star.star-3 {
+  .b-pet-generator-page .star.star-3,
+  .b-saved_breeds .star.star-3 {
     width: 70px;
   }
 }
 .b-main .star.star-4,
 .b-about .star.star-4,
 .b-pet-page .star.star-4,
-.b-pet-generator-page .star.star-4 {
+.b-pet-generator-page .star.star-4,
+.b-saved_breeds .star.star-4 {
   bottom: 20vh;
   left: 100vw;
   width: 230px;
@@ -198,14 +211,16 @@
   .b-main .star.star-4,
   .b-about .star.star-4,
   .b-pet-page .star.star-4,
-  .b-pet-generator-page .star.star-4 {
+  .b-pet-generator-page .star.star-4,
+  .b-saved_breeds .star.star-4 {
     width: 110px;
   }
 }
 .b-main .star.star-5,
 .b-about .star.star-5,
 .b-pet-page .star.star-5,
-.b-pet-generator-page .star.star-5 {
+.b-pet-generator-page .star.star-5,
+.b-saved_breeds .star.star-5 {
   top: 0;
   right: 100vw;
   width: 150px;
@@ -214,14 +229,16 @@
   .b-main .star.star-5,
   .b-about .star.star-5,
   .b-pet-page .star.star-5,
-  .b-pet-generator-page .star.star-5 {
+  .b-pet-generator-page .star.star-5,
+  .b-saved_breeds .star.star-5 {
     width: 70px;
   }
 }
 .b-main .star.star-6,
 .b-about .star.star-6,
 .b-pet-page .star.star-6,
-.b-pet-generator-page .star.star-6 {
+.b-pet-generator-page .star.star-6,
+.b-saved_breeds .star.star-6 {
   top: 0;
   right: 100vw;
   width: 130px;
@@ -230,14 +247,16 @@
   .b-main .star.star-6,
   .b-about .star.star-6,
   .b-pet-page .star.star-6,
-  .b-pet-generator-page .star.star-6 {
+  .b-pet-generator-page .star.star-6,
+  .b-saved_breeds .star.star-6 {
     width: 60px;
   }
 }
 .b-main_title,
 .b-about_title,
 .b-pet-page_title,
-.b-pet-generator-page_title {
+.b-pet-generator-page_title,
+.b-saved_breeds_title {
   animation-name: increaseTitle;
   animation-timeline: scroll();
   font-size: 96px;
@@ -249,29 +268,34 @@
   .b-main_title,
   .b-about_title,
   .b-pet-page_title,
-  .b-pet-generator-page_title {
+  .b-pet-generator-page_title,
+  .b-saved_breeds_title {
     font-size: 76px;
   }
 }
 .b-main_subtitle,
 .b-about_subtitle,
 .b-pet-page_subtitle,
-.b-pet-generator-page_subtitle {
+.b-pet-generator-page_subtitle,
+.b-saved_breeds_subtitle {
   font-size: 48px;
   font-weight: 350;
+  text-align: center;
 }
 @media screen and (max-width: 768px) {
   .b-main_subtitle,
   .b-about_subtitle,
   .b-pet-page_subtitle,
-  .b-pet-generator-page_subtitle {
+  .b-pet-generator-page_subtitle,
+  .b-saved_breeds_subtitle {
     font-size: 32px;
   }
 }
 .b-main_description,
 .b-about_description,
 .b-pet-page_description,
-.b-pet-generator-page_description {
+.b-pet-generator-page_description,
+.b-saved_breeds_description {
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 20px;
   margin-bottom: 48px;
@@ -284,14 +308,16 @@
   .b-main_description,
   .b-about_description,
   .b-pet-page_description,
-  .b-pet-generator-page_description {
+  .b-pet-generator-page_description,
+  .b-saved_breeds_description {
     font-size: 16px;
   }
 }
 .b-main_pet_grid,
 .b-about_pet_grid,
 .b-pet-page_pet_grid,
-.b-pet-generator-page_pet_grid {
+.b-pet-generator-page_pet_grid,
+.b-saved_breeds_pet_grid {
   animation-name: increaseGrid;
   animation-timeline: view();
   display: flex;
@@ -302,7 +328,8 @@
 .b-main_pet_grid .pet,
 .b-about_pet_grid .pet,
 .b-pet-page_pet_grid .pet,
-.b-pet-generator-page_pet_grid .pet {
+.b-pet-generator-page_pet_grid .pet,
+.b-saved_breeds_pet_grid .pet {
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -317,14 +344,16 @@
   .b-main_pet_grid .pet,
   .b-about_pet_grid .pet,
   .b-pet-page_pet_grid .pet,
-  .b-pet-generator-page_pet_grid .pet {
+  .b-pet-generator-page_pet_grid .pet,
+  .b-saved_breeds_pet_grid .pet {
     max-width: 25vw;
   }
 }
 .b-main_pet_grid .pet_image,
 .b-about_pet_grid .pet_image,
 .b-pet-page_pet_grid .pet_image,
-.b-pet-generator-page_pet_grid .pet_image {
+.b-pet-generator-page_pet_grid .pet_image,
+.b-saved_breeds_pet_grid .pet_image {
   display: flex;
   justify-content: center;
   padding-bottom: 12px;
@@ -332,7 +361,8 @@
 .b-main_pet_grid .pet_image img,
 .b-about_pet_grid .pet_image img,
 .b-pet-page_pet_grid .pet_image img,
-.b-pet-generator-page_pet_grid .pet_image img {
+.b-pet-generator-page_pet_grid .pet_image img,
+.b-saved_breeds_pet_grid .pet_image img {
   border-radius: 10px;
   height: 120px;
   width: 120px;
@@ -342,7 +372,8 @@
   .b-main_pet_grid .pet_image img,
   .b-about_pet_grid .pet_image img,
   .b-pet-page_pet_grid .pet_image img,
-  .b-pet-generator-page_pet_grid .pet_image img {
+  .b-pet-generator-page_pet_grid .pet_image img,
+  .b-saved_breeds_pet_grid .pet_image img {
     height: 60px;
     width: 60px;
   }
@@ -350,7 +381,8 @@
 .b-main_pet_grid .pet_image.m-expanded img,
 .b-about_pet_grid .pet_image.m-expanded img,
 .b-pet-page_pet_grid .pet_image.m-expanded img,
-.b-pet-generator-page_pet_grid .pet_image.m-expanded img {
+.b-pet-generator-page_pet_grid .pet_image.m-expanded img,
+.b-saved_breeds_pet_grid .pet_image.m-expanded img {
   height: 200px;
   width: 200px;
 }
@@ -358,7 +390,8 @@
   .b-main_pet_grid .pet_image.m-expanded img,
   .b-about_pet_grid .pet_image.m-expanded img,
   .b-pet-page_pet_grid .pet_image.m-expanded img,
-  .b-pet-generator-page_pet_grid .pet_image.m-expanded img {
+  .b-pet-generator-page_pet_grid .pet_image.m-expanded img,
+  .b-saved_breeds_pet_grid .pet_image.m-expanded img {
     height: 80px;
     width: 80px;
   }
@@ -366,7 +399,8 @@
 .b-main_pet_grid .pet_name,
 .b-about_pet_grid .pet_name,
 .b-pet-page_pet_grid .pet_name,
-.b-pet-generator-page_pet_grid .pet_name {
+.b-pet-generator-page_pet_grid .pet_name,
+.b-saved_breeds_pet_grid .pet_name {
   display: flex;
   font-size: 18px;
   justify-content: center;
@@ -376,7 +410,8 @@
 .b-main_pet_grid .pet_name.m-expanded,
 .b-about_pet_grid .pet_name.m-expanded,
 .b-pet-page_pet_grid .pet_name.m-expanded,
-.b-pet-generator-page_pet_grid .pet_name.m-expanded {
+.b-pet-generator-page_pet_grid .pet_name.m-expanded,
+.b-saved_breeds_pet_grid .pet_name.m-expanded {
   border-bottom: 1px solid white;
   font-size: 24px;
   font-weight: bold;
@@ -386,27 +421,31 @@
 .b-main_pet_grid .pet_info,
 .b-about_pet_grid .pet_info,
 .b-pet-page_pet_grid .pet_info,
-.b-pet-generator-page_pet_grid .pet_info {
+.b-pet-generator-page_pet_grid .pet_info,
+.b-saved_breeds_pet_grid .pet_info {
   font-size: 14px;
   transition: all 0.4s ease-in-out;
 }
 .b-main_pet_grid .pet_info .title,
 .b-about_pet_grid .pet_info .title,
 .b-pet-page_pet_grid .pet_info .title,
-.b-pet-generator-page_pet_grid .pet_info .title {
+.b-pet-generator-page_pet_grid .pet_info .title,
+.b-saved_breeds_pet_grid .pet_info .title {
   font-weight: bold;
   transition: all 0.4s ease-in-out;
 }
 .b-main_pet_grid .pet_info div,
 .b-about_pet_grid .pet_info div,
 .b-pet-page_pet_grid .pet_info div,
-.b-pet-generator-page_pet_grid .pet_info div {
+.b-pet-generator-page_pet_grid .pet_info div,
+.b-saved_breeds_pet_grid .pet_info div {
   padding: 8px 0;
 }
 .b-main_pet_grid .pet_info .gallery_button,
 .b-about_pet_grid .pet_info .gallery_button,
 .b-pet-page_pet_grid .pet_info .gallery_button,
-.b-pet-generator-page_pet_grid .pet_info .gallery_button {
+.b-pet-generator-page_pet_grid .pet_info .gallery_button,
+.b-saved_breeds_pet_grid .pet_info .gallery_button {
   background-color: floralwhite;
   border: none;
   border-radius: 5px;
@@ -421,13 +460,15 @@
 .b-main_pet_grid .pet_info .gallery_button:hover,
 .b-about_pet_grid .pet_info .gallery_button:hover,
 .b-pet-page_pet_grid .pet_info .gallery_button:hover,
-.b-pet-generator-page_pet_grid .pet_info .gallery_button:hover {
+.b-pet-generator-page_pet_grid .pet_info .gallery_button:hover,
+.b-saved_breeds_pet_grid .pet_info .gallery_button:hover {
   background-color: floralwhite;
 }
 .b-main_pet_grid .pet:hover,
 .b-about_pet_grid .pet:hover,
 .b-pet-page_pet_grid .pet:hover,
-.b-pet-generator-page_pet_grid .pet:hover {
+.b-pet-generator-page_pet_grid .pet:hover,
+.b-saved_breeds_pet_grid .pet:hover {
   background-color: rgba(255, 250, 240, 0.4);
   color: white;
   transform: translateY(-20px);
@@ -435,19 +476,22 @@
 .b-main_pet_grid .pet:hover .gallery_button,
 .b-about_pet_grid .pet:hover .gallery_button,
 .b-pet-page_pet_grid .pet:hover .gallery_button,
-.b-pet-generator-page_pet_grid .pet:hover .gallery_button {
+.b-pet-generator-page_pet_grid .pet:hover .gallery_button,
+.b-saved_breeds_pet_grid .pet:hover .gallery_button {
   background-color: white;
 }
 .b-main_pet_grid .pet:hover .gallery_button:hover,
 .b-about_pet_grid .pet:hover .gallery_button:hover,
 .b-pet-page_pet_grid .pet:hover .gallery_button:hover,
-.b-pet-generator-page_pet_grid .pet:hover .gallery_button:hover {
+.b-pet-generator-page_pet_grid .pet:hover .gallery_button:hover,
+.b-saved_breeds_pet_grid .pet:hover .gallery_button:hover {
   background-color: gainsboro;
 }
 .b-main .section,
 .b-about .section,
 .b-pet-page .section,
-.b-pet-generator-page .section {
+.b-pet-generator-page .section,
+.b-saved_breeds .section {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -461,14 +505,16 @@
   .b-main .section,
   .b-about .section,
   .b-pet-page .section,
-  .b-pet-generator-page .section {
+  .b-pet-generator-page .section,
+  .b-saved_breeds .section {
     font-size: 76px;
   }
 }
 .b-main .section.m-overflow,
 .b-about .section.m-overflow,
 .b-pet-page .section.m-overflow,
-.b-pet-generator-page .section.m-overflow {
+.b-pet-generator-page .section.m-overflow,
+.b-saved_breeds .section.m-overflow {
   height: unset;
   justify-content: start;
   min-height: 600px;
@@ -477,7 +523,8 @@
   .b-main .section.m-overflow,
   .b-about .section.m-overflow,
   .b-pet-page .section.m-overflow,
-  .b-pet-generator-page .section.m-overflow {
+  .b-pet-generator-page .section.m-overflow,
+  .b-saved_breeds .section.m-overflow {
     display: flex;
     min-height: 900px;
     padding-bottom: 64px;
@@ -486,7 +533,8 @@
 .b-main .scroll_down,
 .b-about .scroll_down,
 .b-pet-page .scroll_down,
-.b-pet-generator-page .scroll_down {
+.b-pet-generator-page .scroll_down,
+.b-saved_breeds .scroll_down {
   animation: scrollDown 1s infinite alternate;
   cursor: pointer;
   position: relative;
@@ -494,14 +542,16 @@
 .b-main .up_indicators,
 .b-about .up_indicators,
 .b-pet-page .up_indicators,
-.b-pet-generator-page .up_indicators {
+.b-pet-generator-page .up_indicators,
+.b-saved_breeds .up_indicators {
   cursor: pointer;
   display: none;
 }
 .b-main .up_indicators.m-active,
 .b-about .up_indicators.m-active,
 .b-pet-page .up_indicators.m-active,
-.b-pet-generator-page .up_indicators.m-active {
+.b-pet-generator-page .up_indicators.m-active,
+.b-saved_breeds .up_indicators.m-active {
   display: contents;
 }
 .b-main .up_indicators.m-active .scroll_up,
@@ -511,21 +561,25 @@
 .b-pet-page .up_indicators.m-active .scroll_up,
 .b-pet-page .up_indicators.m-active .back_text,
 .b-pet-generator-page .up_indicators.m-active .scroll_up,
-.b-pet-generator-page .up_indicators.m-active .back_text {
+.b-pet-generator-page .up_indicators.m-active .back_text,
+.b-saved_breeds .up_indicators.m-active .scroll_up,
+.b-saved_breeds .up_indicators.m-active .back_text {
   animation: scrollUp 1s infinite alternate;
   position: absolute;
 }
 .b-main .up_indicators.m-active .scroll_up,
 .b-about .up_indicators.m-active .scroll_up,
 .b-pet-page .up_indicators.m-active .scroll_up,
-.b-pet-generator-page .up_indicators.m-active .scroll_up {
+.b-pet-generator-page .up_indicators.m-active .scroll_up,
+.b-saved_breeds .up_indicators.m-active .scroll_up {
   margin-top: 80px;
   transform: scaleY(-1);
 }
 .b-main .up_indicators.m-active .back_text,
 .b-about .up_indicators.m-active .back_text,
 .b-pet-page .up_indicators.m-active .back_text,
-.b-pet-generator-page .up_indicators.m-active .back_text {
+.b-pet-generator-page .up_indicators.m-active .back_text,
+.b-saved_breeds .up_indicators.m-active .back_text {
   font-size: 16px;
   margin-top: 150px;
   margin-bottom: 24px;
@@ -534,14 +588,16 @@
   .b-main .up_indicators.m-active .back_text,
   .b-about .up_indicators.m-active .back_text,
   .b-pet-page .up_indicators.m-active .back_text,
-  .b-pet-generator-page .up_indicators.m-active .back_text {
+  .b-pet-generator-page .up_indicators.m-active .back_text,
+  .b-saved_breeds .up_indicators.m-active .back_text {
     font-size: 14px;
   }
 }
 .b-main .pet_gallery,
 .b-about .pet_gallery,
 .b-pet-page .pet_gallery,
-.b-pet-generator-page .pet_gallery {
+.b-pet-generator-page .pet_gallery,
+.b-saved_breeds .pet_gallery {
   border: none;
   border-radius: 10px;
   padding: 24px 20px;
@@ -550,7 +606,8 @@
   .b-main .pet_gallery,
   .b-about .pet_gallery,
   .b-pet-page .pet_gallery,
-  .b-pet-generator-page .pet_gallery {
+  .b-pet-generator-page .pet_gallery,
+  .b-saved_breeds .pet_gallery {
     border-radius: 20px 20px 0 0;
     margin-bottom: 0;
     max-height: 80vh;
@@ -561,7 +618,8 @@
 .b-main .pet_gallery .drag_icon,
 .b-about .pet_gallery .drag_icon,
 .b-pet-page .pet_gallery .drag_icon,
-.b-pet-generator-page .pet_gallery .drag_icon {
+.b-pet-generator-page .pet_gallery .drag_icon,
+.b-saved_breeds .pet_gallery .drag_icon {
   display: none;
   width: 100%;
 }
@@ -569,14 +627,16 @@
   .b-main .pet_gallery .drag_icon,
   .b-about .pet_gallery .drag_icon,
   .b-pet-page .pet_gallery .drag_icon,
-  .b-pet-generator-page .pet_gallery .drag_icon {
+  .b-pet-generator-page .pet_gallery .drag_icon,
+  .b-saved_breeds .pet_gallery .drag_icon {
     display: inline;
   }
 }
 .b-main .pet_gallery .close_icon,
 .b-about .pet_gallery .close_icon,
 .b-pet-page .pet_gallery .close_icon,
-.b-pet-generator-page .pet_gallery .close_icon {
+.b-pet-generator-page .pet_gallery .close_icon,
+.b-saved_breeds .pet_gallery .close_icon {
   cursor: pointer;
   padding: 24px 20px;
   position: absolute;
@@ -587,20 +647,23 @@
   .b-main .pet_gallery .close_icon,
   .b-about .pet_gallery .close_icon,
   .b-pet-page .pet_gallery .close_icon,
-  .b-pet-generator-page .pet_gallery .close_icon {
+  .b-pet-generator-page .pet_gallery .close_icon,
+  .b-saved_breeds .pet_gallery .close_icon {
     padding: 48px 20px;
   }
 }
 .b-main .pet_gallery .close_icon:hover,
 .b-about .pet_gallery .close_icon:hover,
 .b-pet-page .pet_gallery .close_icon:hover,
-.b-pet-generator-page .pet_gallery .close_icon:hover {
+.b-pet-generator-page .pet_gallery .close_icon:hover,
+.b-saved_breeds .pet_gallery .close_icon:hover {
   opacity: 0.6;
 }
 .b-main .pet_gallery .gallery_title,
 .b-about .pet_gallery .gallery_title,
 .b-pet-page .pet_gallery .gallery_title,
-.b-pet-generator-page .pet_gallery .gallery_title {
+.b-pet-generator-page .pet_gallery .gallery_title,
+.b-saved_breeds .pet_gallery .gallery_title {
   font-size: 24px;
   font-weight: bold;
   text-transform: uppercase;
@@ -609,7 +672,8 @@
 .b-main .pet_gallery .gallery_images,
 .b-about .pet_gallery .gallery_images,
 .b-pet-page .pet_gallery .gallery_images,
-.b-pet-generator-page .pet_gallery .gallery_images {
+.b-pet-generator-page .pet_gallery .gallery_images,
+.b-saved_breeds .pet_gallery .gallery_images {
   align-content: center;
   display: flex;
   flex-wrap: wrap;
@@ -618,7 +682,8 @@
   .b-main .pet_gallery .gallery_images,
   .b-about .pet_gallery .gallery_images,
   .b-pet-page .pet_gallery .gallery_images,
-  .b-pet-generator-page .pet_gallery .gallery_images {
+  .b-pet-generator-page .pet_gallery .gallery_images,
+  .b-saved_breeds .pet_gallery .gallery_images {
     align-content: center;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -631,13 +696,15 @@
 .b-main .pet_gallery .gallery_images.h-hidden,
 .b-about .pet_gallery .gallery_images.h-hidden,
 .b-pet-page .pet_gallery .gallery_images.h-hidden,
-.b-pet-generator-page .pet_gallery .gallery_images.h-hidden {
+.b-pet-generator-page .pet_gallery .gallery_images.h-hidden,
+.b-saved_breeds .pet_gallery .gallery_images.h-hidden {
   display: none;
 }
 .b-main .pet_gallery .gallery_image,
 .b-about .pet_gallery .gallery_image,
 .b-pet-page .pet_gallery .gallery_image,
-.b-pet-generator-page .pet_gallery .gallery_image {
+.b-pet-generator-page .pet_gallery .gallery_image,
+.b-saved_breeds .pet_gallery .gallery_image {
   height: 256px;
   transition: all 0.4s ease-in-out;
   width: 196px;
@@ -646,7 +713,8 @@
   .b-main .pet_gallery .gallery_image,
   .b-about .pet_gallery .gallery_image,
   .b-pet-page .pet_gallery .gallery_image,
-  .b-pet-generator-page .pet_gallery .gallery_image {
+  .b-pet-generator-page .pet_gallery .gallery_image,
+  .b-saved_breeds .pet_gallery .gallery_image {
     height: auto;
     scroll-snap-align: start;
     width: auto;
@@ -655,13 +723,15 @@
 .b-main .pet_gallery .gallery_image:hover,
 .b-about .pet_gallery .gallery_image:hover,
 .b-pet-page .pet_gallery .gallery_image:hover,
-.b-pet-generator-page .pet_gallery .gallery_image:hover {
+.b-pet-generator-page .pet_gallery .gallery_image:hover,
+.b-saved_breeds .pet_gallery .gallery_image:hover {
   transform: rotateY(180deg);
 }
 .b-main .pet_gallery .gallery_close,
 .b-about .pet_gallery .gallery_close,
 .b-pet-page .pet_gallery .gallery_close,
-.b-pet-generator-page .pet_gallery .gallery_close {
+.b-pet-generator-page .pet_gallery .gallery_close,
+.b-saved_breeds .pet_gallery .gallery_close {
   background-color: #00fad4;
   border: none;
   border-radius: 5px;
@@ -676,13 +746,15 @@
 .b-main .pet_gallery .gallery_close:hover,
 .b-about .pet_gallery .gallery_close:hover,
 .b-pet-page .pet_gallery .gallery_close:hover,
-.b-pet-generator-page .pet_gallery .gallery_close:hover {
+.b-pet-generator-page .pet_gallery .gallery_close:hover,
+.b-saved_breeds .pet_gallery .gallery_close:hover {
   background-color: #80ffec;
 }
 .b-main_card-grid,
 .b-about_card-grid,
 .b-pet-page_card-grid,
-.b-pet-generator-page_card-grid {
+.b-pet-generator-page_card-grid,
+.b-saved_breeds_card-grid {
   background-color: rgba(255, 250, 240, 0.2);
   border-radius: 20px;
   display: grid;
@@ -696,7 +768,8 @@
   .b-main_card-grid,
   .b-about_card-grid,
   .b-pet-page_card-grid,
-  .b-pet-generator-page_card-grid {
+  .b-pet-generator-page_card-grid,
+  .b-saved_breeds_card-grid {
     gap: 0;
     grid-template-rows: 256px auto;
     max-width: unset;
@@ -706,7 +779,8 @@
 .b-main_card-grid img,
 .b-about_card-grid img,
 .b-pet-page_card-grid img,
-.b-pet-generator-page_card-grid img {
+.b-pet-generator-page_card-grid img,
+.b-saved_breeds_card-grid img {
   clip-path: circle(40%);
   height: 256px;
   width: 256px;
@@ -715,7 +789,8 @@
   .b-main_card-grid img,
   .b-about_card-grid img,
   .b-pet-page_card-grid img,
-  .b-pet-generator-page_card-grid img {
+  .b-pet-generator-page_card-grid img,
+  .b-saved_breeds_card-grid img {
     grid-row: 1;
   }
 }
@@ -723,7 +798,8 @@
   .b-main_card-grid .pet_card_image,
   .b-about_card-grid .pet_card_image,
   .b-pet-page_card-grid .pet_card_image,
-  .b-pet-generator-page_card-grid .pet_card_image {
+  .b-pet-generator-page_card-grid .pet_card_image,
+  .b-saved_breeds_card-grid .pet_card_image {
     display: flex;
     justify-content: center;
     width: 90vw;
@@ -732,7 +808,8 @@
 .b-main_card-grid .pet_card_info,
 .b-about_card-grid .pet_card_info,
 .b-pet-page_card-grid .pet_card_info,
-.b-pet-generator-page_card-grid .pet_card_info {
+.b-pet-generator-page_card-grid .pet_card_info,
+.b-saved_breeds_card-grid .pet_card_info {
   align-items: center;
   display: flex;
   font-size: 16px;
@@ -743,7 +820,8 @@
   .b-main_card-grid .pet_card_info,
   .b-about_card-grid .pet_card_info,
   .b-pet-page_card-grid .pet_card_info,
-  .b-pet-generator-page_card-grid .pet_card_info {
+  .b-pet-generator-page_card-grid .pet_card_info,
+  .b-saved_breeds_card-grid .pet_card_info {
     font-size: 14px;
     grid-row: 2;
     padding: 24px 20px;
@@ -1068,6 +1146,80 @@
   display: none;
 }
 
+.b-saved_breeds .icon {
+  margin-top: 40px;
+}
+.b-saved_breeds .section {
+  height: unset;
+  margin: 85px 100px 50px;
+  scroll-snap-align: unset;
+}
+@media screen and (max-width: 768px) {
+  .b-saved_breeds .section {
+    margin: 75px 24px 150px;
+  }
+}
+.b-saved_breeds .b-saved_breeds_container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 48px;
+  max-width: 80vw;
+}
+.b-saved_breeds .b-saved_breeds_container .b-no_breeds {
+  font-size: 16px;
+  margin-top: 80px;
+}
+.b-saved_breeds .b-breed_card {
+  background-color: rgba(0, 250, 212, 0.2509803922);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  margin: 12px 16px;
+  padding: 16px 12px;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+}
+@media screen and (min-width: 769px) {
+  .b-saved_breeds .b-breed_card:hover {
+    cursor: pointer;
+    background-color: rgba(0, 250, 212, 0.3764705882);
+    font-weight: bold;
+    transform: scale(1.2);
+  }
+}
+@media screen and (max-width: 768px) {
+  .b-saved_breeds .b-breed_card:active {
+    cursor: pointer;
+    background-color: rgba(0, 250, 212, 0.3764705882);
+    transform: scale(1.1);
+  }
+}
+.b-saved_breeds .b-breed_card .b-image {
+  margin: auto;
+  width: 96px;
+}
+.b-saved_breeds .b-breed_card .b-breed {
+  font-size: 14px;
+  padding: 8px 0;
+  text-align: center;
+}
+.b-saved_breeds .b-breed_card .delete_icon {
+  left: 4px;
+  top: 4px;
+  position: absolute;
+  width: 24px;
+}
+@media screen and (min-width: 769px) {
+  .b-saved_breeds .b-breed_card .delete_icon:hover {
+    filter: brightness(2);
+  }
+}
+@media screen and (max-width: 768px) {
+  .b-saved_breeds .b-breed_card .delete_icon:active {
+    filter: brightness(2);
+  }
+}
+
 .error_icon,
 .close_icon {
   height: 16px;
@@ -1303,11 +1455,12 @@ header .nav_links li {
     text-align: center;
   }
 }
-header .nav_links .saved_breeds.m-saved::after {
+header .nav_links .saved_breeds_notification {
   background-color: white;
   border-radius: 50%;
   color: lightblue;
   content: "1";
+  display: none;
   font-size: 10px;
   font-weight: bold;
   height: 12px;
@@ -1317,6 +1470,9 @@ header .nav_links .saved_breeds.m-saved::after {
   text-align: center;
   top: 0;
   width: 12px;
+}
+header .nav_links .saved_breeds.m-saved .saved_breeds_notification {
+  display: block;
 }
 header .nav_links .saved_breeds_logo {
   height: 30px;
