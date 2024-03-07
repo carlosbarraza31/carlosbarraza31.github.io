@@ -1005,6 +1005,10 @@
             }
         }
 
+        &.m-disappear {
+            transform: scale(0);
+        }
+
         .b-image {
             margin: auto;
             width: 96px;

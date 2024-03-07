@@ -1194,6 +1194,9 @@
     transform: scale(1.1);
   }
 }
+.b-saved_breeds .b-breed_card.m-disappear {
+  transform: scale(0);
+}
 .b-saved_breeds .b-breed_card .b-image {
   margin: auto;
   width: 96px;
