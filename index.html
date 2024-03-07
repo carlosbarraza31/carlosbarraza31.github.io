@@ -169,14 +169,20 @@
             let breedName = props.breed;
             let url = props.url;
 
+            const breedCardRef = React.useRef(null);
             const {savedBreeds, setSavedBreeds} = React.useContext(SavedBreedsContext);
 
-            function handleBreedDelete() {
-                setSavedBreeds(savedBreeds.filter(breed => breed.name !== breedName));
+            function handleBreedDelete(event) {
+                breedCardRef.current.classList.add('m-disappear');
+
+                setTimeout(() => {
+                    setSavedBreeds(savedBreeds.filter(breed => breed.name !== breedName));
+                    breedCardRef.current.classList.remove('m-disappear');
+                }, 200)
             }
 
             return (
-                <div className="b-breed_card">
+                <div className="b-breed_card" ref={breedCardRef}>
                     <img className="b-image" src={url}></img>
                     <div className="b-breed">
                         {breedName}
